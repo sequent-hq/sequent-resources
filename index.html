@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sequent — Resources</title>
+<script>document.documentElement.className+=" js";
+try{if(innerWidth<760)document.documentElement.classList.add("mob");}catch(e){}</script>
+<style>
+:root{
+  --bg0:#060A10; --panel:#0D1521; --panel2:#101B2C;
+  --stroke:#1D2C42; --stroke2:#283B58; --hairline:#15202F;
+  --body:#C2D4E0; --muted:#8AA0B4; --faint:#55697D; --white:#EAF6FB;
+  --cyan:#00D1FF; --bright:#5CE1FF; --violet:#7B6FE8; --amber:#E9B44C;
+  --mint:#3DDC97; --pink:#FF6FB5;
+  --panelgrad:linear-gradient(180deg,rgba(13,21,33,.94),rgba(13,21,33,.82));
+  --tilegrad:linear-gradient(180deg,rgba(16,27,44,.9),rgba(13,21,33,.85));
+  --navbg:rgba(6,10,16,.85);
+  --veil:rgba(2,6,12,.82);
+  --hoverbg:rgba(0,209,255,.06);
+  --glow:rgba(0,209,255,.10);
+}
+html.light{
+  --bg0:#F2F5F9; --panel:#FFFFFF; --panel2:#E9EEF5;
+  --stroke:#D4DEE9; --stroke2:#B9C8D8; --hairline:#E2E9F1;
+  --body:#31465A; --muted:#5D7288; --faint:#8CA0B3; --white:#0D2135;
+  --cyan:#0088BE; --bright:#0FA8DC; --violet:#5D4FD8; --amber:#B07E1B;
+  --mint:#118A5B; --pink:#D22E7B;
+  --panelgrad:linear-gradient(180deg,#FFFFFF,#FAFCFE);
+  --tilegrad:linear-gradient(180deg,#FFFFFF,#F4F8FC);
+  --navbg:rgba(242,245,249,.88);
+  --veil:rgba(20,32,44,.6);
+  --hoverbg:rgba(0,136,190,.07);
+  --glow:rgba(0,136,190,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg0);color:var(--body);font-family:"Segoe UI",Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5;overflow-x:hidden;transition:background .3s}
+canvas#stars{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55}
+html.light canvas#stars{opacity:.25}
+.bgmesh{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(900px 500px at 15% -5%, rgba(0,209,255,.07), transparent 60%),
+             radial-gradient(900px 600px at 90% 10%, rgba(123,111,232,.06), transparent 60%)}
+html.light .bgmesh{background:radial-gradient(900px 500px at 15% -5%, rgba(0,136,190,.06), transparent 60%),
+             radial-gradient(900px 600px at 90% 10%, rgba(93,79,216,.05), transparent 60%)}
+.bggrid{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(40,59,88,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(40,59,88,.14) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(1200px 800px at 50% 20%,#000 30%,transparent 75%);
+  -webkit-mask-image:radial-gradient(1200px 800px at 50% 20%,#000 30%,transparent 75%)}
+html.light .bggrid{opacity:.35;background-image:linear-gradient(rgba(90,120,150,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(90,120,150,.12) 1px,transparent 1px)}
+main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:0 28px 80px}
+html.mob main{padding:0 16px 70px}
+
+/* nav */
+nav#topnav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:4px;
+  padding:10px 18px;margin:0 0 8px;background:var(--navbg);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--stroke);overflow-x:auto;white-space:nowrap}
+nav#topnav .brand{display:flex;align-items:center;gap:9px;margin-right:14px;flex:0 0 auto}
+nav#topnav .brand .sq{width:10px;height:10px;background:var(--cyan);box-shadow:0 0 12px var(--cyan);animation:pulse 2.6s infinite}
+nav#topnav .brand b{color:var(--white);letter-spacing:4px;font-size:13px}
+nav#topnav a{color:var(--muted);text-decoration:none;font-size:10.5px;letter-spacing:1.6px;
+  padding:7px 11px;border:1px solid transparent;border-radius:6px;transition:all .25s;flex:0 0 auto}
+nav#topnav a:hover{color:var(--bright);border-color:var(--stroke2);background:var(--hoverbg)}
+nav#topnav a.active{color:var(--cyan);border-color:var(--stroke2);background:var(--hoverbg)}
+.tgl{flex:0 0 auto;margin-left:6px;cursor:pointer;color:var(--muted);font-size:10px;letter-spacing:1.4px;font-weight:700;
+  padding:7px 11px;border:1px solid var(--stroke2);border-radius:6px;background:transparent;font-family:inherit;transition:all .25s}
+.tgl:hover{color:var(--bright);border-color:var(--cyan)}
+nav#topnav .spacer{margin-left:auto}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.25);opacity:.7}}
+
+/* shared */
+section{padding:40px 0 8px;scroll-margin-top:64px}
+.kicker{display:flex;align-items:center;gap:9px;color:var(--cyan);font-size:11px;letter-spacing:3px;font-weight:700;margin-bottom:8px}
+.kicker::before{content:"";width:9px;height:9px;background:var(--cyan);box-shadow:0 0 10px var(--cyan);flex:0 0 auto}
+h2{color:var(--white);font-size:26px;font-weight:700;letter-spacing:.2px;margin-bottom:5px}
+.lede{color:var(--muted);font-size:13.5px;margin-bottom:18px;max-width:980px}
+.panel{background:var(--panelgrad);border:1px solid var(--stroke);border-radius:12px;padding:18px;position:relative;transition:border-color .3s,box-shadow .3s}
+.panel:hover{border-color:var(--stroke2)}
+.ptitle{color:var(--cyan);font-size:10.5px;font-weight:700;letter-spacing:2px;margin-bottom:11px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){.g3,.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.g3,.g2{grid-template-columns:1fr}.g4{grid-template-columns:1fr 1fr}}
+html.mob .g3,html.mob .g2{grid-template-columns:1fr}
+html.mob .g4{grid-template-columns:1fr 1fr}
+
+/* stat tiles */
+.tile{background:var(--tilegrad);border:1px solid var(--stroke);border-left:3px solid var(--cyan);
+  border-radius:10px;padding:14px 15px 12px;transition:all .3s;position:relative;overflow:hidden}
+.tile:hover{border-left-color:var(--bright);box-shadow:0 6px 24px var(--glow);transform:translateY(-3px)}
+.tile .v{color:var(--white);font-size:26px;font-weight:800;letter-spacing:.3px;font-variant-numeric:tabular-nums}
+.tile .l{color:var(--muted);font-size:9.6px;letter-spacing:1.3px;margin-top:4px;line-height:1.45;text-transform:uppercase}
+.tile.pk{border-left-color:var(--pink)}.tile.pk:hover{box-shadow:0 6px 24px rgba(255,111,181,.16);border-left-color:var(--pink)}
+
+/* reveal (JS only) */
+.js .rv{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.js .rv.on{opacity:1;transform:none}
+
+/* hero */
+header.hero{position:relative;z-index:1;padding:44px 0 6px}
+html.mob header.hero{padding-top:26px}
+header.hero h1{color:var(--white);font-size:clamp(32px,5vw,46px);font-weight:800;letter-spacing:1px;line-height:1.05}
+header.hero h1 span{color:var(--cyan);text-shadow:0 0 28px var(--glow)}
+header.hero .sub{color:var(--muted);font-size:14.5px;margin:10px 0 14px;max-width:760px}
+.chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--stroke2);border-radius:6px;
+  color:var(--muted);font-size:10px;letter-spacing:1.6px;padding:6px 12px;font-weight:700;transition:all .3s;text-decoration:none}
+.chip:hover{border-color:var(--cyan);color:var(--bright)}
+
+/* access badges */
+.bd{display:inline-block;font-size:8.4px;font-weight:800;letter-spacing:1.2px;padding:2px 7px;border-radius:20px;border:1px solid;white-space:nowrap;vertical-align:1px}
+.bd.pub{color:var(--mint);border-color:var(--mint);background:rgba(61,220,151,.08)}
+.bd.auth{color:var(--amber);border-color:var(--amber);background:rgba(233,180,76,.08)}
+.bd.sp{color:var(--violet);border-color:var(--violet);background:rgba(123,111,232,.08)}
+
+/* prominent section tabs */
+.tabrow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:24px}
+@media(max-width:1000px){.tabrow{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.tabrow{grid-template-columns:1fr 1fr}}
+html.mob .tabrow{grid-template-columns:1fr 1fr}
+.tab{display:block;text-decoration:none;background:var(--tilegrad);border:1px solid var(--stroke);border-top:3px solid var(--cyan);border-radius:10px;padding:12px 14px;transition:all .25s}
+.tab .tn{color:var(--faint);font-size:9px;letter-spacing:2px;font-weight:800}
+.tab .tl{color:var(--white);font-size:12.5px;font-weight:800;letter-spacing:.5px;margin-top:2px}
+.tab .ts{color:var(--muted);font-size:8.8px;letter-spacing:1.1px;margin-top:3px;text-transform:uppercase}
+.tab:hover{transform:translateY(-3px);border-color:var(--stroke2);box-shadow:0 8px 22px rgba(0,0,0,.3)}
+.tab:hover .tl{color:var(--bright)}
+
+/* brand card logo headers — transparent files, theme handled by filters, marks normalized to ~20px cap height */
+.blogo{display:flex;align-items:center;height:30px;margin-bottom:5px;overflow:hidden;max-width:100%}
+.blogo img{display:block;flex:0 0 auto;max-width:232px;object-fit:contain}
+html.light .lg-w img{filter:brightness(0)}
+.lg-c img{filter:brightness(0) invert(1)}
+html.light .lg-c img{filter:none}
+.lg-m img{filter:brightness(0) invert(1)}
+html.light .lg-m img{filter:brightness(0)}
+.blogo .bwfb{display:none}
+.blogo.noimg{height:auto;overflow:visible}
+.blogo.noimg img{display:none}
+.blogo.noimg .bwfb{display:block}
+
+/* social cards */
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:1000px){.sgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.sgrid{grid-template-columns:1fr 1fr}}
+html.mob .sgrid{grid-template-columns:1fr 1fr}
+.scard{background:var(--tilegrad);border:1px solid var(--stroke);border-radius:12px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+.scard:hover{transform:translateY(-3px);border-color:var(--stroke2);box-shadow:0 10px 26px rgba(0,0,0,.35)}
+.scover{position:relative;display:block;aspect-ratio:9/16;background:linear-gradient(160deg,#12233B,#0A1524);cursor:pointer;width:100%;padding:0;border:0}
+html.light .scover{background:linear-gradient(160deg,#DCE6F0,#C8D6E4)}
+.scover img{width:100%;height:100%;object-fit:cover;display:block}
+.scover .fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;color:var(--faint);font-size:10px;letter-spacing:2px;font-weight:700}
+.scover.noimg .fallback{display:flex}
+.scard .sb{padding:9px 11px 10px}
+.scard .st{color:var(--white);font-size:11.8px;font-weight:700;line-height:1.3}
+.scard .stag{display:inline-block;margin-top:6px;font-size:8.2px;font-weight:800;letter-spacing:1.2px;color:var(--pink);border:1px solid var(--pink);border-radius:20px;padding:2px 8px;background:rgba(255,111,181,.08)}
+
+/* brand cards */
+.bcard{border-top:3px solid var(--cyan);background:var(--tilegrad);
+  border-left:1px solid var(--stroke);border-right:1px solid var(--stroke);border-bottom:1px solid var(--stroke);
+  border-radius:0 0 12px 12px;padding:16px 16px 12px;transition:transform .3s,box-shadow .3s}
+.bcard:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.35)}
+html.light .bcard:hover{box-shadow:0 10px 26px rgba(30,60,90,.14)}
+.bcard .bw{font-size:19px;font-weight:800;letter-spacing:3.5px;color:var(--white)}
+.bcard .bt{color:var(--muted);font-size:9.6px;letter-spacing:1.4px;margin:2px 0 10px;text-transform:uppercase}
+.rl{display:grid;grid-template-columns:14px 1fr auto;align-items:center;gap:8px;padding:7px 7px;border-radius:8px;
+  text-decoration:none;color:var(--body);font-size:12.4px;border:1px solid transparent;transition:all .22s}
+.rl:hover{background:var(--hoverbg);border-color:var(--stroke2)}
+.rl .ar{color:var(--faint);font-size:11px}
+.rl:hover .ar{color:var(--bright)}
+.rl .nm{color:var(--white);font-weight:600}
+.rl:hover .nm{color:var(--bright)}
+.rl .mt{color:var(--faint);font-size:8.8px;letter-spacing:1.1px;font-weight:700;white-space:nowrap;text-transform:uppercase;text-align:right}
+.rllist{display:flex;flex-direction:column;gap:1px;margin-top:2px}
+
+/* video cards */
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:1000px){.vgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.vgrid{grid-template-columns:1fr}}
+html.mob .vgrid{grid-template-columns:1fr}
+.vcard{background:var(--tilegrad);border:1px solid var(--stroke);border-radius:12px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+.vcard:hover{transform:translateY(-3px);border-color:var(--stroke2);box-shadow:0 10px 26px rgba(0,0,0,.35)}
+html.light .vcard:hover{box-shadow:0 10px 26px rgba(30,60,90,.14)}
+.vcover{position:relative;display:block;aspect-ratio:16/9;background:linear-gradient(135deg,#12233B,#0A1524);cursor:pointer;border:0;width:100%;padding:0}
+html.light .vcover{background:linear-gradient(135deg,#DCE6F0,#C8D6E4)}
+.vcover img{width:100%;height:100%;object-fit:cover;display:block}
+.vcover .fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;color:var(--faint);font-size:11px;letter-spacing:2px;font-weight:700}
+.vcover.noimg .fallback{display:flex}
+.vcover .pb,.scover .pb{position:absolute;inset:0;margin:auto;width:54px;height:54px;border-radius:50%;background:rgba(6,10,16,.6);
+  border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;transition:all .25s;pointer-events:none}
+.scover .pb{width:44px;height:44px}
+.vcover .pb::after,.scover .pb::after{content:"";display:block;width:0;height:0;border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent #fff;margin-left:4px}
+.vcover:hover .pb,.scover:hover .pb{background:rgba(0,209,255,.5);transform:scale(1.08);box-shadow:0 0 24px rgba(0,209,255,.5)}
+.vcover .res,.scover .res{position:absolute;top:8px;right:8px;background:rgba(6,10,16,.72);color:#EAF6FB;font-size:9px;font-weight:800;letter-spacing:1.2px;padding:3px 8px;border-radius:5px}
+.vbody{padding:12px 13px 11px}
+.vbody .vt{color:var(--white);font-size:13.5px;font-weight:700;line-height:1.3}
+.vbody .vs{color:var(--faint);font-size:9.4px;letter-spacing:1.2px;margin-top:3px;text-transform:uppercase}
+.vact{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+.vbtn{display:inline-flex;align-items:center;gap:5px;font-size:9.6px;font-weight:800;letter-spacing:1.2px;
+  padding:6px 11px;border-radius:6px;border:1px solid var(--stroke2);color:var(--muted);background:transparent;
+  cursor:pointer;text-decoration:none;font-family:inherit;transition:all .25s}
+.vbtn:hover{color:var(--bright);border-color:var(--cyan);background:var(--hoverbg)}
+.vbtn.pri{color:var(--cyan);border-color:var(--cyan)}
+.vbtn.pri:hover{color:var(--bright);box-shadow:0 0 14px var(--glow)}
+.vbtn.ok{color:var(--mint);border-color:var(--mint)}
+.jsonly{display:none!important}
+.js .jsonly{display:inline-flex!important}
+
+/* collection tiles */
+.ctile{display:block;text-decoration:none;background:var(--tilegrad);border:1px solid var(--stroke);border-left:3px solid var(--cyan);
+  border-radius:10px;padding:13px 14px 11px;transition:all .3s;position:relative}
+.ctile:hover{border-left-color:var(--bright);transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,.3)}
+html.light .ctile:hover{box-shadow:0 8px 22px rgba(30,60,90,.13)}
+.ctile .cv{color:var(--white);font-size:14px;font-weight:800}
+.ctile .cl{color:var(--muted);font-size:9.4px;letter-spacing:1.2px;margin-top:3px;line-height:1.5;text-transform:uppercase}
+.ctile .cn{position:absolute;top:10px;right:12px}
+.ctile.vi{border-left-color:var(--violet)}
+.ctile.mi{border-left-color:var(--mint)}
+.ctile.am{border-left-color:var(--amber)}
+
+/* tables */
+table.dk{width:100%;border-collapse:collapse;font-size:12.3px}
+table.dk th{color:var(--cyan);font-size:9.6px;letter-spacing:1.5px;text-align:left;padding:8px 10px;border-bottom:1px solid var(--stroke2);white-space:nowrap}
+table.dk td{padding:8px 10px;border-bottom:1px solid var(--hairline);color:var(--body)}
+table.dk tbody tr:hover{background:var(--hoverbg)}
+table.dk tbody tr:hover td:first-child{color:var(--bright)}
+td.r,th.r{text-align:right}
+table.dk a.open{color:var(--cyan);text-decoration:none;font-size:9.6px;letter-spacing:1.4px;font-weight:800;border:1px solid var(--stroke2);
+  border-radius:6px;padding:3px 9px;transition:all .25s;white-space:nowrap}
+table.dk a.open:hover{color:var(--bright);border-color:var(--cyan);background:var(--hoverbg)}
+
+/* instagram cards */
+.igcard{display:flex;flex-direction:column;text-decoration:none;background:var(--tilegrad);border:1px solid var(--stroke);border-top:3px solid var(--pink);
+  border-radius:12px;padding:14px 15px 13px;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;min-height:210px}
+.igcard:hover{transform:translateY(-3px);border-color:var(--stroke2);box-shadow:0 10px 26px rgba(0,0,0,.35)}
+html.light .igcard:hover{box-shadow:0 10px 26px rgba(30,60,90,.14)}
+.igcard.hot{border-top-color:var(--bright);box-shadow:0 0 22px rgba(255,111,181,.08)}
+.igtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.igrank{color:var(--faint);font-size:11px;font-weight:800;letter-spacing:1.5px}
+.igcard.hot .igrank{color:var(--pink)}
+.igviews{color:var(--white);font-size:30px;font-weight:800;letter-spacing:.3px;font-variant-numeric:tabular-nums;line-height:1}
+.igvl{color:var(--faint);font-size:8.4px;letter-spacing:1.6px;font-weight:800;margin:4px 0 10px}
+.igu{color:var(--bright);font-size:12px;font-weight:800;letter-spacing:.3px}
+.igcap{color:var(--muted);font-size:11.4px;line-height:1.45;margin-top:3px;flex:1}
+.igstats{color:var(--faint);font-size:9.6px;letter-spacing:1px;font-weight:700;margin-top:9px;text-transform:uppercase}
+.igplay{display:flex;align-items:center;gap:8px;margin-top:9px;padding-top:10px;border-top:1px solid var(--hairline)}
+.igplay .pb{position:static;width:26px;height:26px;margin:0;border-width:1.5px;background:rgba(6,10,16,.4)}
+html.light .igplay .pb{background:rgba(13,33,53,.75)}
+.igplay .pb::after{content:"";display:block;width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px}
+.igplay .igopen{color:var(--muted);font-size:9px;letter-spacing:1.6px;font-weight:800}
+.igcard:hover .igplay .igopen{color:var(--bright)}
+.igcard:hover .pb{background:rgba(0,209,255,.5);box-shadow:0 0 18px rgba(0,209,255,.5)}
+
+/* strip + footer */
+.strip{border:1px solid var(--stroke);background:var(--panelgrad);border-radius:10px;padding:12px 16px;margin-top:14px;font-size:12.8px}
+.strip b.h{color:var(--cyan);letter-spacing:1.6px;font-size:10.5px;margin-right:8px}
+.strip .w{color:var(--white);font-weight:700}
+footer{position:relative;z-index:1;border-top:1px solid var(--stroke);margin-top:52px;padding:20px 28px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--faint);font-size:9.6px;letter-spacing:1.5px}
+.src{color:var(--faint);font-size:9.4px;margin-top:12px;line-height:1.6}
+
+/* modal player */
+#pmodal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:22px}
+#pmodal.open{display:flex}
+#pmodal .veil{position:absolute;inset:0;background:var(--veil);backdrop-filter:blur(4px)}
+#pmodal .box{position:relative;width:min(960px,96vw);background:var(--panel);border:1px solid var(--stroke2);border-radius:14px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.55)}
+#pmodal video{display:block;width:100%;max-height:68vh;min-height:280px;background:#000}
+#pmodal .mh{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--hairline)}
+#pmodal .mh .t{color:var(--white);font-weight:700;font-size:14px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#pmodal .x{flex:0 0 auto;cursor:pointer;border:1px solid var(--stroke2);background:transparent;color:var(--muted);border-radius:6px;
+  width:30px;height:30px;font-size:15px;line-height:1;font-family:inherit;transition:all .25s}
+#pmodal .x:hover{color:var(--bright);border-color:var(--cyan)}
+#pmodal .mf{display:flex;gap:8px;padding:12px 16px;flex-wrap:wrap;align-items:center}
+#pmodal .note{color:var(--faint);font-size:9.6px;letter-spacing:1px;margin-left:auto;text-transform:uppercase}
+html.mob #pmodal{padding:10px}
+html.mob #pmodal .note{display:none}
+
+@media(max-width:760px){
+  main{padding:0 16px 70px}
+  header.hero{padding-top:26px}
+  .vact .vbtn{padding:8px 12px}
+  #pmodal .note{display:none}
+}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas><div class="bgmesh"></div><div class="bggrid"></div>
+
+<nav id="topnav">
+  <span class="brand"><span class="sq"></span><b>SEQUENT</b></span>
+  <a href="#brands">BRANDS</a><a href="#videos">VIDEOS</a>
+  <a href="#photo">PHOTO</a><a href="#social">SOCIAL</a><a href="#help">HELP</a>
+  <span class="spacer"></span>
+  <button class="tgl jsonly" id="themeTgl" type="button" title="Switch light / dark">◐ THEME</button>
+  <button class="tgl jsonly" id="viewTgl" type="button" title="Switch mobile / desktop layout">▤ MOBILE</button>
+</nav>
+
+<main>
+<header class="hero">
+  <h1>RESOURCES<span>.</span></h1>
+  <p class="sub">Brand standards, logos, videos, and templates for the Sequent family of brands.
+  Every link is a public share link — one click, no account, safe to forward outside the company.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <a class="chip" href="https://brand.kreate.com/media/" target="_blank" rel="noopener">OPEN THE BRAND PORTAL ↗</a>
+    <span class="chip">UPDATED AUG 19, 2026</span>
+  </div>
+  <nav class="tabrow" aria-label="Sections">
+    <a class="tab" href="#brands" style="border-top-color:var(--cyan)"><div class="tn">01</div><div class="tl">Brand Standards &amp; Logos</div><div class="ts">Guidelines · logos · fonts · PPT</div></a>
+    <a class="tab" href="#videos" style="border-top-color:var(--violet)"><div class="tn">02</div><div class="tl">Videos</div><div class="ts">12 corporate films · play here</div></a>
+    <a class="tab" href="#photo" style="border-top-color:var(--bright)"><div class="tn">03</div><div class="tl">Photography</div><div class="ts">Facilities · events · UGC</div></a>
+    <a class="tab" href="#social" style="border-top-color:var(--pink)"><div class="tn">04</div><div class="tl">Social</div><div class="ts">Top short-form · tap to play</div></a>
+    <a class="tab" href="#help" style="border-top-color:var(--amber)"><div class="tn">05</div><div class="tl">Help</div><div class="ts">Downloads · sharing · requests</div></a>
+  </nav>
+</header>
+<!-- BRANDS -->
+<section id="brands">
+  <div class="kicker">01 · BRAND STANDARDS &amp; LOGOS</div>
+  <h2 class="rv">Brand standards &amp; logos</h2>
+  <p class="lede rv">Current guidelines, logo files, and fonts for each brand — together in one card per brand. File links open the item in its collection; use the Download button there for the original file.</p>
+  <div class="grid g3">
+    <div class="bcard rv" style="border-top-color:var(--cyan)">
+      <div class="blogo lg-m"><img style="height:27px" src="https://brand.kreate.com/asset/f893ff7c-7ee4-4384-9980-95fa70c23019/thumbnail/webimage-CP-Sequent-Logo" alt="Sequent" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb">SEQUENT</span></div>
+      <div class="bt">Parent brand</div>
+      <div class="rllist">
+        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/?mediaId=775461C5-88D8-4760-AA0FC29A7441CAAB" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — v1.8</span><span class="mt">PDF</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/?mediaId=F893FF7C-7EE4-4384-998095FA70C23019" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logo · wordmark · icon</span><span class="mt">SVG</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/?mediaId=DFC01D33-4A04-424F-80534BEA6DA7861C" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand messaging</span><span class="mt">DOCX</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/?mediaId=DA6F21D2-0875-456E-8C6B1D93D2236807" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Zoom backgrounds</span><span class="mt">PNG ×2</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Fonts — Tobias · Uncut Sans · Geist</span><span class="mt">OTF / TTF</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Sequent files</span><span class="mt">19 files</span></a>
+      </div>
+    </div>
+    <div class="bcard rv" style="border-top-color:var(--mint)">
+      <div class="blogo lg-w"><img style="height:41px" src="https://brand.kreate.com/asset/adc8dd56-e14b-4b60-b78c-46d4aef1f644/thumbnail/webimage-kreate-logo-white" alt="Kreate" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--mint)">KREATE</span></div>
+      <div class="bt">Manufacturing &amp; retail</div>
+      <div class="rllist">
+        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=2A119BF9-FBCE-4A1D-A1D8D6E1041B786C" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand standards manual</span><span class="mt">PDF</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=D02CA42E-714A-4746-A0B8798D589F9F57" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">PowerPoint master</span><span class="mt">PPTX</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=2D6065AB-C240-4FCA-BD94CE00C4A004AF" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Kreate + THD PowerPoint master</span><span class="mt">PPTX</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=D92FD393-5BA6-4F4D-895A01D0A088A619" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Agenda template</span><span class="mt">DOCX</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=ADC8DD56-E14B-4B60-B78C46D4AEF1F644" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logo — white</span><span class="mt">PNG</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=5A0FD5E3-682A-4F2E-A07197BCC574BD24" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logo — black</span><span class="mt">PNG</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/c6a08dabfafe5e5d/kreate-logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Full logo set — EPS + K icon</span><span class="mt">6 files</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Kreate brand files &amp; templates</span><span class="mt">7 files</span></a>
+      </div>
+    </div>
+    <div class="bcard rv" style="border-top-color:var(--violet)">
+      <div class="blogo lg-w"><img style="height:30px" src="https://brand.kreate.com/asset/b2047ca1-39cf-4271-89cd-b7c3d5f5f981/thumbnail/webimage-configure_rev" alt="Configure" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--violet)">CONFIGURE</span></div>
+      <div class="bt">Storage &amp; organization</div>
+      <div class="rllist">
+        <a class="rl" href="https://brand.kreate.com/web/40509e861d1f7eae/configure-updated-brand-standards---logos/?mediaId=53AFBF10-E32E-4FBD-B866FEF2F586475C" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — v1.2, Jul 2026</span><span class="mt">PDF</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/40509e861d1f7eae/configure-updated-brand-standards---logos/?mediaId=C6777516-504A-44AD-9E050FC373F653AB" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">PowerPoint master — Jun 2026</span><span class="mt">PPTX</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/291fda07d7429f38/configure-logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — color / black / reversed</span><span class="mt">20 files</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/dea99a93447debde/configure-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand assets — icons + wordmarks</span><span class="mt">23 files</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/40509e861d1f7eae/configure-updated-brand-standards---logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Updated standards + logos</span><span class="mt">48 files</span></a>
+      </div>
+    </div>
+    <div class="bcard rv" style="border-top-color:var(--amber)">
+      <div class="blogo lg-w"><img style="height:22px" src="https://brand.kreate.com/asset/712e6804-2178-4fed-90c5-c3c818e2f214/thumbnail/webimage-OGO_Primary_White" alt="OGO" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--amber)">OGO&trade;</span></div>
+      <div class="bt">Mobile storage · Nomad &amp; Origin</div>
+      <div class="rllist">
+        <a class="rl" href="https://brand.kreate.com/web/36000925fde7df10/ogo-logo---brand-guidelines/?mediaId=8BF02137-DA3D-476A-BC46CE3D65756C09" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — PMS updated 5.28.26</span><span class="mt">PDF</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/36000925fde7df10/ogo-logo---brand-guidelines/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — OGO + Nomad &amp; Origin lines</span><span class="mt">33 files</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/cdc29c298c968996/ogo--assets-to-share-with-distributors/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Distributor-approved assets</span><span class="mt">External-safe</span></a>
+      </div>
+    </div>
+    <div class="bcard rv" style="border-top-color:var(--bright)">
+      <div class="blogo lg-w"><img style="height:96px" src="https://brand.kreate.com/asset/e1e049c2-76d9-434e-ab0b-724e32af6d4f/thumbnail/webimage-Energize-Final-Logo" alt="Energize" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--bright)">ENERGIZE</span></div>
+      <div class="bt">Sub-brand</div>
+      <div class="rllist">
+        <a class="rl" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/?mediaId=D9F1AE60-4966-44CC-922B95FECD0ADE7C" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — v1.4</span><span class="mt">PDF</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos, emblems + Founders Grotesk fonts</span><span class="mt">27 files</span></a>
+      </div>
+    </div>
+    <div class="bcard rv" style="border-top-color:var(--pink)">
+      <div class="blogo lg-w"><img style="height:78px" src="https://brand.kreate.com/asset/9014e12c-bdbf-4376-a1d3-610ef2fad9e4/thumbnail/webimage-Faster-Logo" alt="Faster" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--pink)">FASTER</span></div>
+      <div class="bt">Sub-brand</div>
+      <div class="rllist">
+        <a class="rl" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/?mediaId=6A57FAF7-3852-48C9-A73052181709DC10" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — v1.1</span><span class="mt">PDF</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos, icons + Founders Grotesk fonts</span><span class="mt">32 files</span></a>
+      </div>
+    </div>
+    <div class="bcard rv" style="border-top-color:var(--cyan)">
+      <div class="blogo lg-c"><img style="height:44px" src="https://brand.kreate.com/asset/3ed3cd73-8a38-4844-b300-64611e77fdc2/thumbnail/webimage-Melds-Logo" alt="Melds" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb">MELDS</span></div>
+      <div class="bt">Sub-brand</div>
+      <div class="rllist">
+        <a class="rl" href="https://brand.kreate.com/web/8ac6187f1e5a8288/melds-brand-assets/?mediaId=8F59DEDA-B932-4502-AA458FA4F52FBBEF" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand messaging</span><span class="mt">DOCX</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/8ac6187f1e5a8288/melds-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logo — SVG / AI / PDF</span><span class="mt">4 files</span></a>
+      </div>
+    </div>
+    <div class="bcard rv" style="border-top-color:var(--violet)">
+      <div class="blogo lg-w"><img style="height:19px" src="https://brand.kreate.com/asset/e98c973b-c333-42bd-ac5d-d9b8b11c9d52/thumbnail/webimage-Nickolas-RGB-White" alt="Nickolas" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--violet);letter-spacing:2.5px">NICKOLAS</span></div>
+      <div class="bt">Logo set</div>
+      <div class="rllist">
+        <a class="rl" href="https://brand.kreate.com/web/836a7ac951943820/nickolas-logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Nickolas logos</span><span class="mt">19 files</span></a>
+        <a class="rl" href="https://fmtinc.sharepoint.com/sites/JoeBryce/Shared Documents/General/Strategy Deck/NAM/Archive/NAM Template.pptx" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">PowerPoint master — 40 master slides</span><span class="mt">PPTX · MS sign-in</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=A08033D8-C388-4E80-81EEE10F4F5B4294" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Nickolas × Kreate agenda template</span><span class="mt">DOCX</span></a>
+      </div>
+    </div>
+    <div class="bcard rv" style="border-top-color:var(--mint)">
+      <div class="blogo lg-w"><img style="height:14px" src="https://brand.kreate.com/asset/43b4ffe3-f33c-4fd2-a704-aae9d80cccf3/thumbnail/webimage-krevera-logo-lfITcyXu-white" alt="Krevera" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--mint);letter-spacing:2.5px">KREVERA</span></div>
+      <div class="bt">Logo set</div>
+      <div class="rllist">
+        <a class="rl" href="https://brand.kreate.com/web/845a4767c8593ce6/krevera-logo/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Krevera logo</span><span class="mt">2 files</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="strip rv"><b class="h">FILE GUIDE —</b> <span class="w">white / reversed</span> logos on dark backgrounds, <span class="w">black</span> on light · <span class="w">EPS / SVG</span> for print and production · <span class="w">PNG</span> for decks and docs.</div>
+</section>
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="kicker" style="color:var(--violet)">02 · VIDEOS</div>
+  <h2 class="rv">Videos</h2>
+  <p class="lede rv">The corporate video collection. Play streams a 720p preview right here; Download opens the file in the public collection for the full-resolution master; Copy Link gives you a public link anyone can open — no account needed. <a href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">Open the whole collection ↗</a></p>
+  <div class="vgrid">
+    <div class="vcard rv"><a class="vcover" href="https://brand.kreate.com/asset/9c768d34-0ca9-47fe-9ec4-c3b5f51a445a/mp4/Kreate-Capabilities-Reel.mp4" target="_blank" rel="noopener" data-title="Kreate Capabilities Reel" data-dl="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=9C768D34-0CA9-47FE-9EC4C3B5F51A445A"><img src="https://brand.kreate.com/asset/9c768d34-0ca9-47fe-9ec4-c3b5f51a445a/thumbnail/webimage-Kreate-Capabilities-Reel" alt="Kreate Capabilities Reel" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('noimg')"><span class="fallback">KREATE · VIDEO</span><span class="pb"></span><span class="res">HD</span></a>
+      <div class="vbody"><div class="vt">Kreate Capabilities Reel</div><div class="vs">Capabilities · full res 143 MB</div>
+      <div class="vact"><button class="vbtn pri jsonly play" type="button">▶ PLAY</button><a class="vbtn" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=9C768D34-0CA9-47FE-9EC4C3B5F51A445A" target="_blank" rel="noopener">⬇ DOWNLOAD</a><button class="vbtn jsonly copy" type="button">⧉ COPY LINK</button></div></div></div>
+    <div class="vcard rv"><a class="vcover" href="https://brand.kreate.com/asset/bb3c0045-c787-4a91-8ca1-cdd39bf034a5/mp4/Vegas-Sizzle.mp4" target="_blank" rel="noopener" data-title="Vegas Plant Sizzle" data-dl="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=BB3C0045-C787-4A91-8CA1CDD39BF034A5"><img src="https://brand.kreate.com/asset/bb3c0045-c787-4a91-8ca1-cdd39bf034a5/thumbnail/webimage-Vegas-Sizzle" alt="Vegas Plant Sizzle" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('noimg')"><span class="fallback">KREATE · VIDEO</span><span class="pb"></span><span class="res">4K</span></a>
+      <div class="vbody"><div class="vt">Vegas Plant Sizzle</div><div class="vs">Sizzle · full res 732 MB</div>
+      <div class="vact"><button class="vbtn pri jsonly play" type="button">▶ PLAY</button><a class="vbtn" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=BB3C0045-C787-4A91-8CA1CDD39BF034A5" target="_blank" rel="noopener">⬇ DOWNLOAD</a><button class="vbtn jsonly copy" type="button">⧉ COPY LINK</button></div></div></div>
+    <div class="vcard rv"><a class="vcover" href="https://brand.kreate.com/asset/85d1d81c-9246-4329-a53c-b720b9dbcbb0/mp4/Texas-Facility-Tour.mp4" target="_blank" rel="noopener" data-title="Texas Facility Tour" data-dl="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=85D1D81C-9246-4329-A53CB720B9DBCBB0"><img src="https://brand.kreate.com/asset/85d1d81c-9246-4329-a53c-b720b9dbcbb0/thumbnail/webimage-Texas-Facility-Tour" alt="Texas Facility Tour" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('noimg')"><span class="fallback">KREATE · VIDEO</span><span class="pb"></span><span class="res">4K</span></a>
+      <div class="vbody"><div class="vt">Texas Facility Tour</div><div class="vs">Facility · full res 1.3 GB</div>
+      <div class="vact"><button class="vbtn pri jsonly play" type="button">▶ PLAY</button><a class="vbtn" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=85D1D81C-9246-4329-A53CB720B9DBCBB0" target="_blank" rel="noopener">⬇ DOWNLOAD</a><button class="vbtn jsonly copy" type="button">⧉ COPY LINK</button></div></div></div>
+    <div class="vcard rv"><a class="vcover" href="https://brand.kreate.com/asset/b4583ce8-b83a-4843-b6c9-68fea3be24e0/mp4/Kreate-Howie-with-QR.mp4" target="_blank" rel="noopener" data-title="Kreate — Howie with QR" data-dl="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=B4583CE8-B83A-4843-B6C968FEA3BE24E0"><img src="https://brand.kreate.com/asset/b4583ce8-b83a-4843-b6c9-68fea3be24e0/thumbnail/webimage-Kreate-Howie-with-QR" alt="Kreate — Howie with QR" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('noimg')"><span class="fallback">KREATE · VIDEO</span><span class="pb"></span><span class="res">HD</span></a>
+      <div class="vbody"><div class="vt">Kreate — Howie with QR</div><div class="vs">Campaign · full res 59 MB</div>
+      <div class="vact"><button class="vbtn pri jsonly play" type="button">▶ PLAY</button><a class="vbtn" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=B4583CE8-B83A-4843-B6C968FEA3BE24E0" target="_blank" rel="noopener">⬇ DOWNLOAD</a><button class="vbtn jsonly copy" type="button">⧉ COPY LINK</button></div></div></div>
+    <div class="vcard rv"><a class="vcover" href="https://brand.kreate.com/asset/df9cd7c9-f3f8-41f6-ac0c-c66741a2c04e/mp4/Partner-Video-Final.mp4" target="_blank" rel="noopener" data-title="Partner Video — Final" data-dl="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=DF9CD7C9-F3F8-41F6-AC0CC66741A2C04E"><img src="https://brand.kreate.com/asset/df9cd7c9-f3f8-41f6-ac0c-c66741a2c04e/thumbnail/webimage-Partner-Video-Final" alt="Partner Video — Final" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('noimg')"><span class="fallback">KREATE · VIDEO</span><span class="pb"></span><span class="res">HD</span></a>
+      <div class="vbody"><div class="vt">Partner Video — Final</div><div class="vs">Partner meeting intro · full res 105 MB</div>
+      <div class="vact"><button class="vbtn pri jsonly play" type="button">▶ PLAY</button><a class="vbtn" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=DF9CD7C9-F3F8-41F6-AC0CC66741A2C04E" target="_blank" rel="noopener">⬇ DOWNLOAD</a><button class="vbtn jsonly copy" type="button">⧉ COPY LINK</button></div></div></div>
+    <div class="vcard rv"><a class="vcover" href="https://brand.kreate.com/asset/763aa6d3-f439-43a3-8b27-645b03ebcf6c/mp4/2025-Partner-Meeting-Content-and-Social.mp4" target="_blank" rel="noopener" data-title="2025 Partner Meeting — Content &amp; Social" data-dl="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=763AA6D3-F439-43A3-8B27645B03EBCF6C"><img src="https://brand.kreate.com/asset/763aa6d3-f439-43a3-8b27-645b03ebcf6c/thumbnail/webimage-2025-Partner-Meeting-Content-and-Social" alt="2025 Partner Meeting — Content and Social" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('noimg')"><span class="fallback">KREATE · VIDEO</span><span class="pb"></span><span class="res">HD</span></a>
+      <div class="vbody"><div class="vt">2025 Partner Meeting — Content &amp; Social</div><div class="vs">Marketing recap · full res 123 MB</div>
+      <div class="vact"><button class="vbtn pri jsonly play" type="button">▶ PLAY</button><a class="vbtn" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=763AA6D3-F439-43A3-8B27645B03EBCF6C" target="_blank" rel="noopener">⬇ DOWNLOAD</a><button class="vbtn jsonly copy" type="button">⧉ COPY LINK</button></div></div></div>
+    <div class="vcard rv"><a class="vcover" href="https://brand.kreate.com/asset/5b3f1790-df09-425c-acf7-c40e71248a62/mp4/2025-Partner-Meeting-Facilities.mp4" target="_blank" rel="noopener" data-title="2025 Partner Meeting — Facilities" data-dl="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=5B3F1790-DF09-425C-ACF7C40E71248A62"><img src="https://brand.kreate.com/asset/5b3f1790-df09-425c-acf7-c40e71248a62/thumbnail/webimage-2025-Partner-Meeting-Facilities" alt="2025 Partner Meeting — Facilities" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('noimg')"><span class="fallback">KREATE · VIDEO</span><span class="pb"></span><span class="res">HD</span></a>
+      <div class="vbody"><div class="vt">2025 Partner Meeting — Facilities</div><div class="vs">Facility flythrough · full res 138 MB</div>
+      <div class="vact"><button class="vbtn pri jsonly play" type="button">▶ PLAY</button><a class="vbtn" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=5B3F1790-DF09-425C-ACF7C40E71248A62" target="_blank" rel="noopener">⬇ DOWNLOAD</a><button class="vbtn jsonly copy" type="button">⧉ COPY LINK</button></div></div></div>
+    <div class="vcard rv"><a class="vcover" href="https://brand.kreate.com/asset/0ae27ad0-a744-441f-a927-b4b811a4e179/mp4/Kreate-Eco-Actions-Partner-Video-Full-Version.mp4" target="_blank" rel="noopener" data-title="Eco Actions — Full version" data-dl="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=0AE27AD0-A744-441F-A927B4B811A4E179"><img src="https://brand.kreate.com/asset/0ae27ad0-a744-441f-a927-b4b811a4e179/thumbnail/webimage-Kreate-Eco-Actions-Partner-Video-Full-Version" alt="Eco Actions — Full version" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('noimg')"><span class="fallback">KREATE · VIDEO</span><span class="pb"></span><span class="res">HD</span></a>
+      <div class="vbody"><div class="vt">Eco Actions — Full version</div><div class="vs">Eco / CSR · full res 2.3 GB</div>
+      <div class="vact"><button class="vbtn pri jsonly play" type="button">▶ PLAY</button><a class="vbtn" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=0AE27AD0-A744-441F-A927B4B811A4E179" target="_blank" rel="noopener">⬇ DOWNLOAD</a><button class="vbtn jsonly copy" type="button">⧉ COPY LINK</button></div></div></div>
+    <div class="vcard rv"><a class="vcover" href="https://brand.kreate.com/asset/be9b8a6a-2844-4f2d-b0e5-3f093ff34c8e/mp4/Kreate-Eco-Actions-Partner-Video-60.mp4" target="_blank" rel="noopener" data-title="Eco Actions — :60 cut" data-dl="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=BE9B8A6A-2844-4F2D-B0E53F093FF34C8E"><img src="https://brand.kreate.com/asset/be9b8a6a-2844-4f2d-b0e5-3f093ff34c8e/thumbnail/webimage-Kreate-Eco-Actions-Partner-Video-60" alt="Eco Actions — 60 second cut" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('noimg')"><span class="fallback">KREATE · VIDEO</span><span class="pb"></span><span class="res">HD</span></a>
+      <div class="vbody"><div class="vt">Eco Actions — :60 cut</div><div class="vs">Eco / CSR · full res 597 MB</div>
+      <div class="vact"><button class="vbtn pri jsonly play" type="button">▶ PLAY</button><a class="vbtn" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=BE9B8A6A-2844-4F2D-B0E53F093FF34C8E" target="_blank" rel="noopener">⬇ DOWNLOAD</a><button class="vbtn jsonly copy" type="button">⧉ COPY LINK</button></div></div></div>
+    <div class="vcard rv"><a class="vcover" href="https://brand.kreate.com/asset/3a2b75f0-9d58-4009-89a8-396ea432b8b6/mp4/Kreate-Eco-Actions-Partner-Video-30.mp4" target="_blank" rel="noopener" data-title="Eco Actions — :30 cut" data-dl="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=3A2B75F0-9D58-4009-89A8396EA432B8B6"><img src="https://brand.kreate.com/asset/3a2b75f0-9d58-4009-89a8-396ea432b8b6/thumbnail/webimage-Kreate-Eco-Actions-Partner-Video-30" alt="Eco Actions — 30 second cut" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('noimg')"><span class="fallback">KREATE · VIDEO</span><span class="pb"></span><span class="res">HD</span></a>
+      <div class="vbody"><div class="vt">Eco Actions — :30 cut</div><div class="vs">Eco / CSR · full res 245 MB</div>
+      <div class="vact"><button class="vbtn pri jsonly play" type="button">▶ PLAY</button><a class="vbtn" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=3A2B75F0-9D58-4009-89A8396EA432B8B6" target="_blank" rel="noopener">⬇ DOWNLOAD</a><button class="vbtn jsonly copy" type="button">⧉ COPY LINK</button></div></div></div>
+    <div class="vcard rv"><a class="vcover" href="https://brand.kreate.com/asset/fd4ec2ac-d2c1-4c31-9b64-1f2e9de14da0/mp4/25-05-06-Reinhart-Foundation-4k-w-intro.mp4" target="_blank" rel="noopener" data-title="Reinhart Foundation — with intro" data-dl="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=FD4EC2AC-D2C1-4C31-9B641F2E9DE14DA0"><img src="https://brand.kreate.com/asset/fd4ec2ac-d2c1-4c31-9b64-1f2e9de14da0/thumbnail/webimage-25-05-06-Reinhart-Foundation-4k-w-intro" alt="Reinhart Foundation — with intro" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('noimg')"><span class="fallback">FOUNDATION · VIDEO</span><span class="pb"></span><span class="res">4K</span></a>
+      <div class="vbody"><div class="vt">Reinhart Foundation — with intro</div><div class="vs">Foundation · full res 488 MB</div>
+      <div class="vact"><button class="vbtn pri jsonly play" type="button">▶ PLAY</button><a class="vbtn" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=FD4EC2AC-D2C1-4C31-9B641F2E9DE14DA0" target="_blank" rel="noopener">⬇ DOWNLOAD</a><button class="vbtn jsonly copy" type="button">⧉ COPY LINK</button></div></div></div>
+    <div class="vcard rv"><a class="vcover" href="https://brand.kreate.com/asset/47ff72ef-60a7-4c9b-abab-eb036e8bd602/mp4/25-05-06-Reinhart-Foundation-4k.mp4" target="_blank" rel="noopener" data-title="Reinhart Foundation" data-dl="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=47FF72EF-60A7-4C9B-ABABEB036E8BD602"><img src="https://brand.kreate.com/asset/47ff72ef-60a7-4c9b-abab-eb036e8bd602/thumbnail/webimage-25-05-06-Reinhart-Foundation-4k" alt="Reinhart Foundation" loading="lazy" onerror="this.style.display='none';this.parentNode.classList.add('noimg')"><span class="fallback">FOUNDATION · VIDEO</span><span class="pb"></span><span class="res">4K</span></a>
+      <div class="vbody"><div class="vt">Reinhart Foundation</div><div class="vs">Foundation · full res 442 MB</div>
+      <div class="vact"><button class="vbtn pri jsonly play" type="button">▶ PLAY</button><a class="vbtn" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=47FF72EF-60A7-4C9B-ABABEB036E8BD602" target="_blank" rel="noopener">⬇ DOWNLOAD</a><button class="vbtn jsonly copy" type="button">⧉ COPY LINK</button></div></div></div>
+  </div>
+  <div class="grid g3" style="margin-top:16px">
+    <a class="ctile vi rv" href="https://brand.kreate.com/web/4a7a2bab322e6ae4/trash-can-videos/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Trash Can Videos</div><div class="cl">23 files · product video library</div></a>
+    <a class="ctile vi rv" href="https://brand.kreate.com/web/c03bd0fc7f62fef6/hdx-101-educational-series-videos/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">HDX 101 Educational Series</div><div class="cl">6 files · how-to and explainers</div></a>
+    <a class="ctile vi rv" href="https://brand.kreate.com/web/2f814f388962c1a5/stacker-videos/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Stacker Videos</div><div class="cl">13 files · Tote Stacker launch</div></a>
+    <a class="ctile rv" href="https://brand.kreate.com/web/724e73705e444ff7/kreate-resin-facility/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Kreate Resin Facility</div><div class="cl">1 file · resin plant video</div></a>
+    <a class="ctile rv" href="https://brand.kreate.com/web/ade1559657f00829/ranch-road-brand-anthem/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Ranch Road Brand Anthem</div><div class="cl">23 files · brand film + cuts</div></a>
+    <a class="ctile am rv" href="https://brand.kreate.com/web/9d75fe050dc0ff3d/kreate---reinhart-foundation-interview-videos/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Reinhart Interviews</div><div class="cl">3 files · foundation interviews</div></a>
+    <a class="ctile am rv" href="https://brand.kreate.com/web/d69f49c2ccdff1c5/foundation-videos/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Foundation Videos</div><div class="cl">2 files</div></a>
+    <a class="ctile rv" href="https://brand.kreate.com/web/e128cf5531c874de/huskly-170-brand-video/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Husky 170 Brand Video</div><div class="cl">1 file · world-record SKU</div></a>
+    <a class="ctile mi rv" href="https://brand.kreate.com/web/5d2cf24bb31bdec7/wse-social-shorts/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">WSE Social Shorts</div><div class="cl">6 files · short-form cuts</div></a>
+  </div>
+</section>
+
+
+<!-- PHOTO -->
+<section id="photo">
+  <div class="kicker" style="color:var(--bright)">03 · PHOTOGRAPHY</div>
+  <h2 class="rv">Photography</h2>
+  <p class="lede rv">Facility, aerial, event, and community photo sets. For product photography, search the portal by product name — for example "27G", "Tote Stacker", or "Adirondack".</p>
+  <div class="grid g3">
+    <a class="ctile rv" href="https://brand.kreate.com/web/98c594ba72915323/vegas-plant-2026-drone-colored/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Vegas Plant — Drone, graded</div><div class="cl">10 files · color-graded aerials</div></a>
+    <a class="ctile rv" href="https://brand.kreate.com/web/fc4fa784ee3790ab/vegas-plant-2026-drone/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Vegas Plant — Drone, full set</div><div class="cl">Raw aerial set</div></a>
+    <a class="ctile rv" href="https://brand.kreate.com/web/d2924d8894fca29c/vegas-lightroom--auto-selects-/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Vegas Plant — Photo selects</div><div class="cl">Lightroom auto-selects</div></a>
+    <a class="ctile rv" href="https://brand.kreate.com/web/c2d78d68327a1e4e/ada-aerial-2-6-26/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Ada — Aerials</div><div class="cl">22 files · Feb 2026</div></a>
+    <a class="ctile rv" href="https://brand.kreate.com/web/92f134ad1f67f3a3/kroll-texas-photos/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Texas Facility Photos</div><div class="cl">140 files · full plant library</div></a>
+    <a class="ctile rv" href="https://brand.kreate.com/web/b33fb907e847b2ed/2301-industrial-drive/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">2301 Industrial Drive</div><div class="cl">11 files · HQ and campus</div></a>
+    <a class="ctile am rv" href="https://brand.kreate.com/web/67e6d418fa1e48f/2026-reinhart-foundation-golf-outing/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">2026 Foundation Golf Outing</div><div class="cl">97 files · event set</div></a>
+    <a class="ctile mi rv" href="https://brand.kreate.com/web/7f746c7dded54655/customer-installs---ugc/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Customer Installs / UGC</div><div class="cl">115 files · product in use</div></a>
+    <a class="ctile mi rv" href="https://brand.kreate.com/media/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Product photography</div><div class="cl">Search the portal by product name</div></a>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section id="social">
+  <div class="kicker" style="color:var(--pink)">04 &#183; SOCIAL</div>
+  <h2 class="rv">Social</h2>
+  <p class="lede rv">The most-played videos on <a href="https://www.instagram.com/kreate/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">@kreate</a> right now &mdash; our posts and creator reposts, ranked by plays. Numbers are live from Instagram (captured Aug 19, 2026); tap any card to play the reel.</p>
+  <div class="sgrid">
+    <a class="igcard hot rv" href="https://www.instagram.com/reel/DbeC8toOdFI/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/DbeC8toOdFI/embed/" data-title="@lelaburris &mdash; Garage cleanup with the new HDX Tote Stacker">
+      <div class="igtop"><span class="igrank">#1</span><span class="stag">TOTE STACKER</span></div>
+      <div class="igviews">1.2M</div><div class="igvl">PLAYS ON INSTAGRAM</div>
+      <div class="igu">@lelaburris</div><div class="igcap">Garage cleanup with the new HDX Tote Stacker</div>
+      <div class="igstats">&#9829; 8,036 &nbsp;&#183;&nbsp; &#128172; 4,331 &nbsp;&#183;&nbsp; JUL 31</div>
+      <div class="igplay"><span class="pb"></span><span class="igopen">TAP TO PLAY</span></div>
+    </a>
+    <a class="igcard hot rv" href="https://www.instagram.com/reel/Dbnu2raudGy/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/Dbnu2raudGy/embed/" data-title="@avwooddesigns &mdash; Mobile hardware cart built from 2.5-qt HDX totes">
+      <div class="igtop"><span class="igrank">#2</span><span class="stag">MINI TOTES</span></div>
+      <div class="igviews">717K</div><div class="igvl">PLAYS ON INSTAGRAM</div>
+      <div class="igu">@avwooddesigns</div><div class="igcap">Mobile hardware cart built from 2.5-qt HDX totes</div>
+      <div class="igstats">&#9829; 13K &nbsp;&#183;&nbsp; &#128172; 105 &nbsp;&#183;&nbsp; AUG 4</div>
+      <div class="igplay"><span class="pb"></span><span class="igopen">TAP TO PLAY</span></div>
+    </a>
+    <a class="igcard rv" href="https://www.instagram.com/reel/DbozkNotfzg/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/DbozkNotfzg/embed/" data-title="@heirloomandhoney &mdash; Flood-proofing garage inventory storage">
+      <div class="igtop"><span class="igrank">#3</span><span class="stag">TOTES</span></div>
+      <div class="igviews">81.2K</div><div class="igvl">PLAYS ON INSTAGRAM</div>
+      <div class="igu">@heirloomandhoney</div><div class="igcap">Flood-proofing garage inventory storage</div>
+      <div class="igstats">&#9829; 104 &nbsp;&#183;&nbsp; &#128172; 35 &nbsp;&#183;&nbsp; AUG 4</div>
+      <div class="igplay"><span class="pb"></span><span class="igopen">TAP TO PLAY</span></div>
+    </a>
+    <a class="igcard rv" href="https://www.instagram.com/reel/DbqVTKlNFZ9/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/DbqVTKlNFZ9/embed/" data-title="@_scarletoakhomes &mdash; Garage storage makeover with the HDX Defender">
+      <div class="igtop"><span class="igrank">#4</span><span class="stag">DEFENDER</span></div>
+      <div class="igviews">66.4K</div><div class="igvl">PLAYS ON INSTAGRAM</div>
+      <div class="igu">@_scarletoakhomes</div><div class="igcap">Garage storage makeover with the HDX Defender</div>
+      <div class="igstats">AUG 5</div>
+      <div class="igplay"><span class="pb"></span><span class="igopen">TAP TO PLAY</span></div>
+    </a>
+    <a class="igcard rv" href="https://www.instagram.com/reel/DcEBZLcptB6/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/DcEBZLcptB6/embed/" data-title="@ashandember_woodshop &mdash; Storage on wheels">
+      <div class="igtop"><span class="igrank">#5</span><span class="stag">TOTES</span></div>
+      <div class="igviews">36.5K</div><div class="igvl">PLAYS ON INSTAGRAM</div>
+      <div class="igu">@ashandember_woodshop</div><div class="igcap">Storage on wheels</div>
+      <div class="igstats">&#9829; 51 &nbsp;&#183;&nbsp; &#128172; 6 &nbsp;&#183;&nbsp; AUG 15</div>
+      <div class="igplay"><span class="pb"></span><span class="igopen">TAP TO PLAY</span></div>
+    </a>
+    <a class="igcard rv" href="https://www.instagram.com/reel/DcMvlkgAcQr/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/DcMvlkgAcQr/embed/" data-title="@theshelfdude &mdash; Every bin in its place">
+      <div class="igtop"><span class="igrank">#6</span><span class="stag">SHELVING</span></div>
+      <div class="igviews">21.6K</div><div class="igvl">PLAYS ON INSTAGRAM</div>
+      <div class="igu">@theshelfdude</div><div class="igcap">Every bin in its place</div>
+      <div class="igstats">&#9829; 506 &nbsp;&#183;&nbsp; &#128172; 213 &nbsp;&#183;&nbsp; AUG 18</div>
+      <div class="igplay"><span class="pb"></span><span class="igopen">TAP TO PLAY</span></div>
+    </a>
+    <a class="igcard rv" href="https://www.instagram.com/reel/DblQJSgpoPh/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/DblQJSgpoPh/embed/" data-title="@ashandember_woodshop &mdash; Stay-organized shop build">
+      <div class="igtop"><span class="igrank">#7</span><span class="stag">TOTES</span></div>
+      <div class="igviews">18.4K</div><div class="igvl">PLAYS ON INSTAGRAM</div>
+      <div class="igu">@ashandember_woodshop</div><div class="igcap">Stay-organized shop build</div>
+      <div class="igstats">&#9829; 74 &nbsp;&#183;&nbsp; &#128172; 15 &nbsp;&#183;&nbsp; AUG 3</div>
+      <div class="igplay"><span class="pb"></span><span class="igopen">TAP TO PLAY</span></div>
+    </a>
+    <a class="igcard rv" href="https://www.instagram.com/reel/DcJ3V59p7kL/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/DcJ3V59p7kL/embed/" data-title="@graceinmyspace &mdash; Organizing teeny tiny things">
+      <div class="igtop"><span class="igrank">#8</span><span class="stag">NANO TOTES</span></div>
+      <div class="igviews">9.7K</div><div class="igvl">PLAYS ON INSTAGRAM</div>
+      <div class="igu">@graceinmyspace</div><div class="igcap">Organizing teeny tiny things</div>
+      <div class="igstats">&#9829; 253 &nbsp;&#183;&nbsp; &#128172; 39 &nbsp;&#183;&nbsp; AUG 17</div>
+      <div class="igplay"><span class="pb"></span><span class="igopen">TAP TO PLAY</span></div>
+    </a>
+  </div>
+  <div class="strip rv"><b class="h" style="color:var(--pink)">SOURCE FILES &amp; MORE &mdash;</b> the produced cuts behind these campaigns live in the portal: <a href="https://brand.kreate.com/web/2f814f388962c1a5/stacker-videos/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">Stacker Videos</a> &#183; <a href="https://brand.kreate.com/web/c7199c2662ec5008/social-media/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">Social Media</a> &#183; <a href="https://brand.kreate.com/web/1b24c5f0b805e229/produced/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">Produced</a> &#183; <a href="https://brand.kreate.com/web/5d2cf24bb31bdec7/wse-social-shorts/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">WSE Shorts</a>. Full feed and reposts: <a href="https://www.instagram.com/kreate/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">instagram.com/kreate &#8599;</a></div>
+</section>
+
+<!-- HELP -->
+<section id="help">
+  <div class="kicker" style="color:var(--amber)">05 · HELP</div>
+  <h2 class="rv">Help</h2>
+  <div class="grid g3" style="margin-top:14px">
+    <div class="panel rv"><div class="ptitle">ONE-CLICK PUBLIC LINKS</div><p style="font-size:12.6px;color:var(--muted)">Every link on this board is a public share page — no account needed, safe to forward to partners, vendors, and press. If a link ever says the collection isn't available, its <span style="color:var(--white);font-weight:700">Publish online</span> toggle got switched off in the portal — flip it back on and the link works again.</p></div>
+    <div class="panel rv"><div class="ptitle">DOWNLOADING FILES</div><p style="font-size:12.6px;color:var(--muted)">Links open the file inside its collection. Select it there and hit <span style="color:var(--white);font-weight:700">Download</span> for the original, full-resolution version. Players on this board stream 720p previews; full-res 4K files run 0.5–2.3&nbsp;GB — download on wifi.</p></div>
+    <div class="panel rv"><div class="ptitle">CAN'T FIND IT?</div><p style="font-size:12.6px;color:var(--muted)">Search everything at <a href="https://brand.kreate.com/media/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">brand.kreate.com ↗</a> (team sign-in). Need something made, or a new collection published? Ask in the marketing channel and it gets added to this board.</p></div>
+  </div>
+  <p class="src rv">Sources: Bynder portal (brand.kreate.com) public collection links · team SharePoint · cross-campaign creator ledger for social metrics. Counts and links current as of Aug 19, 2026. Players stream Bynder's public 720p previews; downloads serve full-resolution originals.</p>
+</section>
+</main>
+
+<div id="pmodal" role="dialog" aria-modal="true">
+  <div class="veil" id="pveil"></div>
+  <div class="box">
+    <div class="mh"><span class="t" id="ptitle">Video</span><button class="x" id="pclose" type="button" aria-label="Close">✕</button></div>
+    <video id="pvideo" controls preload="none" playsinline></video>
+    <iframe id="pframe" style="display:none;width:100%;height:min(66vh,640px);border:0;background:#000" allowfullscreen></iframe>
+    <div class="mf">
+      <a class="vbtn pri" id="pdl" href="#" target="_blank" rel="noopener">⬇ DOWNLOAD FULL RES</a>
+      <button class="vbtn" id="pcopy" type="button">⧉ COPY LINK</button>
+      <a class="vbtn" id="pmail" href="#">✉ EMAIL LINK</a>
+      <span class="note">Streams the 720p preview · downloads are full resolution</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>SEQUENT — RESOURCES</span>
+  <span>INTERNAL · AUGUST 2026</span>
+</footer>
+<script>
+(function(){
+"use strict";
+function safe(fn){try{fn()}catch(e){}}
+function onSee(el,cb,th){
+  try{
+    var io=new IntersectionObserver(function(en,ob){en.forEach(function(e){if(e.isIntersecting){cb(e.target);ob.unobserve(e.target);}});},{threshold:th||.15});
+    io.observe(el);
+  }catch(e){cb(el);}
+}
+
+/* starfield */
+safe(function(){
+  var cv=document.getElementById("stars"),cx=cv.getContext("2d"),W,Hh,pts=[];
+  function size(){W=cv.width=innerWidth;Hh=cv.height=innerHeight;}
+  size();addEventListener("resize",size);
+  for(var i=0;i<60;i++)pts.push({x:Math.random(),y:Math.random(),r:Math.random()*1.4+.4,s:Math.random()*.00022+.00006,tw:Math.random()*6.28});
+  function tick(t){
+    cx.clearRect(0,0,W,Hh);
+    var light=document.documentElement.classList.contains("light");
+    for(var i=0;i<pts.length;i++){var p=pts[i];p.y-=p.s;if(p.y<-0.02)p.y=1.02;
+      var a=.25+.35*Math.abs(Math.sin(t*.001+p.tw));
+      cx.beginPath();cx.arc(p.x*W,p.y*Hh,p.r,0,6.28);
+      cx.fillStyle=light?"rgba(0,136,190,"+a+")":"rgba(0,209,255,"+a+")";cx.fill();}
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+});
+
+/* theme + view toggles */
+safe(function(){
+  var root=document.documentElement;
+  var tt=document.getElementById("themeTgl"),vt=document.getElementById("viewTgl");
+  function syncLabels(){
+    tt.textContent=root.classList.contains("light")?"◐ DARK":"◐ LIGHT";
+    vt.textContent=root.classList.contains("mob")?"▤ DESKTOP":"▤ MOBILE";
+  }
+  tt.addEventListener("click",function(){root.classList.toggle("light");syncLabels();});
+  var userOverride=false;
+  vt.addEventListener("click",function(){userOverride=true;root.classList.toggle("mob");syncLabels();});
+  addEventListener("resize",function(){
+    if(userOverride)return;
+    root.classList.toggle("mob",innerWidth<760);syncLabels();
+  });
+  syncLabels();
+});
+
+/* reveal */
+safe(function(){
+  document.querySelectorAll(".rv").forEach(function(el){onSee(el,function(t){t.classList.add("on");});});
+});
+setTimeout(function(){safe(function(){
+  document.querySelectorAll(".rv").forEach(function(el){el.classList.add("on");});
+});},2200);
+
+/* video player modal */
+safe(function(){
+  var modal=document.getElementById("pmodal"),vid=document.getElementById("pvideo"),
+      frame=document.getElementById("pframe"),
+      title=document.getElementById("ptitle"),dl=document.getElementById("pdl"),
+      copyBtn=document.getElementById("pcopy"),mail=document.getElementById("pmail"),
+      closeBtn=document.getElementById("pclose"),veil=document.getElementById("pveil"),
+      note=modal.querySelector(".note");
+  var current={};
+  function openPlayer(cover){
+    current={stream:cover.getAttribute("href"),title:cover.getAttribute("data-title")||"Video",dl:cover.getAttribute("data-dl")||cover.getAttribute("href")};
+    title.textContent=current.title;
+    dl.setAttribute("href",current.dl);dl.textContent="⬇ DOWNLOAD FULL RES";
+    mail.setAttribute("href","mailto:?subject="+encodeURIComponent(current.title+" — Sequent video")+"&body="+encodeURIComponent("View and download here (no account needed): "+current.dl));
+    copyBtn.textContent="⧉ COPY LINK";copyBtn.classList.remove("ok");
+    frame.style.display="none";frame.removeAttribute("src");
+    vid.style.display="block";vid.setAttribute("src",current.stream);
+    if(note)note.style.display="";
+    modal.classList.add("open");
+    document.body.style.overflow="hidden";
+    safe(function(){var pr=vid.play();if(pr&&pr.catch)pr.catch(function(){});});
+  }
+  function openEmbed(card){
+    current={title:card.getAttribute("data-title")||"Instagram reel",dl:card.getAttribute("href")};
+    title.textContent=current.title;
+    dl.setAttribute("href",current.dl);dl.textContent="↗ OPEN ON INSTAGRAM";
+    mail.setAttribute("href","mailto:?subject="+encodeURIComponent(current.title)+"&body="+encodeURIComponent("Watch on Instagram: "+current.dl));
+    copyBtn.textContent="⧉ COPY LINK";copyBtn.classList.remove("ok");
+    safe(function(){vid.pause();});vid.removeAttribute("src");vid.style.display="none";
+    frame.style.display="block";frame.setAttribute("src",card.getAttribute("data-embed"));
+    if(note)note.style.display="none";
+    modal.classList.add("open");
+    document.body.style.overflow="hidden";
+  }
+  function closePlayer(){
+    safe(function(){vid.pause();});
+    vid.removeAttribute("src");safe(function(){vid.load();});
+    frame.removeAttribute("src");
+    modal.classList.remove("open");
+    document.body.style.overflow="";
+  }
+  function copyText(txt,btn){
+    function done(){btn.textContent="✓ COPIED";btn.classList.add("ok");
+      setTimeout(function(){btn.textContent="⧉ COPY LINK";btn.classList.remove("ok");},1800);}
+    function legacy(){
+      var ta=document.createElement("textarea");ta.value=txt;ta.style.position="fixed";ta.style.opacity="0";
+      document.body.appendChild(ta);ta.focus();ta.select();
+      var ok=false;try{ok=document.execCommand("copy");}catch(e){}
+      document.body.removeChild(ta);
+      if(ok)done();else prompt("Copy this link:",txt);
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(done,legacy);
+    }else legacy();
+  }
+  document.querySelectorAll(".vcover").forEach(function(cover){
+    cover.addEventListener("click",function(e){e.preventDefault();openPlayer(cover);});
+  });
+  document.querySelectorAll(".igcard").forEach(function(card){
+    card.addEventListener("click",function(e){e.preventDefault();openEmbed(card);});
+  });
+  document.querySelectorAll(".vcard .play").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var cover=btn.closest(".vcard").querySelector(".vcover");
+      if(cover)openPlayer(cover);
+    });
+  });
+  document.querySelectorAll(".vcard .copy").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var cover=btn.closest(".vcard").querySelector(".vcover");
+      if(cover)copyText(cover.getAttribute("data-dl")||cover.getAttribute("href"),btn);
+    });
+  });
+  copyBtn.addEventListener("click",function(){copyText(current.dl||"",copyBtn);});
+  closeBtn.addEventListener("click",closePlayer);
+  veil.addEventListener("click",closePlayer);
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&modal.classList.contains("open"))closePlayer();});
+});
+
+/* scrollspy */
+safe(function(){
+  var links=document.querySelectorAll("nav#topnav a[href^='#']"),secs=[];
+  links.forEach(function(a){var s=document.querySelector(a.getAttribute("href"));if(s)secs.push([s,a]);});
+  var so=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){links.forEach(function(a){a.classList.remove("active");});
+      secs.forEach(function(p){if(p[0]===en.target)p[1].classList.add("active");});}});
+  },{rootMargin:"-30% 0px -60% 0px"});
+  secs.forEach(function(p){so.observe(p[0]);});
+});
+})();
+</script>
+</body>
+</html>
