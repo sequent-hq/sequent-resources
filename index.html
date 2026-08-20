@@ -35,7 +35,7 @@ html.light{
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg0);color:var(--body);font-family:"Segoe UI",Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5;overflow-x:hidden;transition:background .3s}
+body{background:var(--bg0);color:var(--body);font-family:"Segoe UI",Arial,Helvetica,sans-serif;font-size:16.5px;line-height:1.5;overflow-x:hidden;transition:background .3s}
 canvas#stars{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55}
 html.light canvas#stars{opacity:.25}
 .bgmesh{position:fixed;inset:0;z-index:0;pointer-events:none;
@@ -58,12 +58,12 @@ nav#topnav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:
   border-bottom:1px solid var(--stroke);overflow-x:auto;white-space:nowrap}
 nav#topnav .brand{display:flex;align-items:center;gap:9px;margin-right:14px;flex:0 0 auto}
 nav#topnav .brand .sq{width:10px;height:10px;background:var(--cyan);box-shadow:0 0 12px var(--cyan);animation:pulse 2.6s infinite}
-nav#topnav .brand b{color:var(--white);letter-spacing:4px;font-size:13px}
-nav#topnav a{color:var(--muted);text-decoration:none;font-size:10.5px;letter-spacing:1.6px;
+nav#topnav .brand b{color:var(--white);letter-spacing:4px;font-size:14.5px}
+nav#topnav a{color:var(--muted);text-decoration:none;font-size:12px;letter-spacing:1.6px;
   padding:7px 11px;border:1px solid transparent;border-radius:6px;transition:all .25s;flex:0 0 auto}
 nav#topnav a:hover{color:var(--bright);border-color:var(--stroke2);background:var(--hoverbg)}
 nav#topnav a.active{color:var(--cyan);border-color:var(--stroke2);background:var(--hoverbg)}
-.tgl{flex:0 0 auto;margin-left:6px;cursor:pointer;color:var(--muted);font-size:10px;letter-spacing:1.4px;font-weight:700;
+.tgl{flex:0 0 auto;margin-left:6px;cursor:pointer;color:var(--muted);font-size:11.5px;letter-spacing:1.4px;font-weight:700;
   padding:7px 11px;border:1px solid var(--stroke2);border-radius:6px;background:transparent;font-family:inherit;transition:all .25s}
 .tgl:hover{color:var(--bright);border-color:var(--cyan)}
 nav#topnav .spacer{margin-left:auto}
@@ -71,26 +71,26 @@ nav#topnav .spacer{margin-left:auto}
 
 /* shared */
 section{padding:40px 0 8px;scroll-margin-top:64px}
-.kicker{display:flex;align-items:center;gap:9px;color:var(--cyan);font-size:11px;letter-spacing:3px;font-weight:700;margin-bottom:8px}
+.kicker{display:flex;align-items:center;gap:9px;color:var(--cyan);font-size:12.5px;letter-spacing:3px;font-weight:700;margin-bottom:8px}
 .kicker::before{content:"";width:9px;height:9px;background:var(--cyan);box-shadow:0 0 10px var(--cyan);flex:0 0 auto}
-h2{color:var(--white);font-size:26px;font-weight:700;letter-spacing:.2px;margin-bottom:5px}
-.lede{color:var(--muted);font-size:13.5px;margin-bottom:18px;max-width:980px}
+h2{color:var(--white);font-size:30px;font-weight:700;letter-spacing:.2px;margin-bottom:5px}
+.lede{color:var(--muted);font-size:15.5px;margin-bottom:20px;max-width:1000px}
 .panel{background:var(--panelgrad);border:1px solid var(--stroke);border-radius:12px;padding:18px;position:relative;transition:border-color .3s,box-shadow .3s}
 .panel:hover{border-color:var(--stroke2)}
-.ptitle{color:var(--cyan);font-size:10.5px;font-weight:700;letter-spacing:2px;margin-bottom:11px}
+.ptitle{color:var(--cyan);font-size:12px;font-weight:700;letter-spacing:2px;margin-bottom:11px}
 .grid{display:grid;gap:14px}
-.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}.g4{grid-template-columns:repeat(4,1fr)}
-@media(max-width:1000px){.g3,.g4{grid-template-columns:1fr 1fr}}
-@media(max-width:760px){.g3,.g2{grid-template-columns:1fr}.g4{grid-template-columns:1fr 1fr}}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1000px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.g3,.g2{grid-template-columns:1fr}.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
 html.mob .g3,html.mob .g2{grid-template-columns:1fr}
-html.mob .g4{grid-template-columns:1fr 1fr}
+html.mob .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
 
 /* stat tiles */
 .tile{background:var(--tilegrad);border:1px solid var(--stroke);border-left:3px solid var(--cyan);
   border-radius:10px;padding:14px 15px 12px;transition:all .3s;position:relative;overflow:hidden}
 .tile:hover{border-left-color:var(--bright);box-shadow:0 6px 24px var(--glow);transform:translateY(-3px)}
-.tile .v{color:var(--white);font-size:26px;font-weight:800;letter-spacing:.3px;font-variant-numeric:tabular-nums}
-.tile .l{color:var(--muted);font-size:9.6px;letter-spacing:1.3px;margin-top:4px;line-height:1.45;text-transform:uppercase}
+.tile .v{color:var(--white);font-size:30px;font-weight:800;letter-spacing:.3px;font-variant-numeric:tabular-nums}
+.tile .l{color:var(--muted);font-size:11px;letter-spacing:1.3px;margin-top:4px;line-height:1.45;text-transform:uppercase}
 .tile.pk{border-left-color:var(--pink)}.tile.pk:hover{box-shadow:0 6px 24px rgba(255,111,181,.16);border-left-color:var(--pink)}
 
 /* reveal (JS only) */
@@ -100,15 +100,15 @@ html.mob .g4{grid-template-columns:1fr 1fr}
 /* hero */
 header.hero{position:relative;z-index:1;padding:44px 0 6px}
 html.mob header.hero{padding-top:26px}
-header.hero h1{color:var(--white);font-size:clamp(32px,5vw,46px);font-weight:800;letter-spacing:1px;line-height:1.05}
+header.hero h1{color:var(--white);font-size:clamp(36px,5.5vw,52px);font-weight:800;letter-spacing:1px;line-height:1.05}
 header.hero h1 span{color:var(--cyan);text-shadow:0 0 28px var(--glow)}
-header.hero .sub{color:var(--muted);font-size:14.5px;margin:10px 0 14px;max-width:760px}
+header.hero .sub{color:var(--muted);font-size:16.5px;margin:10px 0 16px;max-width:820px}
 .chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--stroke2);border-radius:6px;
-  color:var(--muted);font-size:10px;letter-spacing:1.6px;padding:6px 12px;font-weight:700;transition:all .3s;text-decoration:none}
+  color:var(--muted);font-size:11.5px;letter-spacing:1.6px;padding:7px 13px;font-weight:700;transition:all .3s;text-decoration:none}
 .chip:hover{border-color:var(--cyan);color:var(--bright)}
 
 /* access badges */
-.bd{display:inline-block;font-size:8.4px;font-weight:800;letter-spacing:1.2px;padding:2px 7px;border-radius:20px;border:1px solid;white-space:nowrap;vertical-align:1px}
+.bd{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:1.2px;padding:2px 7px;border-radius:20px;border:1px solid;white-space:nowrap;vertical-align:1px}
 .bd.pub{color:var(--mint);border-color:var(--mint);background:rgba(61,220,151,.08)}
 .bd.auth{color:var(--amber);border-color:var(--amber);background:rgba(233,180,76,.08)}
 .bd.sp{color:var(--violet);border-color:var(--violet);background:rgba(123,111,232,.08)}
@@ -118,16 +118,16 @@ header.hero .sub{color:var(--muted);font-size:14.5px;margin:10px 0 14px;max-widt
 @media(max-width:1000px){.tabrow{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:760px){.tabrow{grid-template-columns:1fr 1fr}}
 html.mob .tabrow{grid-template-columns:1fr 1fr}
-.tab{display:block;text-decoration:none;background:var(--tilegrad);border:1px solid var(--stroke);border-top:3px solid var(--cyan);border-radius:10px;padding:12px 14px;transition:all .25s}
-.tab .tn{color:var(--faint);font-size:9px;letter-spacing:2px;font-weight:800}
-.tab .tl{color:var(--white);font-size:12.5px;font-weight:800;letter-spacing:.5px;margin-top:2px}
-.tab .ts{color:var(--muted);font-size:8.8px;letter-spacing:1.1px;margin-top:3px;text-transform:uppercase}
+.tab{display:block;text-decoration:none;background:var(--tilegrad);border:1px solid var(--stroke);border-top:3px solid var(--cyan);border-radius:10px;padding:14px 16px;transition:all .25s}
+.tab .tn{color:var(--faint);font-size:10.5px;letter-spacing:2px;font-weight:800}
+.tab .tl{color:var(--white);font-size:14.5px;font-weight:800;letter-spacing:.5px;margin-top:2px}
+.tab .ts{color:var(--muted);font-size:10px;letter-spacing:1.1px;margin-top:3px;text-transform:uppercase}
 .tab:hover{transform:translateY(-3px);border-color:var(--stroke2);box-shadow:0 8px 22px rgba(0,0,0,.3)}
 .tab:hover .tl{color:var(--bright)}
 
 /* brand card logo headers — transparent files, theme handled by filters, marks normalized to ~20px cap height */
-.blogo{display:flex;align-items:center;height:30px;margin-bottom:5px;overflow:hidden;max-width:100%}
-.blogo img{display:block;flex:0 0 auto;max-width:232px;object-fit:contain}
+.blogo{display:flex;align-items:center;height:34px;margin-bottom:6px;overflow:hidden;max-width:100%}
+.blogo img{display:block;flex:0 0 auto;max-width:246px;object-fit:contain}
 html.light .lg-w img{filter:brightness(0)}
 .lg-c img{filter:brightness(0) invert(1)}
 html.light .lg-c img{filter:none}
@@ -148,29 +148,29 @@ html.mob .sgrid{grid-template-columns:1fr 1fr}
 .scover{position:relative;display:block;aspect-ratio:9/16;background:linear-gradient(160deg,#12233B,#0A1524);cursor:pointer;width:100%;padding:0;border:0}
 html.light .scover{background:linear-gradient(160deg,#DCE6F0,#C8D6E4)}
 .scover img{width:100%;height:100%;object-fit:cover;display:block}
-.scover .fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;color:var(--faint);font-size:10px;letter-spacing:2px;font-weight:700}
+.scover .fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;color:var(--faint);font-size:11px;letter-spacing:2px;font-weight:700}
 .scover.noimg .fallback{display:flex}
 .scard .sb{padding:9px 11px 10px}
-.scard .st{color:var(--white);font-size:11.8px;font-weight:700;line-height:1.3}
-.scard .stag{display:inline-block;margin-top:6px;font-size:8.2px;font-weight:800;letter-spacing:1.2px;color:var(--pink);border:1px solid var(--pink);border-radius:20px;padding:2px 8px;background:rgba(255,111,181,.08)}
+.scard .st{color:var(--white);font-size:13.5px;font-weight:700;line-height:1.3}
+.scard .stag{display:inline-block;margin-top:6px;font-size:9.5px;font-weight:800;letter-spacing:1.2px;color:var(--pink);border:1px solid var(--pink);border-radius:20px;padding:2px 8px;background:rgba(255,111,181,.08)}
 
 /* brand cards */
 .bcard{border-top:3px solid var(--cyan);background:var(--tilegrad);
   border-left:1px solid var(--stroke);border-right:1px solid var(--stroke);border-bottom:1px solid var(--stroke);
-  border-radius:0 0 12px 12px;padding:16px 16px 12px;transition:transform .3s,box-shadow .3s}
+  border-radius:0 0 12px 12px;padding:18px 18px 14px;transition:transform .3s,box-shadow .3s}
 .bcard:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.35)}
 html.light .bcard:hover{box-shadow:0 10px 26px rgba(30,60,90,.14)}
-.bcard .bw{font-size:19px;font-weight:800;letter-spacing:3.5px;color:var(--white)}
-.bcard .bt{color:var(--muted);font-size:9.6px;letter-spacing:1.4px;margin:2px 0 10px;text-transform:uppercase}
-.rl{display:grid;grid-template-columns:14px 1fr auto;align-items:center;gap:8px;padding:7px 7px;border-radius:8px;
-  text-decoration:none;color:var(--body);font-size:12.4px;border:1px solid transparent;transition:all .22s}
+.bcard .bw{font-size:21px;font-weight:800;letter-spacing:3.5px;color:var(--white)}
+.bcard .bt{color:var(--muted);font-size:11px;letter-spacing:1.4px;margin:3px 0 12px;text-transform:uppercase}
+.rl{display:grid;grid-template-columns:16px 1fr auto;align-items:center;gap:8px;padding:8px 8px;border-radius:8px;
+  text-decoration:none;color:var(--body);font-size:14.5px;border:1px solid transparent;transition:all .22s}
 .rl:hover{background:var(--hoverbg);border-color:var(--stroke2)}
-.rl .ar{color:var(--faint);font-size:11px}
+.rl .ar{color:var(--faint);font-size:12.5px}
 .rl:hover .ar{color:var(--bright)}
 .rl .nm{color:var(--white);font-weight:600}
 .rl:hover .nm{color:var(--bright)}
-.rl .mt{color:var(--faint);font-size:8.8px;letter-spacing:1.1px;font-weight:700;white-space:nowrap;text-transform:uppercase;text-align:right}
-.rllist{display:flex;flex-direction:column;gap:1px;margin-top:2px}
+.rl .mt{color:var(--faint);font-size:10px;letter-spacing:1.1px;font-weight:700;white-space:nowrap;text-transform:uppercase;text-align:right}
+.rllist{display:flex;flex-direction:column;gap:2px;margin-top:2px}
 
 /* video cards */
 .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -183,20 +183,20 @@ html.light .vcard:hover{box-shadow:0 10px 26px rgba(30,60,90,.14)}
 .vcover{position:relative;display:block;aspect-ratio:16/9;background:linear-gradient(135deg,#12233B,#0A1524);cursor:pointer;border:0;width:100%;padding:0}
 html.light .vcover{background:linear-gradient(135deg,#DCE6F0,#C8D6E4)}
 .vcover img{width:100%;height:100%;object-fit:cover;display:block}
-.vcover .fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;color:var(--faint);font-size:11px;letter-spacing:2px;font-weight:700}
+.vcover .fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;color:var(--faint);font-size:12px;letter-spacing:2px;font-weight:700}
 .vcover.noimg .fallback{display:flex}
 .vcover .pb,.scover .pb{position:absolute;inset:0;margin:auto;width:54px;height:54px;border-radius:50%;background:rgba(6,10,16,.6);
   border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;transition:all .25s;pointer-events:none}
 .scover .pb{width:44px;height:44px}
 .vcover .pb::after,.scover .pb::after{content:"";display:block;width:0;height:0;border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent #fff;margin-left:4px}
 .vcover:hover .pb,.scover:hover .pb{background:rgba(0,209,255,.5);transform:scale(1.08);box-shadow:0 0 24px rgba(0,209,255,.5)}
-.vcover .res,.scover .res{position:absolute;top:8px;right:8px;background:rgba(6,10,16,.72);color:#EAF6FB;font-size:9px;font-weight:800;letter-spacing:1.2px;padding:3px 8px;border-radius:5px}
+.vcover .res,.scover .res{position:absolute;top:8px;right:8px;background:rgba(6,10,16,.72);color:#EAF6FB;font-size:10px;font-weight:800;letter-spacing:1.2px;padding:3px 8px;border-radius:5px}
 .vbody{padding:12px 13px 11px}
-.vbody .vt{color:var(--white);font-size:13.5px;font-weight:700;line-height:1.3}
-.vbody .vs{color:var(--faint);font-size:9.4px;letter-spacing:1.2px;margin-top:3px;text-transform:uppercase}
+.vbody .vt{color:var(--white);font-size:15.5px;font-weight:700;line-height:1.3}
+.vbody .vs{color:var(--faint);font-size:10.5px;letter-spacing:1.2px;margin-top:3px;text-transform:uppercase}
 .vact{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
-.vbtn{display:inline-flex;align-items:center;gap:5px;font-size:9.6px;font-weight:800;letter-spacing:1.2px;
-  padding:6px 11px;border-radius:6px;border:1px solid var(--stroke2);color:var(--muted);background:transparent;
+.vbtn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;letter-spacing:1.2px;
+  padding:7px 12px;border-radius:6px;border:1px solid var(--stroke2);color:var(--muted);background:transparent;
   cursor:pointer;text-decoration:none;font-family:inherit;transition:all .25s}
 .vbtn:hover{color:var(--bright);border-color:var(--cyan);background:var(--hoverbg)}
 .vbtn.pri{color:var(--cyan);border-color:var(--cyan)}
@@ -210,52 +210,52 @@ html.light .vcover{background:linear-gradient(135deg,#DCE6F0,#C8D6E4)}
   border-radius:10px;padding:13px 14px 11px;transition:all .3s;position:relative}
 .ctile:hover{border-left-color:var(--bright);transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,.3)}
 html.light .ctile:hover{box-shadow:0 8px 22px rgba(30,60,90,.13)}
-.ctile .cv{color:var(--white);font-size:14px;font-weight:800}
-.ctile .cl{color:var(--muted);font-size:9.4px;letter-spacing:1.2px;margin-top:3px;line-height:1.5;text-transform:uppercase}
+.ctile .cv{color:var(--white);font-size:16px;font-weight:800}
+.ctile .cl{color:var(--muted);font-size:10.5px;letter-spacing:1.2px;margin-top:3px;line-height:1.5;text-transform:uppercase}
 .ctile .cn{position:absolute;top:10px;right:12px}
 .ctile.vi{border-left-color:var(--violet)}
 .ctile.mi{border-left-color:var(--mint)}
 .ctile.am{border-left-color:var(--amber)}
 
 /* tables */
-table.dk{width:100%;border-collapse:collapse;font-size:12.3px}
-table.dk th{color:var(--cyan);font-size:9.6px;letter-spacing:1.5px;text-align:left;padding:8px 10px;border-bottom:1px solid var(--stroke2);white-space:nowrap}
+table.dk{width:100%;border-collapse:collapse;font-size:14px}
+table.dk th{color:var(--cyan);font-size:11px;letter-spacing:1.5px;text-align:left;padding:8px 10px;border-bottom:1px solid var(--stroke2);white-space:nowrap}
 table.dk td{padding:8px 10px;border-bottom:1px solid var(--hairline);color:var(--body)}
 table.dk tbody tr:hover{background:var(--hoverbg)}
 table.dk tbody tr:hover td:first-child{color:var(--bright)}
 td.r,th.r{text-align:right}
-table.dk a.open{color:var(--cyan);text-decoration:none;font-size:9.6px;letter-spacing:1.4px;font-weight:800;border:1px solid var(--stroke2);
+table.dk a.open{color:var(--cyan);text-decoration:none;font-size:11px;letter-spacing:1.4px;font-weight:800;border:1px solid var(--stroke2);
   border-radius:6px;padding:3px 9px;transition:all .25s;white-space:nowrap}
 table.dk a.open:hover{color:var(--bright);border-color:var(--cyan);background:var(--hoverbg)}
 
 /* instagram cards */
 .igcard{display:flex;flex-direction:column;text-decoration:none;background:var(--tilegrad);border:1px solid var(--stroke);border-top:3px solid var(--pink);
-  border-radius:12px;padding:14px 15px 13px;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;min-height:210px}
+  border-radius:12px;padding:14px 15px 13px;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;min-height:210px;min-width:0}
 .igcard:hover{transform:translateY(-3px);border-color:var(--stroke2);box-shadow:0 10px 26px rgba(0,0,0,.35)}
 html.light .igcard:hover{box-shadow:0 10px 26px rgba(30,60,90,.14)}
 .igcard.hot{border-top-color:var(--bright);box-shadow:0 0 22px rgba(255,111,181,.08)}
-.igtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.igrank{color:var(--faint);font-size:11px;font-weight:800;letter-spacing:1.5px}
+.igtop{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.igrank{color:var(--faint);font-size:12.5px;font-weight:800;letter-spacing:1.5px}
 .igcard.hot .igrank{color:var(--pink)}
-.igviews{color:var(--white);font-size:30px;font-weight:800;letter-spacing:.3px;font-variant-numeric:tabular-nums;line-height:1}
-.igvl{color:var(--faint);font-size:8.4px;letter-spacing:1.6px;font-weight:800;margin:4px 0 10px}
-.igu{color:var(--bright);font-size:12px;font-weight:800;letter-spacing:.3px}
-.igcap{color:var(--muted);font-size:11.4px;line-height:1.45;margin-top:3px;flex:1}
-.igstats{color:var(--faint);font-size:9.6px;letter-spacing:1px;font-weight:700;margin-top:9px;text-transform:uppercase}
+.igviews{color:var(--white);font-size:34px;font-weight:800;letter-spacing:.3px;font-variant-numeric:tabular-nums;line-height:1}
+.igvl{color:var(--faint);font-size:9.5px;letter-spacing:1.6px;font-weight:800;margin:4px 0 10px}
+.igu{color:var(--bright);font-size:13.5px;font-weight:800;letter-spacing:.3px;overflow-wrap:anywhere}
+.igcap{color:var(--muted);font-size:13px;overflow-wrap:anywhere;line-height:1.45;margin-top:3px;flex:1}
+.igstats{color:var(--faint);font-size:11px;letter-spacing:1px;font-weight:700;margin-top:9px;text-transform:uppercase}
 .igplay{display:flex;align-items:center;gap:8px;margin-top:9px;padding-top:10px;border-top:1px solid var(--hairline)}
 .igplay .pb{position:static;width:26px;height:26px;margin:0;border-width:1.5px;background:rgba(6,10,16,.4)}
 html.light .igplay .pb{background:rgba(13,33,53,.75)}
 .igplay .pb::after{content:"";display:block;width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px}
-.igplay .igopen{color:var(--muted);font-size:9px;letter-spacing:1.6px;font-weight:800}
+.igplay .igopen{color:var(--muted);font-size:10.5px;letter-spacing:1.6px;font-weight:800}
 .igcard:hover .igplay .igopen{color:var(--bright)}
 .igcard:hover .pb{background:rgba(0,209,255,.5);box-shadow:0 0 18px rgba(0,209,255,.5)}
 
 /* strip + footer */
-.strip{border:1px solid var(--stroke);background:var(--panelgrad);border-radius:10px;padding:12px 16px;margin-top:14px;font-size:12.8px}
-.strip b.h{color:var(--cyan);letter-spacing:1.6px;font-size:10.5px;margin-right:8px}
+.strip{border:1px solid var(--stroke);background:var(--panelgrad);border-radius:10px;padding:13px 17px;margin-top:14px;font-size:14.5px}
+.strip b.h{color:var(--cyan);letter-spacing:1.6px;font-size:12px;margin-right:8px}
 .strip .w{color:var(--white);font-weight:700}
-footer{position:relative;z-index:1;border-top:1px solid var(--stroke);margin-top:52px;padding:20px 28px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--faint);font-size:9.6px;letter-spacing:1.5px}
-.src{color:var(--faint);font-size:9.4px;margin-top:12px;line-height:1.6}
+footer{position:relative;z-index:1;border-top:1px solid var(--stroke);margin-top:52px;padding:20px 28px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--faint);font-size:11px;letter-spacing:1.5px}
+.src{color:var(--faint);font-size:10.5px;margin-top:12px;line-height:1.6}
 
 /* modal player */
 #pmodal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:22px}
@@ -264,12 +264,12 @@ footer{position:relative;z-index:1;border-top:1px solid var(--stroke);margin-top
 #pmodal .box{position:relative;width:min(960px,96vw);background:var(--panel);border:1px solid var(--stroke2);border-radius:14px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.55)}
 #pmodal video{display:block;width:100%;max-height:68vh;min-height:280px;background:#000}
 #pmodal .mh{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--hairline)}
-#pmodal .mh .t{color:var(--white);font-weight:700;font-size:14px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#pmodal .mh .t{color:var(--white);font-weight:700;font-size:15.5px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #pmodal .x{flex:0 0 auto;cursor:pointer;border:1px solid var(--stroke2);background:transparent;color:var(--muted);border-radius:6px;
-  width:30px;height:30px;font-size:15px;line-height:1;font-family:inherit;transition:all .25s}
+  width:32px;height:32px;font-size:16px;line-height:1;font-family:inherit;transition:all .25s}
 #pmodal .x:hover{color:var(--bright);border-color:var(--cyan)}
 #pmodal .mf{display:flex;gap:8px;padding:12px 16px;flex-wrap:wrap;align-items:center}
-#pmodal .note{color:var(--faint);font-size:9.6px;letter-spacing:1px;margin-left:auto;text-transform:uppercase}
+#pmodal .note{color:var(--faint);font-size:11px;letter-spacing:1px;margin-left:auto;text-transform:uppercase}
 html.mob #pmodal{padding:10px}
 html.mob #pmodal .note{display:none}
 
@@ -314,94 +314,99 @@ html.mob #pmodal .note{display:none}
 <section id="brands">
   <div class="kicker">01 · BRAND STANDARDS &amp; LOGOS</div>
   <h2 class="rv">Brand standards &amp; logos</h2>
-  <p class="lede rv">Current guidelines, logo files, and fonts for each brand — together in one card per brand. File links open the item in its collection; use the Download button there for the original file.</p>
+  <p class="lede rv">Current guidelines, logos, fonts, and templates — one card per brand, same order on every card. Links open the file in its public collection; hit Download there for the original.</p>
   <div class="grid g3">
     <div class="bcard rv" style="border-top-color:var(--cyan)">
-      <div class="blogo lg-m"><img style="height:27px" src="https://brand.kreate.com/asset/f893ff7c-7ee4-4384-9980-95fa70c23019/thumbnail/webimage-CP-Sequent-Logo" alt="Sequent" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb">SEQUENT</span></div>
+      <div class="blogo lg-m"><img style="height:30px" src="https://brand.kreate.com/asset/f893ff7c-7ee4-4384-9980-95fa70c23019/thumbnail/webimage-CP-Sequent-Logo" alt="Sequent" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb">SEQUENT</span></div>
       <div class="bt">Parent brand</div>
       <div class="rllist">
         <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/?mediaId=775461C5-88D8-4760-AA0FC29A7441CAAB" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — v1.8</span><span class="mt">PDF</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/?mediaId=F893FF7C-7EE4-4384-998095FA70C23019" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logo · wordmark · icon</span><span class="mt">SVG</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/?mediaId=DFC01D33-4A04-424F-80534BEA6DA7861C" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand messaging</span><span class="mt">DOCX</span></a>
-        <a class="rl" href="https://sequent-hq.github.io/sequent-resources/backgrounds.html#sequent" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Video call backgrounds — v1.2</span><span class="mt">Gallery · 2</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/?mediaId=F893FF7C-7EE4-4384-998095FA70C23019" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — wordmark &amp; icon</span><span class="mt">SVG</span></a>
         <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Fonts — Tobias · Uncut Sans · Geist</span><span class="mt">OTF / TTF</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Sequent files</span><span class="mt">19 files</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/?mediaId=DFC01D33-4A04-424F-80534BEA6DA7861C" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand messaging</span><span class="mt">DOCX</span></a>
+        <a class="rl" href="https://sequent-hq.github.io/sequent-resources/backgrounds.html#sequent" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Video call backgrounds</span><span class="mt">GALLERY · 2</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Sequent files</span><span class="mt">19 FILES</span></a>
       </div>
     </div>
     <div class="bcard rv" style="border-top-color:var(--mint)">
-      <div class="blogo lg-w"><img style="height:41px" src="https://brand.kreate.com/asset/adc8dd56-e14b-4b60-b78c-46d4aef1f644/thumbnail/webimage-kreate-logo-white" alt="Kreate" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--mint)">KREATE</span></div>
+      <div class="blogo lg-w"><img style="height:46px" src="https://brand.kreate.com/asset/adc8dd56-e14b-4b60-b78c-46d4aef1f644/thumbnail/webimage-kreate-logo-white" alt="Kreate" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--mint)">KREATE</span></div>
       <div class="bt">Manufacturing &amp; retail</div>
       <div class="rllist">
-        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=2A119BF9-FBCE-4A1D-A1D8D6E1041B786C" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand standards manual</span><span class="mt">PDF</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=2A119BF9-FBCE-4A1D-A1D8D6E1041B786C" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — standards manual</span><span class="mt">PDF</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=ADC8DD56-E14B-4B60-B78C46D4AEF1F644" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — white</span><span class="mt">PNG</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=5A0FD5E3-682A-4F2E-A07197BCC574BD24" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — black</span><span class="mt">PNG</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/c6a08dabfafe5e5d/kreate-logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — full set + K icon</span><span class="mt">6 FILES</span></a>
         <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=D02CA42E-714A-4746-A0B8798D589F9F57" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">PowerPoint master</span><span class="mt">PPTX</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=2D6065AB-C240-4FCA-BD94CE00C4A004AF" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Kreate + THD PowerPoint master</span><span class="mt">PPTX</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=2D6065AB-C240-4FCA-BD94CE00C4A004AF" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">PowerPoint master — Kreate + THD</span><span class="mt">PPTX</span></a>
         <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=D92FD393-5BA6-4F4D-895A01D0A088A619" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Agenda template</span><span class="mt">DOCX</span></a>
-        <a class="rl" href="https://sequent-hq.github.io/sequent-resources/backgrounds.html#kreate" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Video call backgrounds</span><span class="mt">Gallery · 13</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=ADC8DD56-E14B-4B60-B78C46D4AEF1F644" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logo — white</span><span class="mt">PNG</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=5A0FD5E3-682A-4F2E-A07197BCC574BD24" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logo — black</span><span class="mt">PNG</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/c6a08dabfafe5e5d/kreate-logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Full logo set — EPS + K icon</span><span class="mt">6 files</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Kreate brand files &amp; templates</span><span class="mt">7 files</span></a>
+        <a class="rl" href="https://sequent-hq.github.io/sequent-resources/backgrounds.html#kreate" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Video call backgrounds</span><span class="mt">GALLERY · 13</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Kreate files</span><span class="mt">7 FILES</span></a>
       </div>
     </div>
     <div class="bcard rv" style="border-top-color:var(--violet)">
-      <div class="blogo lg-w"><img style="height:30px" src="https://brand.kreate.com/asset/b2047ca1-39cf-4271-89cd-b7c3d5f5f981/thumbnail/webimage-configure_rev" alt="Configure" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--violet)">CONFIGURE</span></div>
+      <div class="blogo lg-w"><img style="height:34px" src="https://brand.kreate.com/asset/b2047ca1-39cf-4271-89cd-b7c3d5f5f981/thumbnail/webimage-configure_rev" alt="Configure" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--violet)">CONFIGURE</span></div>
       <div class="bt">Storage &amp; organization</div>
       <div class="rllist">
-        <a class="rl" href="https://brand.kreate.com/web/40509e861d1f7eae/configure-updated-brand-standards---logos/?mediaId=53AFBF10-E32E-4FBD-B866FEF2F586475C" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — v1.2, Jul 2026</span><span class="mt">PDF</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/40509e861d1f7eae/configure-updated-brand-standards---logos/?mediaId=53AFBF10-E32E-4FBD-B866FEF2F586475C" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — v1.2 · Jul 2026</span><span class="mt">PDF</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/291fda07d7429f38/configure-logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — color / black / reversed</span><span class="mt">20 FILES</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/dea99a93447debde/configure-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand assets — icons &amp; wordmarks</span><span class="mt">23 FILES</span></a>
         <a class="rl" href="https://brand.kreate.com/web/40509e861d1f7eae/configure-updated-brand-standards---logos/?mediaId=C6777516-504A-44AD-9E050FC373F653AB" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">PowerPoint master — Jun 2026</span><span class="mt">PPTX</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/291fda07d7429f38/configure-logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — color / black / reversed</span><span class="mt">20 files</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/dea99a93447debde/configure-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand assets — icons + wordmarks</span><span class="mt">23 files</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/40509e861d1f7eae/configure-updated-brand-standards---logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Updated standards + logos</span><span class="mt">48 files</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/40509e861d1f7eae/configure-updated-brand-standards---logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Configure files</span><span class="mt">48 FILES</span></a>
       </div>
     </div>
     <div class="bcard rv" style="border-top-color:var(--amber)">
-      <div class="blogo lg-w"><img style="height:22px" src="https://brand.kreate.com/asset/712e6804-2178-4fed-90c5-c3c818e2f214/thumbnail/webimage-OGO_Primary_White" alt="OGO" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--amber)">OGO&trade;</span></div>
+      <div class="blogo lg-w"><img style="height:25px" src="https://brand.kreate.com/asset/712e6804-2178-4fed-90c5-c3c818e2f214/thumbnail/webimage-OGO_Primary_White" alt="OGO" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--amber)">OGO&trade;</span></div>
       <div class="bt">Mobile storage · Nomad &amp; Origin</div>
       <div class="rllist">
-        <a class="rl" href="https://brand.kreate.com/web/36000925fde7df10/ogo-logo---brand-guidelines/?mediaId=8BF02137-DA3D-476A-BC46CE3D65756C09" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — PMS updated 5.28.26</span><span class="mt">PDF</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/36000925fde7df10/ogo-logo---brand-guidelines/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — OGO + Nomad &amp; Origin lines</span><span class="mt">33 files</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/cdc29c298c968996/ogo--assets-to-share-with-distributors/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Distributor-approved assets</span><span class="mt">External-safe</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/36000925fde7df10/ogo-logo---brand-guidelines/?mediaId=8BF02137-DA3D-476A-BC46CE3D65756C09" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — PMS · 5.28.26</span><span class="mt">PDF</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/36000925fde7df10/ogo-logo---brand-guidelines/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — OGO · Nomad · Origin</span><span class="mt">33 FILES</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/cdc29c298c968996/ogo--assets-to-share-with-distributors/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Distributor-approved assets</span><span class="mt">EXTERNAL-SAFE</span></a>
       </div>
     </div>
     <div class="bcard rv" style="border-top-color:var(--bright)">
-      <div class="blogo lg-w"><img style="height:96px" src="https://brand.kreate.com/asset/e1e049c2-76d9-434e-ab0b-724e32af6d4f/thumbnail/webimage-Energize-Final-Logo" alt="Energize" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--bright)">ENERGIZE</span></div>
+      <div class="blogo lg-w"><img style="height:109px" src="https://brand.kreate.com/asset/e1e049c2-76d9-434e-ab0b-724e32af6d4f/thumbnail/webimage-Energize-Final-Logo" alt="Energize" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--bright)">ENERGIZE</span></div>
       <div class="bt">Sub-brand</div>
       <div class="rllist">
         <a class="rl" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/?mediaId=D9F1AE60-4966-44CC-922B95FECD0ADE7C" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — v1.4</span><span class="mt">PDF</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos, emblems + Founders Grotesk fonts</span><span class="mt">27 files</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — wordmarks &amp; emblems</span><span class="mt">AI / EPS / PNG</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Fonts — Founders Grotesk</span><span class="mt">OTF</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Energize files</span><span class="mt">27 FILES</span></a>
       </div>
     </div>
     <div class="bcard rv" style="border-top-color:var(--pink)">
-      <div class="blogo lg-w"><img style="height:78px" src="https://brand.kreate.com/asset/9014e12c-bdbf-4376-a1d3-610ef2fad9e4/thumbnail/webimage-Faster-Logo" alt="Faster" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--pink)">FASTER</span></div>
+      <div class="blogo lg-w"><img style="height:88px" src="https://brand.kreate.com/asset/9014e12c-bdbf-4376-a1d3-610ef2fad9e4/thumbnail/webimage-Faster-Logo" alt="Faster" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--pink)">FASTER</span></div>
       <div class="bt">Sub-brand</div>
       <div class="rllist">
         <a class="rl" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/?mediaId=6A57FAF7-3852-48C9-A73052181709DC10" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — v1.1</span><span class="mt">PDF</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos, icons + Founders Grotesk fonts</span><span class="mt">32 files</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — wordmarks &amp; icons</span><span class="mt">AI / EPS / PNG</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Fonts — Founders Grotesk</span><span class="mt">OTF</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Faster files</span><span class="mt">32 FILES</span></a>
       </div>
     </div>
     <div class="bcard rv" style="border-top-color:var(--cyan)">
-      <div class="blogo lg-c"><img style="height:44px" src="https://brand.kreate.com/asset/3ed3cd73-8a38-4844-b300-64611e77fdc2/thumbnail/webimage-Melds-Logo" alt="Melds" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb">MELDS</span></div>
+      <div class="blogo lg-c"><img style="height:50px" src="https://brand.kreate.com/asset/3ed3cd73-8a38-4844-b300-64611e77fdc2/thumbnail/webimage-Melds-Logo" alt="Melds" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb">MELDS</span></div>
       <div class="bt">Sub-brand</div>
       <div class="rllist">
+        <a class="rl" href="https://brand.kreate.com/web/8ac6187f1e5a8288/melds-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — SVG / AI / PDF</span><span class="mt">4 FILES</span></a>
         <a class="rl" href="https://brand.kreate.com/web/8ac6187f1e5a8288/melds-brand-assets/?mediaId=8F59DEDA-B932-4502-AA458FA4F52FBBEF" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand messaging</span><span class="mt">DOCX</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/8ac6187f1e5a8288/melds-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logo — SVG / AI / PDF</span><span class="mt">4 files</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/8ac6187f1e5a8288/melds-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Melds files</span><span class="mt">4 FILES</span></a>
       </div>
     </div>
     <div class="bcard rv" style="border-top-color:var(--violet)">
-      <div class="blogo lg-w"><img style="height:19px" src="https://brand.kreate.com/asset/e98c973b-c333-42bd-ac5d-d9b8b11c9d52/thumbnail/webimage-Nickolas-RGB-White" alt="Nickolas" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--violet);letter-spacing:2.5px">NICKOLAS</span></div>
-      <div class="bt">Logo set</div>
+      <div class="blogo lg-w"><img style="height:21px" src="https://brand.kreate.com/asset/e98c973b-c333-42bd-ac5d-d9b8b11c9d52/thumbnail/webimage-Nickolas-RGB-White" alt="Nickolas" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--violet);letter-spacing:2.5px">NICKOLAS</span></div>
+      <div class="bt">Brand kit</div>
       <div class="rllist">
-        <a class="rl" href="https://brand.kreate.com/web/836a7ac951943820/nickolas-logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Nickolas logos</span><span class="mt">19 files</span></a>
-        <a class="rl" href="https://fmtinc.sharepoint.com/sites/JoeBryce/Shared Documents/General/Strategy Deck/NAM/Archive/NAM Template.pptx" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">PowerPoint master — 40 master slides</span><span class="mt">PPTX · MS sign-in</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=A08033D8-C388-4E80-81EEE10F4F5B4294" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Nickolas × Kreate agenda template</span><span class="mt">DOCX</span></a>
-        <a class="rl" href="https://sequent-hq.github.io/sequent-resources/backgrounds.html#nickolas" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Video call backgrounds</span><span class="mt">Gallery · 3</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/836a7ac951943820/nickolas-logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — full set</span><span class="mt">19 FILES</span></a>
+        <a class="rl" href="https://fmtinc.sharepoint.com/sites/JoeBryce/Shared Documents/General/Strategy Deck/NAM/Archive/NAM Template.pptx" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">PowerPoint master — 40 master slides</span><span class="mt">PPTX · MS SIGN-IN</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=A08033D8-C388-4E80-81EEE10F4F5B4294" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Agenda template — Nickolas × Kreate</span><span class="mt">DOCX</span></a>
+        <a class="rl" href="https://sequent-hq.github.io/sequent-resources/backgrounds.html#nickolas" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Video call backgrounds</span><span class="mt">GALLERY · 3</span></a>
       </div>
     </div>
     <div class="bcard rv" style="border-top-color:var(--mint)">
-      <div class="blogo lg-w"><img style="height:14px" src="https://brand.kreate.com/asset/43b4ffe3-f33c-4fd2-a704-aae9d80cccf3/thumbnail/webimage-krevera-logo-lfITcyXu-white" alt="Krevera" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--mint);letter-spacing:2.5px">KREVERA</span></div>
+      <div class="blogo lg-w"><img style="height:16px" src="https://brand.kreate.com/asset/43b4ffe3-f33c-4fd2-a704-aae9d80cccf3/thumbnail/webimage-krevera-logo-lfITcyXu-white" alt="Krevera" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--mint);letter-spacing:2.5px">KREVERA</span></div>
       <div class="bt">Logo set</div>
       <div class="rllist">
-        <a class="rl" href="https://brand.kreate.com/web/845a4767c8593ce6/krevera-logo/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Krevera logo</span><span class="mt">2 files</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/845a4767c8593ce6/krevera-logo/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — full set</span><span class="mt">2 FILES</span></a>
       </div>
     </div>
   </div>
@@ -553,9 +558,9 @@ html.mob #pmodal .note{display:none}
   <div class="kicker" style="color:var(--amber)">05 · HELP</div>
   <h2 class="rv">Help</h2>
   <div class="grid g3" style="margin-top:14px">
-    <div class="panel rv"><div class="ptitle">ONE-CLICK PUBLIC LINKS</div><p style="font-size:12.6px;color:var(--muted)">Every link on this board is a public share page — no account needed, safe to forward to partners, vendors, and press. If a link ever says the collection isn't available, its <span style="color:var(--white);font-weight:700">Publish online</span> toggle got switched off in the portal — flip it back on and the link works again.</p></div>
-    <div class="panel rv"><div class="ptitle">DOWNLOADING FILES</div><p style="font-size:12.6px;color:var(--muted)">Links open the file inside its collection. Select it there and hit <span style="color:var(--white);font-weight:700">Download</span> for the original, full-resolution version. Players on this board stream 720p previews; full-res 4K files run 0.5–2.3&nbsp;GB — download on wifi.</p></div>
-    <div class="panel rv"><div class="ptitle">CAN'T FIND IT?</div><p style="font-size:12.6px;color:var(--muted)">Search everything at <a href="https://brand.kreate.com/media/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">brand.kreate.com ↗</a> (team sign-in). Need something made, or a new collection published? Ask in the marketing channel and it gets added to this board.</p></div>
+    <div class="panel rv"><div class="ptitle">ONE-CLICK PUBLIC LINKS</div><p style="font-size:14.5px;color:var(--muted)">Every link on this board is a public share page — no account needed, safe to forward to partners, vendors, and press. If a link ever says the collection isn't available, its <span style="color:var(--white);font-weight:700">Publish online</span> toggle got switched off in the portal — flip it back on and the link works again.</p></div>
+    <div class="panel rv"><div class="ptitle">DOWNLOADING FILES</div><p style="font-size:14.5px;color:var(--muted)">Links open the file inside its collection. Select it there and hit <span style="color:var(--white);font-weight:700">Download</span> for the original, full-resolution version. Players on this board stream 720p previews; full-res 4K files run 0.5–2.3&nbsp;GB — download on wifi.</p></div>
+    <div class="panel rv"><div class="ptitle">CAN'T FIND IT?</div><p style="font-size:14.5px;color:var(--muted)">Search everything at <a href="https://brand.kreate.com/media/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">brand.kreate.com ↗</a> (team sign-in). Need something made, or a new collection published? Ask in the marketing channel and it gets added to this board.</p></div>
   </div>
   <p class="src rv">Sources: Bynder portal (brand.kreate.com) public collection links · team SharePoint · cross-campaign creator ledger for social metrics. Counts and links current as of Aug 19, 2026. Players stream Bynder's public 720p previews; downloads serve full-resolution originals.</p>
 </section>
