@@ -12,7 +12,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg0);color:var(--body);font-family:"Segoe UI",Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5}
+body{background:var(--bg0);color:var(--body);font-family:"Segoe UI",Arial,Helvetica,sans-serif;font-size:16.5px;line-height:1.5}
 .bgmesh{position:fixed;inset:0;z-index:0;pointer-events:none;
   background:radial-gradient(900px 500px at 15% -5%, rgba(0,209,255,.07), transparent 60%),
              radial-gradient(900px 600px at 90% 10%, rgba(123,111,232,.06), transparent 60%)}
@@ -21,15 +21,29 @@ nav#topnav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:
   padding:10px 18px;background:rgba(6,10,16,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--stroke);overflow-x:auto;white-space:nowrap}
 nav#topnav .brand{display:flex;align-items:center;gap:9px;margin-right:10px}
 nav#topnav .brand .sq{width:10px;height:10px;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
-nav#topnav .brand b{color:var(--white);letter-spacing:4px;font-size:13px}
-nav#topnav a{color:var(--muted);text-decoration:none;font-size:10.5px;letter-spacing:1.6px;padding:7px 11px;border:1px solid transparent;border-radius:6px;transition:all .25s}
+nav#topnav .brand b{color:var(--white);letter-spacing:4px;font-size:14.5px}
+nav#topnav a{color:var(--muted);text-decoration:none;font-size:12px;letter-spacing:1.6px;padding:7px 11px;border:1px solid transparent;border-radius:6px;transition:all .25s}
 nav#topnav a:hover{color:var(--bright);border-color:var(--stroke2);background:rgba(0,209,255,.06)}
 header{padding:40px 0 6px}
-h1{color:var(--white);font-size:clamp(28px,4.5vw,40px);font-weight:800;letter-spacing:1px}
+h1{color:var(--white);font-size:clamp(30px,4.5vw,44px);font-weight:800;letter-spacing:1px}
 h1 span{color:var(--cyan);text-shadow:0 0 28px rgba(0,209,255,.35)}
-.sub{color:var(--muted);font-size:14px;margin:10px 0 6px;max-width:760px}
-section{padding:34px 0 6px;scroll-margin-top:60px}
-.kicker{display:flex;align-items:center;gap:9px;color:var(--cyan);font-size:11px;letter-spacing:3px;font-weight:700;margin-bottom:12px}
+.sub{color:var(--muted);font-size:16px;margin:10px 0 6px;max-width:820px}
+
+/* brand filter tabs */
+.ftabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}
+@media(max-width:760px){.ftabs{grid-template-columns:1fr 1fr}}
+.ftab{display:block;text-decoration:none;background:linear-gradient(180deg,rgba(16,27,44,.9),rgba(13,21,33,.85));
+  border:1px solid var(--stroke);border-top:3px solid var(--cyan);border-radius:10px;padding:13px 15px;transition:all .25s}
+.ftab .tl{color:var(--white);font-size:14.5px;font-weight:800;letter-spacing:.6px}
+.ftab .ts{color:var(--muted);font-size:10px;letter-spacing:1.2px;margin-top:3px;text-transform:uppercase}
+.ftab:hover{transform:translateY(-3px);border-color:var(--stroke2);box-shadow:0 8px 22px rgba(0,0,0,.3)}
+.ftab:hover .tl{color:var(--bright)}
+.ftab.on{border-color:var(--cyan);box-shadow:0 0 18px rgba(0,209,255,.12)}
+.ftab.on .tl{color:var(--bright)}
+.ftab.mi{border-top-color:var(--mint)}.ftab.vi{border-top-color:var(--violet)}.ftab.wh{border-top-color:var(--stroke2)}
+
+section.bsec{padding:34px 0 6px;scroll-margin-top:64px}
+.kicker{display:flex;align-items:center;gap:9px;color:var(--cyan);font-size:12.5px;letter-spacing:3px;font-weight:700;margin-bottom:12px}
 .kicker::before{content:"";width:9px;height:9px;background:var(--cyan);box-shadow:0 0 10px var(--cyan);flex:0 0 auto}
 .bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:1000px){.bgrid{grid-template-columns:1fr 1fr}}
@@ -37,15 +51,20 @@ section{padding:34px 0 6px;scroll-margin-top:60px}
 .bcard{background:linear-gradient(180deg,rgba(16,27,44,.9),rgba(13,21,33,.85));border:1px solid var(--stroke);border-radius:12px;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
 .bcard:hover{transform:translateY(-3px);border-color:var(--stroke2);box-shadow:0 10px 26px rgba(0,0,0,.35)}
 .bcard img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#0A1524}
-.bcard .row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px}
-.bcard .nm{color:var(--white);font-size:11.5px;font-weight:700;letter-spacing:.3px}
+.bcard .row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 13px}
+.bcard .nm{color:var(--white);font-size:13px;font-weight:700;letter-spacing:.3px}
 .bcard .acts{display:flex;gap:6px}
-.bcard a.btn{color:var(--cyan);text-decoration:none;font-size:9px;letter-spacing:1.4px;font-weight:800;border:1px solid var(--stroke2);border-radius:6px;padding:4px 9px;transition:all .25s;white-space:nowrap}
+.bcard a.btn{color:var(--cyan);text-decoration:none;font-size:10.5px;letter-spacing:1.4px;font-weight:800;border:1px solid var(--stroke2);border-radius:6px;padding:5px 10px;transition:all .25s;white-space:nowrap}
 .bcard a.btn:hover{color:var(--bright);border-color:var(--cyan);background:rgba(0,209,255,.08)}
-.strip{border:1px solid var(--stroke);background:linear-gradient(90deg,rgba(16,27,44,.9),rgba(13,21,33,.85));border-radius:10px;padding:12px 16px;margin-top:20px;font-size:12.8px}
-.strip b{color:var(--cyan);letter-spacing:1.6px;font-size:10.5px;margin-right:8px}
+.strip{border:1px solid var(--stroke);background:linear-gradient(90deg,rgba(16,27,44,.9),rgba(13,21,33,.85));border-radius:10px;padding:13px 17px;margin-top:20px;font-size:14.5px}
+.strip b{color:var(--cyan);letter-spacing:1.6px;font-size:12px;margin-right:8px}
 .strip .w{color:var(--white);font-weight:700}
-footer{border-top:1px solid var(--stroke);margin-top:52px;padding:20px 28px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--faint);font-size:9.6px;letter-spacing:1.5px}
+footer{border-top:1px solid var(--stroke);margin-top:52px;padding:20px 28px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--faint);font-size:11px;letter-spacing:1.5px}
+
+/* one-brand filter: when a brand section is the URL target, show only that brand.
+   Pure CSS (:has/:target) — works with JS disabled; older browsers just see all sections. */
+main:has(.bsec:target) .bsec{display:none}
+main:has(.bsec:target) .bsec:target{display:block}
 </style>
 </head>
 <body>
@@ -53,16 +72,22 @@ footer{border-top:1px solid var(--stroke);margin-top:52px;padding:20px 28px;disp
 <nav id="topnav">
   <span class="brand"><span class="sq"></span><b>SEQUENT</b></span>
   <a href="./">← RESOURCE BOARD</a>
-  <a href="#sequent">SEQUENT</a><a href="#kreate">KREATE</a><a href="#nickolas">NICKOLAS</a>
+  <a href="#all">ALL</a><a href="#sequent">SEQUENT</a><a href="#kreate">KREATE</a><a href="#nickolas">NICKOLAS</a>
 </nav>
 <main>
 <header>
   <h1>VIDEO CALL <span>BACKGROUNDS</span></h1>
-  <p class="sub">Branded backgrounds for Zoom, Teams, and Meet. Download the file, then add it as a virtual background in your meeting app. All files are 1080p or higher.</p>
+  <p class="sub">Branded backgrounds for Zoom, Teams, and Meet. Pick a brand, download the file, then add it as a virtual background in your meeting app. All files are 1080p or higher.</p>
+  <div class="ftabs">
+    <a class="ftab wh" id="ft-all" href="#all"><div class="tl">ALL BRANDS</div><div class="ts">18 files</div></a>
+    <a class="ftab" id="ft-sequent" href="#sequent"><div class="tl">SEQUENT</div><div class="ts">2 files · v1.2</div></a>
+    <a class="ftab mi" id="ft-kreate" href="#kreate"><div class="tl">KREATE</div><div class="ts">13 files</div></a>
+    <a class="ftab vi" id="ft-nickolas" href="#nickolas"><div class="tl">NICKOLAS</div><div class="ts">3 files</div></a>
+  </div>
 </header>
 
-<section id="sequent">
-  <div class="kicker">SEQUENT — V1.2</div>
+<section class="bsec" id="sequent">
+  <div class="kicker">SEQUENT — 2 FILES · V1.2</div>
   <div class="bgrid">
     <div class="bcard"><img src="backgrounds/sequent/sequent-video-call-bg-v1-2.png" alt="Sequent video call background" loading="lazy">
       <div class="row"><span class="nm">Sequent — v1.2</span><span class="acts"><a class="btn" href="backgrounds/sequent/sequent-video-call-bg-v1-2.png" download>⬇ DOWNLOAD</a><a class="btn" href="backgrounds/sequent/sequent-video-call-bg-v1-2.png" target="_blank" rel="noopener">OPEN ↗</a></span></div></div>
@@ -72,8 +97,8 @@ footer{border-top:1px solid var(--stroke);margin-top:52px;padding:20px 28px;disp
   <div class="strip"><b>WHICH ONE? —</b> Zoom mirrors your camera by default. If on-screen text looks backwards to others, switch to the <span class="w">mirrored</span> file.</div>
 </section>
 
-<section id="kreate">
-  <div class="kicker" style="color:var(--mint)">KREATE — 13 DESIGNS</div>
+<section class="bsec" id="kreate">
+  <div class="kicker" style="color:var(--mint)">KREATE — 13 FILES</div>
   <div class="bgrid">
     <div class="bcard"><img src="backgrounds/kreate/kreate-video-call-bg-01.jpg" alt="Kreate background 1" loading="lazy"><div class="row"><span class="nm">Kreate 01</span><span class="acts"><a class="btn" href="backgrounds/kreate/kreate-video-call-bg-01.jpg" download>⬇ DOWNLOAD</a></span></div></div>
     <div class="bcard"><img src="backgrounds/kreate/kreate-video-call-bg-02.jpg" alt="Kreate background 2" loading="lazy"><div class="row"><span class="nm">Kreate 02</span><span class="acts"><a class="btn" href="backgrounds/kreate/kreate-video-call-bg-02.jpg" download>⬇ DOWNLOAD</a></span></div></div>
@@ -91,8 +116,8 @@ footer{border-top:1px solid var(--stroke);margin-top:52px;padding:20px 28px;disp
   </div>
 </section>
 
-<section id="nickolas">
-  <div class="kicker" style="color:var(--violet)">NICKOLAS — 3 DESIGNS</div>
+<section class="bsec" id="nickolas">
+  <div class="kicker" style="color:var(--violet)">NICKOLAS — 3 FILES</div>
   <div class="bgrid">
     <div class="bcard"><img src="backgrounds/nickolas/nickolas-video-call-bg-01.jpg" alt="Nickolas background 1" loading="lazy"><div class="row"><span class="nm">Nickolas 01</span><span class="acts"><a class="btn" href="backgrounds/nickolas/nickolas-video-call-bg-01.jpg" download>⬇ DOWNLOAD</a></span></div></div>
     <div class="bcard"><img src="backgrounds/nickolas/nickolas-video-call-bg-02.jpg" alt="Nickolas background 2" loading="lazy"><div class="row"><span class="nm">Nickolas 02</span><span class="acts"><a class="btn" href="backgrounds/nickolas/nickolas-video-call-bg-02.jpg" download>⬇ DOWNLOAD</a></span></div></div>
@@ -103,5 +128,19 @@ footer{border-top:1px solid var(--stroke);margin-top:52px;padding:20px 28px;disp
 <div class="strip"><b>HOW TO SET —</b> Zoom: Settings → Background &amp; effects → <span class="w">Add image</span> · Teams: More (…) → Video effects → <span class="w">Add new</span> · Meet: Apply visual effects → <span class="w">Upload</span>.</div>
 </main>
 <footer><span>SEQUENT — RESOURCES · BACKGROUNDS</span><span>INTERNAL · AUGUST 2026</span></footer>
+<script>
+(function(){
+  var ids=["sequent","kreate","nickolas"];
+  function sync(){
+    var h=location.hash.replace("#","");
+    var active=ids.indexOf(h)>=0?h:"all";
+    ["all"].concat(ids).forEach(function(id){
+      var t=document.getElementById("ft-"+id);
+      if(t)t.classList.toggle("on",id===active);
+    });
+  }
+  addEventListener("hashchange",sync);sync();
+})();
+</script>
 </body>
 </html>
