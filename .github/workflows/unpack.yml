@@ -1,0 +1,20 @@
+name: unpack
+on: push
+permissions:
+  contents: write
+jobs:
+  unpack:
+    if: ${{ !contains(github.event.head_commit.message, 'unpack-bot') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          if [ -f sequent-board-update.zip ]; then
+            unzip -o sequent-board-update.zip
+            rm sequent-board-update.zip
+            git config user.name "unpack-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add -A
+            git commit -m "unpack-bot: extract board update"
+            git push
+          fi
