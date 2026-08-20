@@ -65,6 +65,8 @@ footer{border-top:1px solid var(--stroke);margin-top:52px;padding:20px 28px;disp
    Pure CSS (:has/:target) — works with JS disabled; older browsers just see all sections. */
 main:has(.bsec:target) .bsec{display:none}
 main:has(.bsec:target) .bsec:target{display:block}
+main.fx .bsec{display:none!important}
+main.fx .bsec.fon{display:block!important}
 </style>
 </head>
 <body>
@@ -131,6 +133,7 @@ main:has(.bsec:target) .bsec:target{display:block}
 <script>
 (function(){
   var ids=["sequent","kreate","nickolas"];
+  var mainEl=document.querySelector("main");
   function sync(){
     var h=location.hash.replace("#","");
     var active=ids.indexOf(h)>=0?h:"all";
@@ -138,8 +141,18 @@ main:has(.bsec:target) .bsec:target{display:block}
       var t=document.getElementById("ft-"+id);
       if(t)t.classList.toggle("on",id===active);
     });
+    if(mainEl){
+      mainEl.classList.toggle("fx",active!=="all");
+      ids.forEach(function(id){
+        var s=document.getElementById(id);
+        if(s)s.classList.toggle("fon",id===active);
+      });
+    }
   }
-  addEventListener("hashchange",sync);sync();
+  addEventListener("hashchange",sync);
+  addEventListener("load",sync);
+  setTimeout(sync,150);
+  sync();
 })();
 </script>
 </body>
