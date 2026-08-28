@@ -114,7 +114,7 @@ header.hero .sub{color:var(--muted);font-size:16.5px;margin:10px 0 16px;max-widt
 .bd.sp{color:var(--violet);border-color:var(--violet);background:rgba(123,111,232,.08)}
 
 /* prominent section tabs */
-.tabrow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:24px}
+.tabrow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:24px}
 @media(max-width:1000px){.tabrow{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:760px){.tabrow{grid-template-columns:1fr 1fr}}
 html.mob .tabrow{grid-template-columns:1fr 1fr}
@@ -234,6 +234,11 @@ table.dk a.open:hover{color:var(--bright);border-color:var(--cyan);background:va
 .igcard:hover{transform:translateY(-3px);border-color:var(--stroke2);box-shadow:0 10px 26px rgba(0,0,0,.35)}
 html.light .igcard:hover{box-shadow:0 10px 26px rgba(30,60,90,.14)}
 .igcard.hot{border-top-color:var(--bright);box-shadow:0 0 22px rgba(255,111,181,.08)}
+.igcover{position:relative;display:block;aspect-ratio:4/3;margin:-14px -15px 12px;overflow:hidden;background:linear-gradient(160deg,#12233B,#0A1524);border-radius:9px 9px 0 0}
+html.light .igcover{background:linear-gradient(160deg,#DCE6F0,#C8D6E4)}
+.igcover img{width:100%;height:100%;object-fit:cover;display:block}
+.igcover .res{position:absolute;top:8px;right:8px;background:rgba(6,10,16,.72);color:#EAF6FB;font-size:10px;font-weight:800;letter-spacing:1.2px;padding:3px 8px;border-radius:5px}
+.igcover.noimg{display:none}
 .igtop{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px}
 .igrank{color:var(--faint);font-size:12.5px;font-weight:800;letter-spacing:1.5px}
 .igcard.hot .igrank{color:var(--pink)}
@@ -287,7 +292,7 @@ html.mob #pmodal .note{display:none}
 <nav id="topnav">
   <span class="brand"><span class="sq"></span><b>SEQUENT</b></span>
   <a href="#brands">BRANDS</a><a href="#videos">VIDEOS</a>
-  <a href="#photo">PHOTO</a><a href="#social">SOCIAL</a><a href="#help">HELP</a>
+  <a href="#photo">PHOTO</a><a href="#social">SOCIAL</a><a href="#decks">DECKS</a><a href="#help">HELP</a>
   <span class="spacer"></span>
   <button class="tgl jsonly" id="themeTgl" type="button" title="Switch light / dark">◐ THEME</button>
   <button class="tgl jsonly" id="viewTgl" type="button" title="Switch mobile / desktop layout">▤ MOBILE</button>
@@ -307,7 +312,8 @@ html.mob #pmodal .note{display:none}
     <a class="tab" href="#videos" style="border-top-color:var(--violet)"><div class="tn">02</div><div class="tl">Videos</div><div class="ts">12 corporate films · play here</div></a>
     <a class="tab" href="#photo" style="border-top-color:var(--bright)"><div class="tn">03</div><div class="tl">Photography</div><div class="ts">Facilities · events · UGC</div></a>
     <a class="tab" href="#social" style="border-top-color:var(--pink)"><div class="tn">04</div><div class="tl">Social</div><div class="ts">Top short-form · tap to play</div></a>
-    <a class="tab" href="#help" style="border-top-color:var(--amber)"><div class="tn">05</div><div class="tl">Help</div><div class="ts">Downloads · sharing · requests</div></a>
+    <a class="tab" href="#decks" style="border-top-color:var(--mint)"><div class="tn">05</div><div class="tl">Decks</div><div class="ts">Customer &amp; strategy decks</div></a>
+    <a class="tab" href="#help" style="border-top-color:var(--amber)"><div class="tn">06</div><div class="tl">Help</div><div class="ts">Downloads · sharing · requests</div></a>
   </nav>
 </header>
 <!-- BRANDS -->
@@ -409,6 +415,18 @@ html.mob #pmodal .note{display:none}
         <a class="rl" href="https://brand.kreate.com/web/845a4767c8593ce6/krevera-logo/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — full set</span><span class="mt">2 FILES</span></a>
       </div>
     </div>
+    <div class="bcard rv" style="border-top-color:var(--amber)">
+      <div class="blogo lg-c"><img style="height:28px" src="assets/reinhart-foundation-logo.png" alt="Reinhart Foundation" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--amber);letter-spacing:2px">REINHART FOUNDATION</span></div>
+      <div class="bt">Charitable foundation</div>
+      <div class="rllist">
+        <a class="rl" href="assets/reinhart-foundation-logo.png" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logo — icon &amp; wordmark</span><span class="mt">PNG</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=FD4EC2AC-D2C1-4C31-9B641F2E9DE14DA0" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand video — with intro</span><span class="mt">4K</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=47FF72EF-60A7-4C9B-ABABEB036E8BD602" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand video — broadcast cut</span><span class="mt">4K</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/9d75fe050dc0ff3d/kreate---reinhart-foundation-interview-videos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Interview videos</span><span class="mt">3 FILES</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/67e6d418fa1e48f/2026-reinhart-foundation-golf-outing/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Event photos — 2026 golf outing</span><span class="mt">97 FILES</span></a>
+        <a class="rl" href="https://brand.kreate.com/web/d69f49c2ccdff1c5/foundation-videos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Foundation videos</span><span class="mt">2 FILES</span></a>
+      </div>
+    </div>
   </div>
   <div class="strip rv"><b class="h">FILE GUIDE —</b> <span class="w">white / reversed</span> logos on dark backgrounds, <span class="w">black</span> on light · <span class="w">EPS / SVG</span> for print and production · <span class="w">PNG</span> for decks and docs.</div>
 </section>
@@ -494,6 +512,7 @@ html.mob #pmodal .note{display:none}
   <p class="lede rv">The most-played videos on <a href="https://www.instagram.com/kreate/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">@kreate</a> right now &mdash; our posts and creator reposts, ranked by plays. Numbers are live from Instagram (captured Aug 19, 2026); tap any card to play the reel.</p>
   <div class="sgrid">
     <a class="igcard hot rv" href="https://www.instagram.com/reel/DbeC8toOdFI/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/DbeC8toOdFI/embed/" data-title="@lelaburris &mdash; Garage cleanup with the new HDX Tote Stacker">
+      <span class="igcover"><img src="social/DbeC8toOdFI.jpg" alt="Reel cover" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="res">REEL</span></span>
       <div class="igtop"><span class="igrank">#1</span><span class="stag">TOTE STACKER</span></div>
       <div class="igviews">1.2M</div><div class="igvl">PLAYS ON INSTAGRAM</div>
       <div class="igu">@lelaburris</div><div class="igcap">Garage cleanup with the new HDX Tote Stacker</div>
@@ -501,6 +520,7 @@ html.mob #pmodal .note{display:none}
       <div class="igplay"><span class="pb"></span><span class="igopen">TAP TO PLAY</span></div>
     </a>
     <a class="igcard hot rv" href="https://www.instagram.com/reel/Dbnu2raudGy/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/Dbnu2raudGy/embed/" data-title="@avwooddesigns &mdash; Mobile hardware cart built from 2.5-qt HDX totes">
+      <span class="igcover"><img src="social/Dbnu2raudGy.jpg" alt="Reel cover" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="res">REEL</span></span>
       <div class="igtop"><span class="igrank">#2</span><span class="stag">MINI TOTES</span></div>
       <div class="igviews">717K</div><div class="igvl">PLAYS ON INSTAGRAM</div>
       <div class="igu">@avwooddesigns</div><div class="igcap">Mobile hardware cart built from 2.5-qt HDX totes</div>
@@ -508,6 +528,7 @@ html.mob #pmodal .note{display:none}
       <div class="igplay"><span class="pb"></span><span class="igopen">TAP TO PLAY</span></div>
     </a>
     <a class="igcard rv" href="https://www.instagram.com/reel/DbozkNotfzg/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/DbozkNotfzg/embed/" data-title="@heirloomandhoney &mdash; Flood-proofing garage inventory storage">
+      <span class="igcover"><img src="social/DbozkNotfzg.jpg" alt="Reel cover" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="res">REEL</span></span>
       <div class="igtop"><span class="igrank">#3</span><span class="stag">TOTES</span></div>
       <div class="igviews">81.2K</div><div class="igvl">PLAYS ON INSTAGRAM</div>
       <div class="igu">@heirloomandhoney</div><div class="igcap">Flood-proofing garage inventory storage</div>
@@ -515,6 +536,7 @@ html.mob #pmodal .note{display:none}
       <div class="igplay"><span class="pb"></span><span class="igopen">TAP TO PLAY</span></div>
     </a>
     <a class="igcard rv" href="https://www.instagram.com/reel/DbqVTKlNFZ9/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/DbqVTKlNFZ9/embed/" data-title="@_scarletoakhomes &mdash; Garage storage makeover with the HDX Defender">
+      <span class="igcover"><img src="social/DbqVTKlNFZ9.jpg" alt="Reel cover" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="res">REEL</span></span>
       <div class="igtop"><span class="igrank">#4</span><span class="stag">DEFENDER</span></div>
       <div class="igviews">66.4K</div><div class="igvl">PLAYS ON INSTAGRAM</div>
       <div class="igu">@_scarletoakhomes</div><div class="igcap">Garage storage makeover with the HDX Defender</div>
@@ -522,6 +544,7 @@ html.mob #pmodal .note{display:none}
       <div class="igplay"><span class="pb"></span><span class="igopen">TAP TO PLAY</span></div>
     </a>
     <a class="igcard rv" href="https://www.instagram.com/reel/DcEBZLcptB6/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/DcEBZLcptB6/embed/" data-title="@ashandember_woodshop &mdash; Storage on wheels">
+      <span class="igcover"><img src="social/DcEBZLcptB6.jpg" alt="Reel cover" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="res">REEL</span></span>
       <div class="igtop"><span class="igrank">#5</span><span class="stag">TOTES</span></div>
       <div class="igviews">36.5K</div><div class="igvl">PLAYS ON INSTAGRAM</div>
       <div class="igu">@ashandember_woodshop</div><div class="igcap">Storage on wheels</div>
@@ -529,6 +552,7 @@ html.mob #pmodal .note{display:none}
       <div class="igplay"><span class="pb"></span><span class="igopen">TAP TO PLAY</span></div>
     </a>
     <a class="igcard rv" href="https://www.instagram.com/reel/DcMvlkgAcQr/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/DcMvlkgAcQr/embed/" data-title="@theshelfdude &mdash; Every bin in its place">
+      <span class="igcover"><img src="social/DcMvlkgAcQr.jpg" alt="Reel cover" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="res">REEL</span></span>
       <div class="igtop"><span class="igrank">#6</span><span class="stag">SHELVING</span></div>
       <div class="igviews">21.6K</div><div class="igvl">PLAYS ON INSTAGRAM</div>
       <div class="igu">@theshelfdude</div><div class="igcap">Every bin in its place</div>
@@ -536,6 +560,7 @@ html.mob #pmodal .note{display:none}
       <div class="igplay"><span class="pb"></span><span class="igopen">TAP TO PLAY</span></div>
     </a>
     <a class="igcard rv" href="https://www.instagram.com/reel/DblQJSgpoPh/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/DblQJSgpoPh/embed/" data-title="@ashandember_woodshop &mdash; Stay-organized shop build">
+      <span class="igcover"><img src="social/DblQJSgpoPh.jpg" alt="Reel cover" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="res">REEL</span></span>
       <div class="igtop"><span class="igrank">#7</span><span class="stag">TOTES</span></div>
       <div class="igviews">18.4K</div><div class="igvl">PLAYS ON INSTAGRAM</div>
       <div class="igu">@ashandember_woodshop</div><div class="igcap">Stay-organized shop build</div>
@@ -543,6 +568,7 @@ html.mob #pmodal .note{display:none}
       <div class="igplay"><span class="pb"></span><span class="igopen">TAP TO PLAY</span></div>
     </a>
     <a class="igcard rv" href="https://www.instagram.com/reel/DcJ3V59p7kL/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/DcJ3V59p7kL/embed/" data-title="@graceinmyspace &mdash; Organizing teeny tiny things">
+      <span class="igcover"><img src="social/DcJ3V59p7kL.jpg" alt="Reel cover" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="res">REEL</span></span>
       <div class="igtop"><span class="igrank">#8</span><span class="stag">NANO TOTES</span></div>
       <div class="igviews">9.7K</div><div class="igvl">PLAYS ON INSTAGRAM</div>
       <div class="igu">@graceinmyspace</div><div class="igcap">Organizing teeny tiny things</div>
@@ -553,9 +579,24 @@ html.mob #pmodal .note{display:none}
   <div class="strip rv"><b class="h" style="color:var(--pink)">SOURCE FILES &amp; MORE &mdash;</b> the produced cuts behind these campaigns live in the portal: <a href="https://brand.kreate.com/web/2f814f388962c1a5/stacker-videos/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">Stacker Videos</a> &#183; <a href="https://brand.kreate.com/web/c7199c2662ec5008/social-media/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">Social Media</a> &#183; <a href="https://brand.kreate.com/web/1b24c5f0b805e229/produced/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">Produced</a> &#183; <a href="https://brand.kreate.com/web/5d2cf24bb31bdec7/wse-social-shorts/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">WSE Shorts</a>. Full feed and reposts: <a href="https://www.instagram.com/kreate/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">instagram.com/kreate &#8599;</a></div>
 </section>
 
+<!-- DECKS -->
+<section id="decks">
+  <div class="kicker" style="color:var(--mint)">05 · DECKS &amp; PRESENTATIONS</div>
+  <h2 class="rv">Decks &amp; presentations</h2>
+  <p class="lede rv">The decks people ask for most, straight from their SharePoint folders. These are internal — links open with your Microsoft work sign-in. The newest file in a folder is the current version. Brand PowerPoint masters live on each brand card in section 01.</p>
+  <div class="grid g3">
+    <a class="ctile mi rv" href="https://fmtinc.sharepoint.com/sites/SalesandEngineering/Shared%20Documents/General/Sales/Programs/Home%20Depot/Multi-Product/" target="_blank" rel="noopener"><span class="cn bd sp">MS SIGN-IN</span><div class="cv">Home Depot — customer decks</div><div class="cl">Multi-product · factory specs · intros</div></a>
+    <a class="ctile mi rv" href="https://fmtinc.sharepoint.com/sites/SalesandEngineering/Shared%20Documents/General/Sales/Programs/Home%20Depot/Patio%20Boxes/Presentations/" target="_blank" rel="noopener"><span class="cn bd sp">MS SIGN-IN</span><div class="cv">Home Depot — Patio Boxes</div><div class="cl">Program presentations</div></a>
+    <a class="ctile vi rv" href="https://fmtinc.sharepoint.com/sites/SalesandEngineering/Shared%20Documents/General/Sales/Programs/Configure/POP/" target="_blank" rel="noopener"><span class="cn bd sp">MS SIGN-IN</span><div class="cv">Configure — POP presentations</div><div class="cl">Customer-facing program decks</div></a>
+    <a class="ctile vi rv" href="https://fmtinc.sharepoint.com/sites/ReinhartFoundation/Shared%20Documents/General/Strategy%20Deck/" target="_blank" rel="noopener"><span class="cn bd sp">MS SIGN-IN</span><div class="cv">Strategy Deck folder</div><div class="cl">Master strategy deck + NAM archive</div></a>
+    <a class="ctile am rv" href="https://fmtinc.sharepoint.com/sites/SalesandEngineering/Shared%20Documents/General/Sales/Marketing/Photos%20%26%20Videos" target="_blank" rel="noopener"><span class="cn bd sp">MS SIGN-IN</span><div class="cv">Marketing photos &amp; videos</div><div class="cl">Deck-ready assets on SharePoint</div></a>
+    <a class="ctile rv" href="https://brand.kreate.com/media/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Need it public?</div><div class="cl">Pull the same assets from the brand portal</div></a>
+  </div>
+  <div class="strip rv"><b class="h" style="color:var(--mint)">BEFORE YOU PRESENT —</b> grab the <span class="w">newest file by date</span> in the folder · sending outside the company? use the <span class="w">public portal links</span> in sections 01–04 instead.</div>
+</section>
 <!-- HELP -->
 <section id="help">
-  <div class="kicker" style="color:var(--amber)">05 · HELP</div>
+  <div class="kicker" style="color:var(--amber)">06 · HELP</div>
   <h2 class="rv">Help</h2>
   <div class="grid g3" style="margin-top:14px">
     <div class="panel rv"><div class="ptitle">ONE-CLICK PUBLIC LINKS</div><p style="font-size:14.5px;color:var(--muted)">Every link on this board is a public share page — no account needed, safe to forward to partners, vendors, and press. If a link ever says the collection isn't available, its <span style="color:var(--white);font-weight:700">Publish online</span> toggle got switched off in the portal — flip it back on and the link works again.</p></div>
