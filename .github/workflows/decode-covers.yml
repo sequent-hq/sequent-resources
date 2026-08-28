@@ -1,0 +1,33 @@
+name: decode-covers
+on: push
+permissions:
+  contents: write
+jobs:
+  decode:
+    if: ${{ !contains(github.event.head_commit.message, 'decode-bot') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          changed=0
+          for pair in "social:covers.b64" "assets:assets.b64"; do
+            dir="${pair%%:*}"; file="${pair##*:}"
+            if [ -f "$dir/$file" ]; then
+              cd "$dir"
+              awk '/^===/{f=substr($0,4); next} f!=""{print > (f ".b64part")}' "$file"
+              for p in *.b64part; do
+                base64 -d "$p" > "${p%.b64part}"
+                rm "$p"
+              done
+              rm "$file"
+              cd ..
+              changed=1
+            fi
+          done
+          if [ "$changed" = "1" ]; then
+            git config user.name "decode-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add -A
+            git commit -m "decode-bot: extract encoded assets"
+            git push
+          fi
