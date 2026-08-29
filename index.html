@@ -114,7 +114,7 @@ header.hero .sub{color:var(--muted);font-size:16.5px;margin:10px 0 16px;max-widt
 .bd.sp{color:var(--violet);border-color:var(--violet);background:rgba(123,111,232,.08)}
 
 /* prominent section tabs */
-.tabrow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:24px}
+.tabrow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:24px}
 @media(max-width:1000px){.tabrow{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:760px){.tabrow{grid-template-columns:1fr 1fr}}
 html.mob .tabrow{grid-template-columns:1fr 1fr}
@@ -284,6 +284,99 @@ html.mob #pmodal .note{display:none}
   .vact .vbtn{padding:8px 12px}
   #pmodal .note{display:none}
 }
+
+/* ===== v2: intro ===== */
+#intro{position:fixed;inset:0;z-index:400;background:#04070C;display:none;align-items:center;justify-content:center;flex-direction:column;cursor:pointer}
+html.js #intro.on{display:flex}
+#intro.done{opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s}
+#intro .iburst{width:76px;height:76px;filter:drop-shadow(0 0 18px rgba(0,209,255,.45));animation:ibr .9s cubic-bezier(.2,.85,.25,1) both}
+#intro .iword{margin-top:20px;font-size:30px;font-weight:800;color:#EAF6FB;letter-spacing:14px;padding-left:14px;animation:iwd .8s .12s cubic-bezier(.2,.85,.25,1) both}
+#intro .iline{height:2px;width:200px;margin-top:14px;background:linear-gradient(90deg,#00D1FF,#7B6FE8);transform:scaleX(0);animation:iln .55s .5s cubic-bezier(.2,.85,.25,1) forwards}
+#intro .ihint{margin-top:12px;font-size:10px;letter-spacing:6px;color:#55697D;animation:iwd .6s .7s both}
+@keyframes ibr{from{opacity:0;transform:scale(.55) rotate(-70deg)}to{opacity:1;transform:none}}
+@keyframes iwd{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes iln{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){html.js #intro{display:none!important}}
+/* ===== v2: nav search ===== */
+nav#topnav{overflow:visible;white-space:normal}
+#topnav .tabs{overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+#topnav .tabs::-webkit-scrollbar{display:none}
+#topnav .tabs{display:inline-flex;gap:0}
+.srch{position:relative;display:inline-flex;align-items:center;flex:0 1 auto}
+.srch .si{position:absolute;left:10px;color:var(--muted);font-size:13px;pointer-events:none}
+#q{background:rgba(255,255,255,.04);border:1px solid var(--stroke);border-radius:8px;color:var(--body);padding:7px 12px 7px 28px;font:inherit;font-size:12px;width:200px;transition:width .25s,border-color .25s;outline:none}
+html.light #q{background:rgba(0,60,100,.05)}
+#q:focus{width:250px;border-color:var(--cyan)}
+#q::placeholder{color:var(--faint)}
+#sres{position:absolute;top:calc(100% + 10px);right:0;width:360px;max-height:60vh;overflow:auto;background:var(--panel);border:1px solid var(--stroke2);border-radius:12px;box-shadow:0 22px 60px rgba(0,0,0,.55);display:none;z-index:300;padding:4px 0 8px}
+html.light #sres{box-shadow:0 22px 60px rgba(20,50,80,.22)}
+#sres.open{display:block}
+#sres .sg{padding:10px 14px 4px;font-size:9px;letter-spacing:2.2px;color:var(--faint);font-weight:700}
+#sres .sr{display:flex;align-items:center;gap:10px;padding:8px 14px;cursor:pointer;text-decoration:none}
+#sres .sr:hover,#sres .sr.sel{background:var(--hoverbg)}
+#sres .sr .t{color:var(--body);font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#sres .sr .c{margin-left:auto;flex:0 0 auto;font-size:9px;color:var(--muted);letter-spacing:1.2px}
+#sres .none{padding:14px;font-size:12px;color:var(--muted)}
+html.mob #topnav{flex-wrap:wrap;row-gap:8px}
+html.mob #topnav .tabs{order:5;flex-basis:100%;overflow-x:auto;display:flex}
+html.mob .srch{order:4;flex:1 1 130px}
+html.mob #q,html.mob #q:focus{width:100%}
+html.mob #sres{position:fixed;left:10px;right:10px;top:96px;width:auto}
+/* ===== v2: logo tile grid ===== */
+.lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:12px;margin-top:6px}
+html.mob .lgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.ltile{position:relative;display:flex;align-items:center;justify-content:center;min-height:104px;background:var(--tilegrad);border:1px solid var(--stroke);border-top:3px solid var(--stroke);border-radius:12px;cursor:pointer;padding:16px 18px;transition:transform .22s,border-color .22s,box-shadow .22s}
+.ltile:hover{transform:translateY(-3px);border-color:var(--stroke2);border-top-color:var(--acc);box-shadow:0 12px 26px rgba(0,0,0,.35)}
+html.light .ltile:hover{box-shadow:0 12px 26px rgba(30,60,90,.14)}
+.ltile[aria-expanded="true"]{border-color:var(--acc);border-top-color:var(--acc);box-shadow:0 0 0 1px var(--glow)}
+.ltile img{max-height:46px;max-width:88%;object-fit:contain;display:block}
+.ltile::after{content:"▾";position:absolute;right:11px;bottom:7px;font-size:10px;color:var(--muted);opacity:0;transition:opacity .2s,transform .25s}
+html.js .ltile:hover::after,html.js .ltile[aria-expanded="true"]::after{opacity:.9}
+.ltile[aria-expanded="true"]::after{transform:rotate(180deg)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+html:not(.light) .lg-l{display:none}
+html.light .lg-d{display:none}
+/* ===== v2: brand panels ===== */
+.panels{margin-top:14px}
+.bpanel{overflow:hidden}
+html.js .bpanel{max-height:0;opacity:0;transform:translateY(-8px);transition:max-height .5s cubic-bezier(.2,.85,.25,1),opacity .35s,transform .4s cubic-bezier(.2,.85,.25,1)}
+html.js .bpanel.open{max-height:1400px;opacity:1;transform:none}
+.bpin{background:var(--panelgrad);border:1px solid var(--stroke);border-top:3px solid var(--acc);border-radius:14px;padding:16px 18px 14px;margin-bottom:12px}
+.bpanel.open .bpin{box-shadow:0 14px 34px rgba(0,0,0,.32)}
+html.light .bpanel.open .bpin{box-shadow:0 14px 34px rgba(30,60,90,.13)}
+.bphead{display:flex;align-items:center;gap:14px;padding-bottom:12px;border-bottom:1px solid var(--hairline);margin-bottom:10px;flex-wrap:wrap}
+.bphead img{height:30px;max-width:46%;object-fit:contain}
+.bphead .bpt{font-size:10px;letter-spacing:2.2px;color:var(--muted);text-transform:uppercase}
+.bphead .sp{flex:1}
+.chip.sm{padding:6px 11px;font-size:9.5px}
+.bpx{background:none;border:1px solid var(--stroke);border-radius:8px;color:var(--muted);font-size:11px;padding:6px 10px;cursor:pointer;transition:.2s}
+.bpx:hover{color:var(--body);border-color:var(--stroke2)}
+html:not(.js) .bpx{display:none}
+button.rl{background:none;border:none;width:100%;text-align:left;font:inherit;cursor:pointer}
+.rl.grp .ar{transition:transform .25s}
+.rl.grp[aria-expanded="true"] .ar{transform:rotate(90deg)}
+.rl.sub{padding-left:26px}
+.subl,.lprev{overflow:hidden}
+html.js .subl,html.js .lprev{max-height:0;opacity:0;transition:max-height .4s cubic-bezier(.2,.85,.25,1),opacity .3s}
+html.js .subl.open,html.js .lprev.open{max-height:600px;opacity:1}
+html.mob .bpin{position:relative}
+html.mob .bpx{position:absolute;top:12px;right:14px}
+html.mob .bphead{padding-right:44px}
+/* logo preview chips */
+.lprev{display:flex;gap:10px;flex-wrap:wrap;padding:4px 2px 6px 24px}
+.lchip{display:flex;flex-direction:column;align-items:center;gap:5px;text-decoration:none;margin:4px 0}
+.lchip .cbx{width:118px;height:62px;border-radius:9px;display:flex;align-items:center;justify-content:center;border:1px solid var(--stroke);transition:border-color .2s,transform .2s;padding:8px}
+.lchip:hover .cbx{border-color:var(--acc);transform:translateY(-2px)}
+.cbx.on-dark{background:#0B1322}
+.cbx.on-light{background:#F4F7FA}
+.cbx.on-mid{background:var(--hoverbg)}
+.lchip img{max-width:92px;max-height:38px;object-fit:contain}
+.lchip .cl{font-size:8.5px;letter-spacing:1.6px;color:var(--muted);font-weight:700}
+.lchip .pl{font-size:9px;letter-spacing:1.4px;color:var(--bright);font-weight:800;text-align:center;line-height:1.5}
+/* search-hit flash */
+@keyframes rowflash{0%,60%{background:var(--hoverbg);box-shadow:inset 3px 0 0 var(--cyan)}100%{background:none}}
+.flash{animation:rowflash 1.6s ease-out}
+
 </style>
 </head>
 <body>
@@ -291,13 +384,15 @@ html.mob #pmodal .note{display:none}
 
 <nav id="topnav">
   <span class="brand"><span class="sq"></span><b>SEQUENT</b></span>
-  <a href="#brands">BRANDS</a><a href="#videos">VIDEOS</a>
-  <a href="#photo">PHOTO</a><a href="#social">SOCIAL</a><a href="#decks">DECKS</a><a href="#help">HELP</a>
+  <span class="tabs"><a href="#brands">BRANDS</a><a href="#videos">VIDEOS</a><a href="#photo">PHOTO</a><a href="#social">SOCIAL</a><a href="#help">HELP</a></span>
   <span class="spacer"></span>
-  <button class="tgl jsonly" id="themeTgl" type="button" title="Switch light / dark">◐ THEME</button>
-  <button class="tgl jsonly" id="viewTgl" type="button" title="Switch mobile / desktop layout">▤ MOBILE</button>
+  <span class="srch jsonly"><span class="si">&#8981;</span><input id="q" type="search" placeholder="Search brands, files, videos&hellip;" autocomplete="off" spellcheck="false" aria-label="Search this board">
+  <div id="sres" role="listbox"></div></span>
+  <button class="tgl jsonly" id="themeTgl" type="button" title="Switch light / dark">&#9680; THEME</button>
+  <button class="tgl jsonly" id="viewTgl" type="button" title="Switch mobile / desktop layout">&#9636; MOBILE</button>
 </nav>
 
+<div id="intro" aria-hidden="true"><img class="iburst" src="https://brand.kreate.com/asset/448440ed-b132-457d-8dc2-3e317f159232/thumbnail/webimage-CP-Sequent-Icon" alt=""><div class="iword">SEQUENT</div><div class="iline"></div><div class="ihint">RESOURCES</div></div>
 <main>
 <header class="hero">
   <h1>RESOURCES<span>.</span></h1>
@@ -305,133 +400,25 @@ html.mob #pmodal .note{display:none}
   Every link is a public share link — one click, no account, safe to forward outside the company.</p>
   <div style="display:flex;gap:10px;flex-wrap:wrap">
     <a class="chip" href="https://brand.kreate.com/media/" target="_blank" rel="noopener">OPEN THE BRAND PORTAL ↗</a>
-    <span class="chip">UPDATED AUG 19, 2026</span>
+    <span class="chip">UPDATED AUG 28, 2026</span>
   </div>
   <nav class="tabrow" aria-label="Sections">
-    <a class="tab" href="#brands" style="border-top-color:var(--cyan)"><div class="tn">01</div><div class="tl">Brand Standards &amp; Logos</div><div class="ts">Guidelines · logos · fonts · PPT</div></a>
-    <a class="tab" href="#videos" style="border-top-color:var(--violet)"><div class="tn">02</div><div class="tl">Videos</div><div class="ts">12 corporate films · play here</div></a>
-    <a class="tab" href="#photo" style="border-top-color:var(--bright)"><div class="tn">03</div><div class="tl">Photography</div><div class="ts">Facilities · events · UGC</div></a>
-    <a class="tab" href="#social" style="border-top-color:var(--pink)"><div class="tn">04</div><div class="tl">Social</div><div class="ts">Top short-form · tap to play</div></a>
-    <a class="tab" href="#decks" style="border-top-color:var(--mint)"><div class="tn">05</div><div class="tl">Decks</div><div class="ts">Customer &amp; strategy decks</div></a>
-    <a class="tab" href="#help" style="border-top-color:var(--amber)"><div class="tn">06</div><div class="tl">Help</div><div class="ts">Downloads · sharing · requests</div></a>
+    <a class="tab" href="#brands" style="border-top-color:var(--cyan)"><div class="tn">01</div><div class="tl">Brand Standards &amp; Logos</div><div class="ts">Tap a logo &#183; guidelines &#183; templates</div></a>
+    <a class="tab" href="#videos" style="border-top-color:var(--violet)"><div class="tn">02</div><div class="tl">Videos</div><div class="ts">12 corporate films &#183; play here</div></a>
+    <a class="tab" href="#photo" style="border-top-color:var(--bright)"><div class="tn">03</div><div class="tl">Photography</div><div class="ts">Facilities &#183; events &#183; UGC</div></a>
+    <a class="tab" href="#social" style="border-top-color:var(--pink)"><div class="tn">04</div><div class="tl">Social</div><div class="ts">Top short-form &#183; auto-refreshed</div></a>
+    <a class="tab" href="#help" style="border-top-color:var(--amber)"><div class="tn">05</div><div class="tl">Help</div><div class="ts">Downloads &#183; sharing &#183; requests</div></a>
   </nav>
 </header>
 <!-- BRANDS -->
 <section id="brands">
-  <div class="kicker">01 · BRAND STANDARDS &amp; LOGOS</div>
+  <div class="kicker" style="color:var(--cyan)">01 &#183; BRAND STANDARDS &amp; LOGOS</div>
   <h2 class="rv">Brand standards &amp; logos</h2>
-  <p class="lede rv">Current guidelines, logos, fonts, and templates — one card per brand, same order on every card. Links open the file in its public collection; hit Download there for the original.</p>
-  <div class="grid g3">
-    <div class="bcard rv" style="border-top-color:var(--cyan)">
-      <div class="blogo lg-m"><img style="height:30px" src="https://brand.kreate.com/asset/f893ff7c-7ee4-4384-9980-95fa70c23019/thumbnail/webimage-CP-Sequent-Logo" alt="Sequent" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb">SEQUENT</span></div>
-      <div class="bt">Parent brand</div>
-      <div class="rllist">
-        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/?mediaId=775461C5-88D8-4760-AA0FC29A7441CAAB" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — v1.8</span><span class="mt">PDF</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/?mediaId=F893FF7C-7EE4-4384-998095FA70C23019" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — wordmark &amp; icon</span><span class="mt">SVG</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Fonts — Tobias · Uncut Sans · Geist</span><span class="mt">OTF / TTF</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/?mediaId=DFC01D33-4A04-424F-80534BEA6DA7861C" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand messaging</span><span class="mt">DOCX</span></a>
-        <a class="rl" href="https://sequent-hq.github.io/sequent-resources/backgrounds.html#sequent" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Video call backgrounds</span><span class="mt">GALLERY · 2</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Sequent files</span><span class="mt">19 FILES</span></a>
-      </div>
-    </div>
-    <div class="bcard rv" style="border-top-color:var(--mint)">
-      <div class="blogo lg-w"><img style="height:46px" src="https://brand.kreate.com/asset/adc8dd56-e14b-4b60-b78c-46d4aef1f644/thumbnail/webimage-kreate-logo-white" alt="Kreate" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--mint)">KREATE</span></div>
-      <div class="bt">Manufacturing &amp; retail</div>
-      <div class="rllist">
-        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=2A119BF9-FBCE-4A1D-A1D8D6E1041B786C" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — standards manual</span><span class="mt">PDF</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=ADC8DD56-E14B-4B60-B78C46D4AEF1F644" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — white</span><span class="mt">PNG</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=5A0FD5E3-682A-4F2E-A07197BCC574BD24" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — black</span><span class="mt">PNG</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/c6a08dabfafe5e5d/kreate-logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — full set + K icon</span><span class="mt">6 FILES</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=D02CA42E-714A-4746-A0B8798D589F9F57" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">PowerPoint master</span><span class="mt">PPTX</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=2D6065AB-C240-4FCA-BD94CE00C4A004AF" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">PowerPoint master — Kreate + THD</span><span class="mt">PPTX</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=D92FD393-5BA6-4F4D-895A01D0A088A619" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Agenda template</span><span class="mt">DOCX</span></a>
-        <a class="rl" href="https://sequent-hq.github.io/sequent-resources/backgrounds.html#kreate" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Video call backgrounds</span><span class="mt">GALLERY · 13</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Kreate files</span><span class="mt">7 FILES</span></a>
-      </div>
-    </div>
-    <div class="bcard rv" style="border-top-color:var(--violet)">
-      <div class="blogo lg-w"><img style="height:34px" src="https://brand.kreate.com/asset/b2047ca1-39cf-4271-89cd-b7c3d5f5f981/thumbnail/webimage-configure_rev" alt="Configure" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--violet)">CONFIGURE</span></div>
-      <div class="bt">Storage &amp; organization</div>
-      <div class="rllist">
-        <a class="rl" href="https://brand.kreate.com/web/40509e861d1f7eae/configure-updated-brand-standards---logos/?mediaId=53AFBF10-E32E-4FBD-B866FEF2F586475C" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — v1.2 · Jul 2026</span><span class="mt">PDF</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/291fda07d7429f38/configure-logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — color / black / reversed</span><span class="mt">20 FILES</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/dea99a93447debde/configure-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand assets — icons &amp; wordmarks</span><span class="mt">23 FILES</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/40509e861d1f7eae/configure-updated-brand-standards---logos/?mediaId=C6777516-504A-44AD-9E050FC373F653AB" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">PowerPoint master — Jun 2026</span><span class="mt">PPTX</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/40509e861d1f7eae/configure-updated-brand-standards---logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Configure files</span><span class="mt">48 FILES</span></a>
-      </div>
-    </div>
-    <div class="bcard rv" style="border-top-color:var(--amber)">
-      <div class="blogo lg-w"><img style="height:25px" src="https://brand.kreate.com/asset/712e6804-2178-4fed-90c5-c3c818e2f214/thumbnail/webimage-OGO_Primary_White" alt="OGO" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--amber)">OGO&trade;</span></div>
-      <div class="bt">Mobile storage · Nomad &amp; Origin</div>
-      <div class="rllist">
-        <a class="rl" href="https://brand.kreate.com/web/36000925fde7df10/ogo-logo---brand-guidelines/?mediaId=8BF02137-DA3D-476A-BC46CE3D65756C09" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — PMS · 5.28.26</span><span class="mt">PDF</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/36000925fde7df10/ogo-logo---brand-guidelines/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — OGO · Nomad · Origin</span><span class="mt">33 FILES</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/cdc29c298c968996/ogo--assets-to-share-with-distributors/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Distributor-approved assets</span><span class="mt">EXTERNAL-SAFE</span></a>
-      </div>
-    </div>
-    <div class="bcard rv" style="border-top-color:var(--bright)">
-      <div class="blogo lg-w"><img style="height:109px" src="https://brand.kreate.com/asset/e1e049c2-76d9-434e-ab0b-724e32af6d4f/thumbnail/webimage-Energize-Final-Logo" alt="Energize" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--bright)">ENERGIZE</span></div>
-      <div class="bt">Sub-brand</div>
-      <div class="rllist">
-        <a class="rl" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/?mediaId=D9F1AE60-4966-44CC-922B95FECD0ADE7C" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — v1.4</span><span class="mt">PDF</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — wordmarks &amp; emblems</span><span class="mt">AI / EPS / PNG</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Fonts — Founders Grotesk</span><span class="mt">OTF</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Energize files</span><span class="mt">27 FILES</span></a>
-      </div>
-    </div>
-    <div class="bcard rv" style="border-top-color:var(--pink)">
-      <div class="blogo lg-w"><img style="height:88px" src="https://brand.kreate.com/asset/9014e12c-bdbf-4376-a1d3-610ef2fad9e4/thumbnail/webimage-Faster-Logo" alt="Faster" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--pink)">FASTER</span></div>
-      <div class="bt">Sub-brand</div>
-      <div class="rllist">
-        <a class="rl" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/?mediaId=6A57FAF7-3852-48C9-A73052181709DC10" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand guidelines — v1.1</span><span class="mt">PDF</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — wordmarks &amp; icons</span><span class="mt">AI / EPS / PNG</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Fonts — Founders Grotesk</span><span class="mt">OTF</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Faster files</span><span class="mt">32 FILES</span></a>
-      </div>
-    </div>
-    <div class="bcard rv" style="border-top-color:var(--cyan)">
-      <div class="blogo lg-c"><img style="height:50px" src="https://brand.kreate.com/asset/3ed3cd73-8a38-4844-b300-64611e77fdc2/thumbnail/webimage-Melds-Logo" alt="Melds" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb">MELDS</span></div>
-      <div class="bt">Sub-brand</div>
-      <div class="rllist">
-        <a class="rl" href="https://brand.kreate.com/web/8ac6187f1e5a8288/melds-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — SVG / AI / PDF</span><span class="mt">4 FILES</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/8ac6187f1e5a8288/melds-brand-assets/?mediaId=8F59DEDA-B932-4502-AA458FA4F52FBBEF" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand messaging</span><span class="mt">DOCX</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/8ac6187f1e5a8288/melds-brand-assets/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">All Melds files</span><span class="mt">4 FILES</span></a>
-      </div>
-    </div>
-    <div class="bcard rv" style="border-top-color:var(--violet)">
-      <div class="blogo lg-w"><img style="height:21px" src="https://brand.kreate.com/asset/e98c973b-c333-42bd-ac5d-d9b8b11c9d52/thumbnail/webimage-Nickolas-RGB-White" alt="Nickolas" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--violet);letter-spacing:2.5px">NICKOLAS</span></div>
-      <div class="bt">Brand kit</div>
-      <div class="rllist">
-        <a class="rl" href="https://brand.kreate.com/web/836a7ac951943820/nickolas-logos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — full set</span><span class="mt">19 FILES</span></a>
-        <a class="rl" href="https://fmtinc.sharepoint.com/sites/JoeBryce/Shared Documents/General/Strategy Deck/NAM/Archive/NAM Template.pptx" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">PowerPoint master — 40 master slides</span><span class="mt">PPTX · MS SIGN-IN</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=A08033D8-C388-4E80-81EEE10F4F5B4294" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Agenda template — Nickolas × Kreate</span><span class="mt">DOCX</span></a>
-        <a class="rl" href="https://sequent-hq.github.io/sequent-resources/backgrounds.html#nickolas" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Video call backgrounds</span><span class="mt">GALLERY · 3</span></a>
-      </div>
-    </div>
-    <div class="bcard rv" style="border-top-color:var(--mint)">
-      <div class="blogo lg-w"><img style="height:16px" src="https://brand.kreate.com/asset/43b4ffe3-f33c-4fd2-a704-aae9d80cccf3/thumbnail/webimage-krevera-logo-lfITcyXu-white" alt="Krevera" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--mint);letter-spacing:2.5px">KREVERA</span></div>
-      <div class="bt">Logo set</div>
-      <div class="rllist">
-        <a class="rl" href="https://brand.kreate.com/web/845a4767c8593ce6/krevera-logo/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logos — full set</span><span class="mt">2 FILES</span></a>
-      </div>
-    </div>
-    <div class="bcard rv" style="border-top-color:var(--amber)">
-      <div class="blogo lg-c"><img style="height:28px" src="assets/reinhart-foundation-logo.png" alt="Reinhart Foundation" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="bw bwfb" style="color:var(--amber);letter-spacing:2px">REINHART FOUNDATION</span></div>
-      <div class="bt">Charitable foundation</div>
-      <div class="rllist">
-        <a class="rl" href="assets/reinhart-foundation-logo-stacked.png" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logo — color</span><span class="mt">PNG</span></a>
-        <a class="rl" href="assets/reinhart-foundation-logo-white.png" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Logo — white / reversed</span><span class="mt">PNG</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=FD4EC2AC-D2C1-4C31-9B641F2E9DE14DA0" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand video — with intro</span><span class="mt">4K</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=47FF72EF-60A7-4C9B-ABABEB036E8BD602" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Brand video — broadcast cut</span><span class="mt">4K</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/9d75fe050dc0ff3d/kreate---reinhart-foundation-interview-videos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Interview videos</span><span class="mt">3 FILES</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/67e6d418fa1e48f/2026-reinhart-foundation-golf-outing/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Event photos — 2026 golf outing</span><span class="mt">97 FILES</span></a>
-        <a class="rl" href="https://brand.kreate.com/web/d69f49c2ccdff1c5/foundation-videos/" target="_blank" rel="noopener"><span class="ar">▸</span><span class="nm">Foundation videos</span><span class="mt">2 FILES</span></a>
-      </div>
-    </div>
-  </div>
-  <div class="strip rv"><b class="h">FILE GUIDE —</b> <span class="w">white / reversed</span> logos on dark backgrounds, <span class="w">black</span> on light · <span class="w">EPS / SVG</span> for print and production · <span class="w">PNG</span> for decks and docs.</div>
+  <p class="lede rv">Tap a logo to open that brand&#8217;s kit &mdash; guidelines, logo previews, templates, and every file as a one-click public link.</p>
+  <div class="lgrid"><button class="ltile rv" type="button" data-b="sequent" aria-expanded="false" aria-controls="bp-sequent" title="SEQUENT" style="--acc:var(--cyan)"><img class="lg-d" src="https://brand.kreate.com/asset/f893ff7c-7ee4-4384-9980-95fa70c23019/thumbnail/webimage-CP-Sequent-Logo" alt="" loading="lazy"><img class="lg-l" src="https://brand.kreate.com/asset/f893ff7c-7ee4-4384-9980-95fa70c23019/thumbnail/webimage-CP-Sequent-Logo" alt="" loading="lazy"><span class="vh">SEQUENT &mdash; open brand kit</span></button><button class="ltile rv" type="button" data-b="kreate" aria-expanded="false" aria-controls="bp-kreate" title="KREATE" style="--acc:var(--bright)"><img class="lg-d" src="https://brand.kreate.com/asset/adc8dd56-e14b-4b60-b78c-46d4aef1f644/thumbnail/webimage-kreate-logo-white" alt="" loading="lazy"><img class="lg-l" src="https://brand.kreate.com/asset/5a0fd5e3-682a-4f2e-a071-97bcc574bd24/thumbnail/webimage-kreate-logo-black" alt="" loading="lazy"><span class="vh">KREATE &mdash; open brand kit</span></button><button class="ltile rv" type="button" data-b="configure" aria-expanded="false" aria-controls="bp-configure" title="CONFIGURE" style="--acc:var(--violet)"><img class="lg-d" src="https://brand.kreate.com/asset/b2047ca1-39cf-4271-89cd-b7c3d5f5f981/thumbnail/webimage-configure_rev" alt="" loading="lazy"><img class="lg-l" src="https://brand.kreate.com/asset/efc601d6-7db5-4d34-8b9d-5a0682f4c1cc/thumbnail/webimage-Logo-Configure-Blue" alt="" loading="lazy"><span class="vh">CONFIGURE &mdash; open brand kit</span></button><button class="ltile rv" type="button" data-b="ogo" aria-expanded="false" aria-controls="bp-ogo" title="OGO&trade;" style="--acc:var(--amber)"><img class="lg-d" src="https://brand.kreate.com/asset/712e6804-2178-4fed-90c5-c3c818e2f214/thumbnail/webimage-OGO_Primary_White" alt="" loading="lazy"><img class="lg-l" src="https://brand.kreate.com/asset/6d0221e2-c46b-42be-80de-6a140f1cd948/thumbnail/webimage-OGO_Primary_Color" alt="" loading="lazy"><span class="vh">OGO&trade; &mdash; open brand kit</span></button><button class="ltile rv" type="button" data-b="energize" aria-expanded="false" aria-controls="bp-energize" title="ENERGIZE" style="--acc:var(--amber)"><img class="lg-d" src="https://brand.kreate.com/asset/e1e049c2-76d9-434e-ab0b-724e32af6d4f/thumbnail/webimage-Energize-Final-Logo" alt="" loading="lazy"><img class="lg-l" src="https://brand.kreate.com/asset/afd11639-0efe-4c4a-bdcd-94d5131209d2/thumbnail/webimage-Energize-Final-Logo-01" alt="" loading="lazy"><span class="vh">ENERGIZE &mdash; open brand kit</span></button><button class="ltile rv" type="button" data-b="faster" aria-expanded="false" aria-controls="bp-faster" title="FASTER" style="--acc:var(--mint)"><img class="lg-d" src="https://brand.kreate.com/asset/9014e12c-bdbf-4376-a1d3-610ef2fad9e4/thumbnail/webimage-Faster-Logo" alt="" loading="lazy"><img class="lg-l" src="https://brand.kreate.com/asset/84d36183-f6f0-4b45-bca6-2a9536e49e2d/thumbnail/webimage-Faster-Logo-01" alt="" loading="lazy"><span class="vh">FASTER &mdash; open brand kit</span></button><button class="ltile rv" type="button" data-b="melds" aria-expanded="false" aria-controls="bp-melds" title="MELDS" style="--acc:var(--mint)"><img class="lg-d" src="https://brand.kreate.com/asset/3ed3cd73-8a38-4844-b300-64611e77fdc2/thumbnail/webimage-Melds-Logo" alt="" loading="lazy"><img class="lg-l" src="https://brand.kreate.com/asset/3ed3cd73-8a38-4844-b300-64611e77fdc2/thumbnail/webimage-Melds-Logo" alt="" loading="lazy"><span class="vh">MELDS &mdash; open brand kit</span></button><button class="ltile rv" type="button" data-b="nickolas" aria-expanded="false" aria-controls="bp-nickolas" title="NICKOLAS" style="--acc:var(--pink)"><img class="lg-d" src="https://brand.kreate.com/asset/e98c973b-c333-42bd-ac5d-d9b8b11c9d52/thumbnail/webimage-Nickolas-RGB-White" alt="" loading="lazy"><img class="lg-l" src="https://brand.kreate.com/asset/eebde903-60c2-4149-bb58-4aaa502432f9/thumbnail/webimage-Nickolas-Logo" alt="" loading="lazy"><span class="vh">NICKOLAS &mdash; open brand kit</span></button><button class="ltile rv" type="button" data-b="krevera" aria-expanded="false" aria-controls="bp-krevera" title="KREVERA" style="--acc:var(--violet)"><img class="lg-d" src="https://brand.kreate.com/asset/43b4ffe3-f33c-4fd2-a704-aae9d80cccf3/thumbnail/webimage-krevera-logo-lfITcyXu-white" alt="" loading="lazy"><img class="lg-l" src="https://brand.kreate.com/asset/a5ba7448-7464-434e-a6d0-6731eb447ba3/thumbnail/webimage-krevera-logo-lfITcyXu" alt="" loading="lazy"><span class="vh">KREVERA &mdash; open brand kit</span></button><button class="ltile rv" type="button" data-b="reinhart" aria-expanded="false" aria-controls="bp-reinhart" title="REINHART FOUNDATION" style="--acc:var(--amber)"><img class="lg-d" src="assets/reinhart-foundation-logo-hwhite.png" alt="" loading="lazy"><img class="lg-l" src="assets/reinhart-foundation-logo.png" alt="" loading="lazy"><span class="vh">REINHART FOUNDATION &mdash; open brand kit</span></button></div>
+  <div class="panels"><div class="bpanel" id="bp-sequent" data-brand="SEQUENT" style="--acc:var(--cyan)"><div class="bpin"><div class="bphead"><img class="lg-d" src="https://brand.kreate.com/asset/f893ff7c-7ee4-4384-9980-95fa70c23019/thumbnail/webimage-CP-Sequent-Logo" alt=""><img class="lg-l" src="https://brand.kreate.com/asset/f893ff7c-7ee4-4384-9980-95fa70c23019/thumbnail/webimage-CP-Sequent-Logo" alt=""><span class="bpt">Parent brand</span><span class="sp"></span><a class="chip sm" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/" target="_blank" rel="noopener">ALL FILES &#8599;</a><button class="bpx" type="button" data-b="sequent" aria-label="Close">&#10005;</button></div><div class="rllist"><button class="rl grp" type="button" data-t="lp-sequent" aria-expanded="false"><span class="ar">&#9656;</span><span class="nm">Logos</span><span class="mt">19 FILES</span></button><div class="lprev" id="lp-sequent"><a class="lchip" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/?mediaId=F893FF7C-7EE4-4384-998095FA70C23019" target="_blank" rel="noopener"><span class="cbx on-light"><img src="https://brand.kreate.com/asset/f893ff7c-7ee4-4384-9980-95fa70c23019/thumbnail/webimage-CP-Sequent-Logo" alt="" loading="lazy"></span><span class="cl">PRIMARY</span></a><a class="lchip" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/" target="_blank" rel="noopener"><span class="cbx on-light"><img src="https://brand.kreate.com/asset/448440ed-b132-457d-8dc2-3e317f159232/thumbnail/webimage-CP-Sequent-Icon" alt="" loading="lazy"></span><span class="cl">ICON</span></a><a class="lchip more" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/" target="_blank" rel="noopener"><span class="cbx on-mid"><span class="pl">OPEN<br>FULL SET &#8599;</span></span><span class="cl">FULL SET</span></a></div><a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/?mediaId=775461C5-88D8-4760-AA0FC29A7441CAAB" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Brand guidelines</span><span class="mt">PDF</span></a><a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Fonts &mdash; Tobias &#183; Uncut Sans &#183; Geist</span><span class="mt">OTF / TTF</span></a><a class="rl" href="https://brand.kreate.com/web/65e6c8893bdafaa2/sequent-brand-assets/?mediaId=DFC01D33-4A04-424F-80534BEA6DA7861C" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Brand messaging</span><span class="mt">DOCX</span></a><a class="rl" href="https://sequent-hq.github.io/sequent-resources/backgrounds.html#sequent" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Video call backgrounds</span><span class="mt">GALLERY &#183; 2</span></a></div></div></div><div class="bpanel" id="bp-kreate" data-brand="KREATE" style="--acc:var(--bright)"><div class="bpin"><div class="bphead"><img class="lg-d" src="https://brand.kreate.com/asset/adc8dd56-e14b-4b60-b78c-46d4aef1f644/thumbnail/webimage-kreate-logo-white" alt=""><img class="lg-l" src="https://brand.kreate.com/asset/5a0fd5e3-682a-4f2e-a071-97bcc574bd24/thumbnail/webimage-kreate-logo-black" alt=""><span class="bpt">Manufacturing &amp; retail</span><span class="sp"></span><a class="chip sm" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/" target="_blank" rel="noopener">ALL FILES &#8599;</a><button class="bpx" type="button" data-b="kreate" aria-label="Close">&#10005;</button></div><div class="rllist"><button class="rl grp" type="button" data-t="lp-kreate" aria-expanded="false"><span class="ar">&#9656;</span><span class="nm">Logos</span><span class="mt">6 FILES</span></button><div class="lprev" id="lp-kreate"><a class="lchip" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=ADC8DD56-E14B-4B60-B78C46D4AEF1F644" target="_blank" rel="noopener"><span class="cbx on-dark"><img src="https://brand.kreate.com/asset/adc8dd56-e14b-4b60-b78c-46d4aef1f644/thumbnail/webimage-kreate-logo-white" alt="" loading="lazy"></span><span class="cl">WHITE</span></a><a class="lchip" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=5A0FD5E3-682A-4F2E-A07197BCC574BD24" target="_blank" rel="noopener"><span class="cbx on-light"><img src="https://brand.kreate.com/asset/5a0fd5e3-682a-4f2e-a071-97bcc574bd24/thumbnail/webimage-kreate-logo-black" alt="" loading="lazy"></span><span class="cl">BLACK</span></a><a class="lchip" href="https://brand.kreate.com/web/c6a08dabfafe5e5d/kreate-logos/" target="_blank" rel="noopener"><span class="cbx on-light"><img src="https://brand.kreate.com/asset/66e7efe6-d097-4969-8c7d-23a6e6f72102/thumbnail/webimage-kreate-k-logo-black-transparent" alt="" loading="lazy"></span><span class="cl">K ICON</span></a><a class="lchip more" href="https://brand.kreate.com/web/c6a08dabfafe5e5d/kreate-logos/" target="_blank" rel="noopener"><span class="cbx on-mid"><span class="pl">OPEN<br>FULL SET &#8599;</span></span><span class="cl">FULL SET + K ICON</span></a></div><a class="rl" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=2A119BF9-FBCE-4A1D-A1D8D6E1041B786C" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Brand guidelines</span><span class="mt">PDF</span></a><button class="rl grp" type="button" data-t="tp-kreate" aria-expanded="false"><span class="ar">&#9656;</span><span class="nm">Templates</span><span class="mt">4 FILES</span></button><div class="subl" id="tp-kreate"><a class="rl sub" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=D02CA42E-714A-4746-A0B8798D589F9F57" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">PowerPoint master</span><span class="mt">PPTX</span></a><a class="rl sub" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=2D6065AB-C240-4FCA-BD94CE00C4A004AF" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">PowerPoint master &mdash; Kreate + THD</span><span class="mt">PPTX</span></a><a class="rl sub" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=D92FD393-5BA6-4F4D-895A01D0A088A619" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Agenda template</span><span class="mt">DOCX</span></a><a class="rl sub" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=A08033D8-C388-4E80-81EEE10F4F5B4294" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Agenda template &mdash; Nickolas &#215; Kreate</span><span class="mt">DOCX</span></a></div><a class="rl" href="https://sequent-hq.github.io/sequent-resources/backgrounds.html#kreate" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Video call backgrounds</span><span class="mt">GALLERY &#183; 13</span></a></div></div></div><div class="bpanel" id="bp-configure" data-brand="CONFIGURE" style="--acc:var(--violet)"><div class="bpin"><div class="bphead"><img class="lg-d" src="https://brand.kreate.com/asset/b2047ca1-39cf-4271-89cd-b7c3d5f5f981/thumbnail/webimage-configure_rev" alt=""><img class="lg-l" src="https://brand.kreate.com/asset/efc601d6-7db5-4d34-8b9d-5a0682f4c1cc/thumbnail/webimage-Logo-Configure-Blue" alt=""><span class="bpt">Storage &amp; organization</span><span class="sp"></span><a class="chip sm" href="https://brand.kreate.com/web/40509e861d1f7eae/configure-updated-brand-standards---logos/" target="_blank" rel="noopener">ALL FILES &#8599;</a><button class="bpx" type="button" data-b="configure" aria-label="Close">&#10005;</button></div><div class="rllist"><button class="rl grp" type="button" data-t="lp-configure" aria-expanded="false"><span class="ar">&#9656;</span><span class="nm">Logos</span><span class="mt">20 FILES</span></button><div class="lprev" id="lp-configure"><a class="lchip" href="https://brand.kreate.com/web/291fda07d7429f38/configure-logos/" target="_blank" rel="noopener"><span class="cbx on-light"><img src="https://brand.kreate.com/asset/efc601d6-7db5-4d34-8b9d-5a0682f4c1cc/thumbnail/webimage-Logo-Configure-Blue" alt="" loading="lazy"></span><span class="cl">COLOR</span></a><a class="lchip" href="https://brand.kreate.com/web/291fda07d7429f38/configure-logos/" target="_blank" rel="noopener"><span class="cbx on-dark"><img src="https://brand.kreate.com/asset/b2047ca1-39cf-4271-89cd-b7c3d5f5f981/thumbnail/webimage-configure_rev" alt="" loading="lazy"></span><span class="cl">REVERSED</span></a><a class="lchip more" href="https://brand.kreate.com/web/291fda07d7429f38/configure-logos/" target="_blank" rel="noopener"><span class="cbx on-mid"><span class="pl">OPEN<br>FULL SET &#8599;</span></span><span class="cl">COLOR / BLACK / REVERSED</span></a></div><a class="rl" href="https://brand.kreate.com/web/40509e861d1f7eae/configure-updated-brand-standards---logos/?mediaId=53AFBF10-E32E-4FBD-B866FEF2F586475C" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Brand guidelines</span><span class="mt">PDF</span></a><a class="rl" href="https://brand.kreate.com/web/dea99a93447debde/configure-brand-assets/" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Brand assets &mdash; icons &amp; wordmarks</span><span class="mt">23 FILES</span></a><button class="rl grp" type="button" data-t="tp-configure" aria-expanded="false"><span class="ar">&#9656;</span><span class="nm">Templates</span><span class="mt">1 FILE</span></button><div class="subl" id="tp-configure"><a class="rl sub" href="https://brand.kreate.com/web/40509e861d1f7eae/configure-updated-brand-standards---logos/?mediaId=C6777516-504A-44AD-9E050FC373F653AB" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">PowerPoint master &mdash; Jun 2026</span><span class="mt">PPTX</span></a></div></div></div></div><div class="bpanel" id="bp-ogo" data-brand="OGO&trade;" style="--acc:var(--amber)"><div class="bpin"><div class="bphead"><img class="lg-d" src="https://brand.kreate.com/asset/712e6804-2178-4fed-90c5-c3c818e2f214/thumbnail/webimage-OGO_Primary_White" alt=""><img class="lg-l" src="https://brand.kreate.com/asset/6d0221e2-c46b-42be-80de-6a140f1cd948/thumbnail/webimage-OGO_Primary_Color" alt=""><span class="bpt">Mobile storage &#183; Nomad &amp; Origin</span><span class="sp"></span><a class="chip sm" href="https://brand.kreate.com/web/36000925fde7df10/ogo-logo---brand-guidelines/" target="_blank" rel="noopener">ALL FILES &#8599;</a><button class="bpx" type="button" data-b="ogo" aria-label="Close">&#10005;</button></div><div class="rllist"><button class="rl grp" type="button" data-t="lp-ogo" aria-expanded="false"><span class="ar">&#9656;</span><span class="nm">Logos</span><span class="mt">33 FILES</span></button><div class="lprev" id="lp-ogo"><a class="lchip" href="https://brand.kreate.com/web/36000925fde7df10/ogo-logo---brand-guidelines/" target="_blank" rel="noopener"><span class="cbx on-light"><img src="https://brand.kreate.com/asset/6d0221e2-c46b-42be-80de-6a140f1cd948/thumbnail/webimage-OGO_Primary_Color" alt="" loading="lazy"></span><span class="cl">COLOR</span></a><a class="lchip" href="https://brand.kreate.com/web/36000925fde7df10/ogo-logo---brand-guidelines/" target="_blank" rel="noopener"><span class="cbx on-dark"><img src="https://brand.kreate.com/asset/712e6804-2178-4fed-90c5-c3c818e2f214/thumbnail/webimage-OGO_Primary_White" alt="" loading="lazy"></span><span class="cl">WHITE</span></a><a class="lchip" href="https://brand.kreate.com/web/36000925fde7df10/ogo-logo---brand-guidelines/" target="_blank" rel="noopener"><span class="cbx on-light"><img src="https://brand.kreate.com/asset/2a01c21e-db3d-430e-b066-c8abd640d236/thumbnail/webimage-OGO_Primary_Black" alt="" loading="lazy"></span><span class="cl">BLACK</span></a><a class="lchip more" href="https://brand.kreate.com/web/36000925fde7df10/ogo-logo---brand-guidelines/" target="_blank" rel="noopener"><span class="cbx on-mid"><span class="pl">OPEN<br>FULL SET &#8599;</span></span><span class="cl">OGO &#183; NOMAD &#183; ORIGIN</span></a></div><a class="rl" href="https://brand.kreate.com/web/36000925fde7df10/ogo-logo---brand-guidelines/?mediaId=8BF02137-DA3D-476A-BC46CE3D65756C09" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Brand guidelines</span><span class="mt">PDF</span></a><a class="rl" href="https://brand.kreate.com/web/cdc29c298c968996/ogo--assets-to-share-with-distributors/" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Distributor-approved assets</span><span class="mt">EXTERNAL-SAFE</span></a></div></div></div><div class="bpanel" id="bp-energize" data-brand="ENERGIZE" style="--acc:var(--amber)"><div class="bpin"><div class="bphead"><img class="lg-d" src="https://brand.kreate.com/asset/e1e049c2-76d9-434e-ab0b-724e32af6d4f/thumbnail/webimage-Energize-Final-Logo" alt=""><img class="lg-l" src="https://brand.kreate.com/asset/afd11639-0efe-4c4a-bdcd-94d5131209d2/thumbnail/webimage-Energize-Final-Logo-01" alt=""><span class="bpt">Sub-brand</span><span class="sp"></span><a class="chip sm" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/" target="_blank" rel="noopener">ALL FILES &#8599;</a><button class="bpx" type="button" data-b="energize" aria-label="Close">&#10005;</button></div><div class="rllist"><button class="rl grp" type="button" data-t="lp-energize" aria-expanded="false"><span class="ar">&#9656;</span><span class="nm">Logos</span><span class="mt">AI / EPS / PNG</span></button><div class="lprev" id="lp-energize"><a class="lchip" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/" target="_blank" rel="noopener"><span class="cbx on-light"><img src="https://brand.kreate.com/asset/afd11639-0efe-4c4a-bdcd-94d5131209d2/thumbnail/webimage-Energize-Final-Logo-01" alt="" loading="lazy"></span><span class="cl">GOLD</span></a><a class="lchip" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/" target="_blank" rel="noopener"><span class="cbx on-dark"><img src="https://brand.kreate.com/asset/e1e049c2-76d9-434e-ab0b-724e32af6d4f/thumbnail/webimage-Energize-Final-Logo" alt="" loading="lazy"></span><span class="cl">ON DARK</span></a><a class="lchip more" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/" target="_blank" rel="noopener"><span class="cbx on-mid"><span class="pl">OPEN<br>FULL SET &#8599;</span></span><span class="cl">WORDMARKS &AMP; EMBLEMS</span></a></div><a class="rl" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/?mediaId=D9F1AE60-4966-44CC-922B95FECD0ADE7C" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Brand guidelines</span><span class="mt">PDF</span></a><a class="rl" href="https://brand.kreate.com/web/43bd50b35dbd9e09/energize-brand-assets/" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Fonts &mdash; Founders Grotesk</span><span class="mt">OTF</span></a></div></div></div><div class="bpanel" id="bp-faster" data-brand="FASTER" style="--acc:var(--mint)"><div class="bpin"><div class="bphead"><img class="lg-d" src="https://brand.kreate.com/asset/9014e12c-bdbf-4376-a1d3-610ef2fad9e4/thumbnail/webimage-Faster-Logo" alt=""><img class="lg-l" src="https://brand.kreate.com/asset/84d36183-f6f0-4b45-bca6-2a9536e49e2d/thumbnail/webimage-Faster-Logo-01" alt=""><span class="bpt">Sub-brand</span><span class="sp"></span><a class="chip sm" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/" target="_blank" rel="noopener">ALL FILES &#8599;</a><button class="bpx" type="button" data-b="faster" aria-label="Close">&#10005;</button></div><div class="rllist"><button class="rl grp" type="button" data-t="lp-faster" aria-expanded="false"><span class="ar">&#9656;</span><span class="nm">Logos</span><span class="mt">AI / EPS / PNG</span></button><div class="lprev" id="lp-faster"><a class="lchip" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/" target="_blank" rel="noopener"><span class="cbx on-light"><img src="https://brand.kreate.com/asset/84d36183-f6f0-4b45-bca6-2a9536e49e2d/thumbnail/webimage-Faster-Logo-01" alt="" loading="lazy"></span><span class="cl">CHARCOAL</span></a><a class="lchip" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/" target="_blank" rel="noopener"><span class="cbx on-dark"><img src="https://brand.kreate.com/asset/9014e12c-bdbf-4376-a1d3-610ef2fad9e4/thumbnail/webimage-Faster-Logo" alt="" loading="lazy"></span><span class="cl">WHITE</span></a><a class="lchip more" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/" target="_blank" rel="noopener"><span class="cbx on-mid"><span class="pl">OPEN<br>FULL SET &#8599;</span></span><span class="cl">WORDMARKS &AMP; ICONS</span></a></div><a class="rl" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/?mediaId=6A57FAF7-3852-48C9-A73052181709DC10" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Brand guidelines</span><span class="mt">PDF</span></a><a class="rl" href="https://brand.kreate.com/web/80e696ce336afb24/faster-brand-assets/" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Fonts &mdash; Founders Grotesk</span><span class="mt">OTF</span></a></div></div></div><div class="bpanel" id="bp-melds" data-brand="MELDS" style="--acc:var(--mint)"><div class="bpin"><div class="bphead"><img class="lg-d" src="https://brand.kreate.com/asset/3ed3cd73-8a38-4844-b300-64611e77fdc2/thumbnail/webimage-Melds-Logo" alt=""><img class="lg-l" src="https://brand.kreate.com/asset/3ed3cd73-8a38-4844-b300-64611e77fdc2/thumbnail/webimage-Melds-Logo" alt=""><span class="bpt">Sub-brand</span><span class="sp"></span><a class="chip sm" href="https://brand.kreate.com/web/8ac6187f1e5a8288/melds-brand-assets/" target="_blank" rel="noopener">ALL FILES &#8599;</a><button class="bpx" type="button" data-b="melds" aria-label="Close">&#10005;</button></div><div class="rllist"><button class="rl grp" type="button" data-t="lp-melds" aria-expanded="false"><span class="ar">&#9656;</span><span class="nm">Logos</span><span class="mt">4 FILES</span></button><div class="lprev" id="lp-melds"><a class="lchip" href="https://brand.kreate.com/web/8ac6187f1e5a8288/melds-brand-assets/" target="_blank" rel="noopener"><span class="cbx on-light"><img src="https://brand.kreate.com/asset/3ed3cd73-8a38-4844-b300-64611e77fdc2/thumbnail/webimage-Melds-Logo" alt="" loading="lazy"></span><span class="cl">GREEN</span></a><a class="lchip more" href="https://brand.kreate.com/web/8ac6187f1e5a8288/melds-brand-assets/" target="_blank" rel="noopener"><span class="cbx on-mid"><span class="pl">OPEN<br>FULL SET &#8599;</span></span><span class="cl">SVG / AI / PDF</span></a></div><a class="rl" href="https://brand.kreate.com/web/8ac6187f1e5a8288/melds-brand-assets/?mediaId=8F59DEDA-B932-4502-AA458FA4F52FBBEF" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Brand messaging</span><span class="mt">DOCX</span></a></div></div></div><div class="bpanel" id="bp-nickolas" data-brand="NICKOLAS" style="--acc:var(--pink)"><div class="bpin"><div class="bphead"><img class="lg-d" src="https://brand.kreate.com/asset/e98c973b-c333-42bd-ac5d-d9b8b11c9d52/thumbnail/webimage-Nickolas-RGB-White" alt=""><img class="lg-l" src="https://brand.kreate.com/asset/eebde903-60c2-4149-bb58-4aaa502432f9/thumbnail/webimage-Nickolas-Logo" alt=""><span class="bpt">Brand kit</span><span class="sp"></span><a class="chip sm" href="https://brand.kreate.com/web/836a7ac951943820/nickolas-logos/" target="_blank" rel="noopener">ALL FILES &#8599;</a><button class="bpx" type="button" data-b="nickolas" aria-label="Close">&#10005;</button></div><div class="rllist"><button class="rl grp" type="button" data-t="lp-nickolas" aria-expanded="false"><span class="ar">&#9656;</span><span class="nm">Logos</span><span class="mt">19 FILES</span></button><div class="lprev" id="lp-nickolas"><a class="lchip" href="https://brand.kreate.com/web/836a7ac951943820/nickolas-logos/" target="_blank" rel="noopener"><span class="cbx on-light"><img src="https://brand.kreate.com/asset/eebde903-60c2-4149-bb58-4aaa502432f9/thumbnail/webimage-Nickolas-Logo" alt="" loading="lazy"></span><span class="cl">COLOR</span></a><a class="lchip" href="https://brand.kreate.com/web/836a7ac951943820/nickolas-logos/" target="_blank" rel="noopener"><span class="cbx on-dark"><img src="https://brand.kreate.com/asset/e98c973b-c333-42bd-ac5d-d9b8b11c9d52/thumbnail/webimage-Nickolas-RGB-White" alt="" loading="lazy"></span><span class="cl">WHITE</span></a><a class="lchip more" href="https://brand.kreate.com/web/836a7ac951943820/nickolas-logos/" target="_blank" rel="noopener"><span class="cbx on-mid"><span class="pl">OPEN<br>FULL SET &#8599;</span></span><span class="cl">FULL SET</span></a></div><button class="rl grp" type="button" data-t="tp-nickolas" aria-expanded="false"><span class="ar">&#9656;</span><span class="nm">Templates</span><span class="mt">1 FILE</span></button><div class="subl" id="tp-nickolas"><a class="rl sub" href="https://brand.kreate.com/web/6f321cec2d440390/kreate-brand-assets-and-templates/?mediaId=A08033D8-C388-4E80-81EEE10F4F5B4294" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Agenda template &mdash; Nickolas &#215; Kreate</span><span class="mt">DOCX</span></a></div><a class="rl" href="https://sequent-hq.github.io/sequent-resources/backgrounds.html#nickolas" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Video call backgrounds</span><span class="mt">GALLERY &#183; 3</span></a></div></div></div><div class="bpanel" id="bp-krevera" data-brand="KREVERA" style="--acc:var(--violet)"><div class="bpin"><div class="bphead"><img class="lg-d" src="https://brand.kreate.com/asset/43b4ffe3-f33c-4fd2-a704-aae9d80cccf3/thumbnail/webimage-krevera-logo-lfITcyXu-white" alt=""><img class="lg-l" src="https://brand.kreate.com/asset/a5ba7448-7464-434e-a6d0-6731eb447ba3/thumbnail/webimage-krevera-logo-lfITcyXu" alt=""><span class="bpt">Logo set</span><span class="sp"></span><a class="chip sm" href="https://brand.kreate.com/web/845a4767c8593ce6/krevera-logo/" target="_blank" rel="noopener">ALL FILES &#8599;</a><button class="bpx" type="button" data-b="krevera" aria-label="Close">&#10005;</button></div><div class="rllist"><button class="rl grp" type="button" data-t="lp-krevera" aria-expanded="false"><span class="ar">&#9656;</span><span class="nm">Logos</span><span class="mt">2 FILES</span></button><div class="lprev" id="lp-krevera"><a class="lchip" href="https://brand.kreate.com/web/845a4767c8593ce6/krevera-logo/" target="_blank" rel="noopener"><span class="cbx on-light"><img src="https://brand.kreate.com/asset/a5ba7448-7464-434e-a6d0-6731eb447ba3/thumbnail/webimage-krevera-logo-lfITcyXu" alt="" loading="lazy"></span><span class="cl">BLACK</span></a><a class="lchip" href="https://brand.kreate.com/web/845a4767c8593ce6/krevera-logo/" target="_blank" rel="noopener"><span class="cbx on-dark"><img src="https://brand.kreate.com/asset/43b4ffe3-f33c-4fd2-a704-aae9d80cccf3/thumbnail/webimage-krevera-logo-lfITcyXu-white" alt="" loading="lazy"></span><span class="cl">WHITE</span></a><a class="lchip more" href="https://brand.kreate.com/web/845a4767c8593ce6/krevera-logo/" target="_blank" rel="noopener"><span class="cbx on-mid"><span class="pl">OPEN<br>FULL SET &#8599;</span></span><span class="cl">FULL SET</span></a></div></div></div></div><div class="bpanel" id="bp-reinhart" data-brand="REINHART FOUNDATION" style="--acc:var(--amber)"><div class="bpin"><div class="bphead"><img class="lg-d" src="assets/reinhart-foundation-logo-hwhite.png" alt=""><img class="lg-l" src="assets/reinhart-foundation-logo.png" alt=""><span class="bpt">Charitable foundation</span><span class="sp"></span><a class="chip sm" href="https://brand.kreate.com/web/d69f49c2ccdff1c5/foundation-videos/" target="_blank" rel="noopener">ALL FILES &#8599;</a><button class="bpx" type="button" data-b="reinhart" aria-label="Close">&#10005;</button></div><div class="rllist"><button class="rl grp" type="button" data-t="lp-reinhart" aria-expanded="false"><span class="ar">&#9656;</span><span class="nm">Logos</span><span class="mt">PNG</span></button><div class="lprev" id="lp-reinhart"><a class="lchip" href="assets/reinhart-foundation-logo-stacked.png" target="_blank" rel="noopener"><span class="cbx on-light"><img src="assets/reinhart-foundation-logo-stacked.png" alt="" loading="lazy"></span><span class="cl">COLOR</span></a><a class="lchip" href="assets/reinhart-foundation-logo-white.png" target="_blank" rel="noopener"><span class="cbx on-dark"><img src="assets/reinhart-foundation-logo-white.png" alt="" loading="lazy"></span><span class="cl">WHITE</span></a><a class="lchip more" href="assets/reinhart-foundation-logo-stacked.png" target="_blank" rel="noopener"><span class="cbx on-mid"><span class="pl">OPEN<br>FULL SET &#8599;</span></span><span class="cl">COLOR + WHITE</span></a></div><a class="rl" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=FD4EC2AC-D2C1-4C31-9B641F2E9DE14DA0" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Brand video &mdash; with intro</span><span class="mt">4K</span></a><a class="rl" href="https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=47FF72EF-60A7-4C9B-ABABEB036E8BD602" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Brand video &mdash; broadcast cut</span><span class="mt">4K</span></a><a class="rl" href="https://brand.kreate.com/web/9d75fe050dc0ff3d/kreate---reinhart-foundation-interview-videos/" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Interview videos</span><span class="mt">3 FILES</span></a><a class="rl" href="https://brand.kreate.com/web/67e6d418fa1e48f/2026-reinhart-foundation-golf-outing/" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Event photos &mdash; 2026 golf outing</span><span class="mt">97 FILES</span></a><a class="rl" href="https://brand.kreate.com/web/d69f49c2ccdff1c5/foundation-videos/" target="_blank" rel="noopener"><span class="ar">&#9656;</span><span class="nm">Foundation videos</span><span class="mt">2 FILES</span></a></div></div></div></div>
+  <div class="strip rv"><b class="h">FILE GUIDE &mdash;</b>&nbsp; <b>white / reversed</b> logos on dark backgrounds, <b>black</b> on light &#183; <b>EPS / SVG</b> for print and production &#183; <b>PNG</b> for decks and docs.</div>
 </section>
-<!-- VIDEOS -->
 <section id="videos">
   <div class="kicker" style="color:var(--violet)">02 · VIDEOS</div>
   <h2 class="rv">Videos</h2>
@@ -510,7 +497,7 @@ html.mob #pmodal .note{display:none}
 <section id="social">
   <div class="kicker" style="color:var(--pink)">04 &#183; SOCIAL</div>
   <h2 class="rv">Social</h2>
-  <p class="lede rv">The most-played videos on <a href="https://www.instagram.com/kreate/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">@kreate</a> right now &mdash; our posts and creator reposts, ranked by plays. Numbers are live from Instagram (captured Aug 19, 2026); tap any card to play the reel.</p>
+  <p class="lede rv">The most-played videos on <a href="https://www.instagram.com/kreate/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">@kreate</a> right now &mdash; our posts and creator reposts, ranked by plays. Numbers are live from Instagram (auto-refreshed from our campaign tracker &#183; captured Aug 19, 2026); tap any card to play the reel. Every reel features Kreate-made product.</p>
   <div class="sgrid">
     <a class="igcard hot rv" href="https://www.instagram.com/reel/DbeC8toOdFI/" target="_blank" rel="noopener" data-embed="https://www.instagram.com/reel/DbeC8toOdFI/embed/" data-title="@lelaburris &mdash; Garage cleanup with the new HDX Tote Stacker">
       <span class="igcover"><img src="social/DbeC8toOdFI.jpg" alt="Reel cover" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><span class="res">REEL</span></span>
@@ -581,21 +568,6 @@ html.mob #pmodal .note{display:none}
 </section>
 
 <!-- DECKS -->
-<section id="decks">
-  <div class="kicker" style="color:var(--mint)">05 · DECKS &amp; PRESENTATIONS</div>
-  <h2 class="rv">Decks &amp; presentations</h2>
-  <p class="lede rv">The decks people ask for most, straight from their SharePoint folders. These are internal — links open with your Microsoft work sign-in. The newest file in a folder is the current version. Brand PowerPoint masters live on each brand card in section 01.</p>
-  <div class="grid g3">
-    <a class="ctile mi rv" href="https://fmtinc.sharepoint.com/sites/SalesandEngineering/Shared%20Documents/General/Sales/Programs/Home%20Depot/Multi-Product/" target="_blank" rel="noopener"><span class="cn bd sp">MS SIGN-IN</span><div class="cv">Home Depot — customer decks</div><div class="cl">Multi-product · factory specs · intros</div></a>
-    <a class="ctile mi rv" href="https://fmtinc.sharepoint.com/sites/SalesandEngineering/Shared%20Documents/General/Sales/Programs/Home%20Depot/Patio%20Boxes/Presentations/" target="_blank" rel="noopener"><span class="cn bd sp">MS SIGN-IN</span><div class="cv">Home Depot — Patio Boxes</div><div class="cl">Program presentations</div></a>
-    <a class="ctile vi rv" href="https://fmtinc.sharepoint.com/sites/SalesandEngineering/Shared%20Documents/General/Sales/Programs/Configure/POP/" target="_blank" rel="noopener"><span class="cn bd sp">MS SIGN-IN</span><div class="cv">Configure — POP presentations</div><div class="cl">Customer-facing program decks</div></a>
-    <a class="ctile vi rv" href="https://fmtinc.sharepoint.com/sites/ReinhartFoundation/Shared%20Documents/General/Strategy%20Deck/" target="_blank" rel="noopener"><span class="cn bd sp">MS SIGN-IN</span><div class="cv">Strategy Deck folder</div><div class="cl">Master strategy deck + NAM archive</div></a>
-    <a class="ctile am rv" href="https://fmtinc.sharepoint.com/sites/SalesandEngineering/Shared%20Documents/General/Sales/Marketing/Photos%20%26%20Videos" target="_blank" rel="noopener"><span class="cn bd sp">MS SIGN-IN</span><div class="cv">Marketing photos &amp; videos</div><div class="cl">Deck-ready assets on SharePoint</div></a>
-    <a class="ctile rv" href="https://brand.kreate.com/media/" target="_blank" rel="noopener"><span class="cn bd pub">PUBLIC</span><div class="cv">Need it public?</div><div class="cl">Pull the same assets from the brand portal</div></a>
-  </div>
-  <div class="strip rv"><b class="h" style="color:var(--mint)">BEFORE YOU PRESENT —</b> grab the <span class="w">newest file by date</span> in the folder · sending outside the company? use the <span class="w">public portal links</span> in sections 01–04 instead.</div>
-</section>
-<!-- HELP -->
 <section id="help">
   <div class="kicker" style="color:var(--amber)">06 · HELP</div>
   <h2 class="rv">Help</h2>
@@ -604,7 +576,7 @@ html.mob #pmodal .note{display:none}
     <div class="panel rv"><div class="ptitle">DOWNLOADING FILES</div><p style="font-size:14.5px;color:var(--muted)">Links open the file inside its collection. Select it there and hit <span style="color:var(--white);font-weight:700">Download</span> for the original, full-resolution version. Players on this board stream 720p previews; full-res 4K files run 0.5–2.3&nbsp;GB — download on wifi.</p></div>
     <div class="panel rv"><div class="ptitle">CAN'T FIND IT?</div><p style="font-size:14.5px;color:var(--muted)">Search everything at <a href="https://brand.kreate.com/media/" target="_blank" rel="noopener" style="color:var(--bright);text-decoration:none;font-weight:700">brand.kreate.com ↗</a> (team sign-in). Need something made, or a new collection published? Ask in the marketing channel and it gets added to this board.</p></div>
   </div>
-  <p class="src rv">Sources: Bynder portal (brand.kreate.com) public collection links · team SharePoint · cross-campaign creator ledger for social metrics. Counts and links current as of Aug 19, 2026. Players stream Bynder's public 720p previews; downloads serve full-resolution originals.</p>
+  <p class="src rv">Sources: Bynder portal (brand.kreate.com) public collection links · team SharePoint · cross-campaign creator ledger for social metrics. Counts and links current as of Aug 28, 2026. Players stream Bynder's public 720p previews; downloads serve full-resolution originals.</p>
 </section>
 </main>
 
@@ -759,6 +731,139 @@ safe(function(){
   closeBtn.addEventListener("click",closePlayer);
   veil.addEventListener("click",closePlayer);
   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&modal.classList.contains("open"))closePlayer();});
+});
+
+
+/* ===== v2: intro ===== */
+safe(function(){
+  var iv=document.getElementById("intro");if(!iv)return;
+  var seen=false;try{seen=sessionStorage.getItem("sqIntro")==="1"}catch(e){}
+  var rm=false;try{rm=matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+  if(seen||rm){iv.parentNode.removeChild(iv);return}
+  iv.classList.add("on");document.body.style.overflow="hidden";try{sessionStorage.setItem("sqIntro","1")}catch(e){}
+  var over=false;
+  function end(){if(over)return;over=true;iv.classList.add("done");document.body.style.overflow="";
+    try{sessionStorage.setItem("sqIntro","1")}catch(e){}
+    setTimeout(function(){if(iv.parentNode)iv.parentNode.removeChild(iv)},520);}
+  iv.addEventListener("click",end);
+  setTimeout(end,1600);
+});
+/* ===== v2: brand tiles + panels ===== */
+safe(function(){
+  var tiles=document.querySelectorAll(".ltile");
+  function panelOf(id){return document.getElementById("bp-"+id)}
+  function tileOf(id){return document.querySelector('.ltile[data-b="'+id+'"]')}
+  function closeAll(except){
+    tiles.forEach(function(t){var id=t.getAttribute("data-b");if(id===except)return;
+      t.setAttribute("aria-expanded","false");var p=panelOf(id);if(p)p.classList.remove("open");});
+  }
+  function open(id,scroll){
+    closeAll(id);var t=tileOf(id),p=panelOf(id);if(!t||!p)return;
+    t.setAttribute("aria-expanded","true");p.classList.add("open");
+    if(scroll!==false)setTimeout(function(){safe(function(){p.scrollIntoView({behavior:"smooth",block:"nearest"})})},240);
+  }
+  function toggle(id){
+    var t=tileOf(id);
+    if(t&&t.getAttribute("aria-expanded")==="true"){t.setAttribute("aria-expanded","false");var p=panelOf(id);if(p)p.classList.remove("open");}
+    else open(id);
+  }
+  tiles.forEach(function(t){t.addEventListener("click",function(){toggle(t.getAttribute("data-b"))})});
+  document.querySelectorAll(".bpx").forEach(function(x){x.addEventListener("click",function(){toggle(x.getAttribute("data-b"))})});
+  window.__openBrand=open;
+});
+/* ===== v2: group rows (Logos previews / Templates) ===== */
+safe(function(){
+  document.querySelectorAll(".rl.grp").forEach(function(g){
+    g.addEventListener("click",function(){
+      var el=document.getElementById(g.getAttribute("data-t"));if(!el)return;
+      var on=el.classList.toggle("open");
+      g.setAttribute("aria-expanded",on?"true":"false");
+    });
+  });
+});
+/* ===== v2: search ===== */
+safe(function(){
+  var q=document.getElementById("q"),box=document.getElementById("sres");if(!q||!box)return;
+  var idx=[],sel=-1;
+  function add(t,c,g,fn){idx.push({t:t,c:c,g:g,fn:fn,k:(t+" "+c).toLowerCase()})}
+  document.querySelectorAll(".bpanel").forEach(function(p){
+    var brand=p.getAttribute("data-brand")||"";
+    var bid=p.id.replace("bp-","");
+    add(brand,"BRAND KIT","BRANDS",function(){window.__openBrand&&window.__openBrand(bid)});
+    p.querySelectorAll(".rl").forEach(function(r){
+      var nm=r.querySelector(".nm");if(!nm)return;
+      var label=nm.textContent;
+      add(label,brand,"BRANDS",function(){
+        window.__openBrand&&window.__openBrand(bid);
+        setTimeout(function(){safe(function(){
+          var sc=r.closest(".subl,.lprev");
+          if(sc&&!sc.classList.contains("open")){sc.classList.add("open");var g=sc.previousElementSibling;if(g)g.setAttribute("aria-expanded","true");}
+          r.scrollIntoView({behavior:"smooth",block:"center"});r.classList.remove("flash");void r.offsetWidth;r.classList.add("flash");
+        })},420);
+      });
+    });
+  });
+  document.querySelectorAll("#videos .vcard").forEach(function(v){
+    var c=v.querySelector(".vcover"),t=v.querySelector(".vt");
+    var ti=(c&&c.getAttribute("data-title"))||(t&&t.textContent)||"";
+    if(!ti)return;
+    add(ti,"VIDEO","VIDEOS",function(){v.scrollIntoView({behavior:"smooth",block:"center"});v.classList.remove("flash");void v.offsetWidth;v.classList.add("flash")});
+  });
+  document.querySelectorAll("#photo .ctile").forEach(function(a){
+    var v=a.querySelector(".cv");if(!v)return;
+    add(v.textContent,"PHOTO SET","PHOTOGRAPHY",function(){safe(function(){window.open(a.href,"_blank","noopener")})});
+  });
+  document.querySelectorAll("#social .igcard").forEach(function(cd){
+    var ti=cd.getAttribute("data-title")||"";if(!ti)return;
+    add(ti.replace(/&mdash;|—/g,"-"),"REEL","SOCIAL",function(){cd.scrollIntoView({behavior:"smooth",block:"center"});cd.classList.remove("flash");void cd.offsetWidth;cd.classList.add("flash")});
+  });
+  add("Video call backgrounds — all brands","GALLERY","MORE",function(){safe(function(){window.open("backgrounds.html","_blank","noopener")})});
+  add("Open the brand portal","BRAND.KREATE.COM","MORE",function(){safe(function(){window.open("https://brand.kreate.com/media/","_blank","noopener")})});
+  var items=[];
+  function render(list){
+    box.innerHTML="";sel=-1;items=[];
+    if(!list.length){box.innerHTML='<div class="none">No matches &mdash; try a brand, file type, or product name.</div>';return}
+    var lastG="";
+    list.forEach(function(it){
+      if(it.g!==lastG){lastG=it.g;var h=document.createElement("div");h.className="sg";h.textContent=it.g;box.appendChild(h)}
+      var d=document.createElement("div");d.className="sr";d.setAttribute("role","option");
+      var s1=document.createElement("span");s1.className="t";s1.textContent=it.t.replace(/\s+/g," ").trim();
+      var s2=document.createElement("span");s2.className="c";s2.textContent=it.c;
+      d.appendChild(s1);d.appendChild(s2);
+      d.addEventListener("mousedown",function(e){e.preventDefault();go(it)});
+      box.appendChild(d);items.push({el:d,it:it});
+    });
+  }
+  function go(it){box.classList.remove("open");q.blur();it.fn&&it.fn()}
+  function run(){
+    var v=q.value.toLowerCase().trim();
+    if(v.length<2){box.classList.remove("open");return}
+    var hit=idx.filter(function(i){return i.k.indexOf(v)>-1});
+    hit.sort(function(a,b){
+      var as=a.t.toLowerCase().indexOf(v)===0?0:1,bs=b.t.toLowerCase().indexOf(v)===0?0:1;
+      if(as!==bs)return as-bs;
+      var go_={BRANDS:0,VIDEOS:1,PHOTOGRAPHY:2,SOCIAL:3,MORE:4};
+      return (go_[a.g]||9)-(go_[b.g]||9);
+    });
+    render(hit.slice(0,14));box.classList.add("open");
+  }
+  q.addEventListener("input",run);
+  q.addEventListener("focus",function(){if(q.value.trim().length>=2)run()});
+  q.addEventListener("keydown",function(e){
+    if(e.key==="Escape"){box.classList.remove("open");q.blur();return}
+    if(!box.classList.contains("open"))return;
+    if(e.key==="ArrowDown"||e.key==="ArrowUp"){
+      e.preventDefault();
+      sel+= e.key==="ArrowDown"?1:-1;
+      if(sel<0)sel=items.length-1;if(sel>=items.length)sel=0;
+      items.forEach(function(o,i){o.el.classList.toggle("sel",i===sel);});
+      if(items[sel])items[sel].el.scrollIntoView({block:"nearest"});
+    }else if(e.key==="Enter"){e.preventDefault();if(sel>=0&&items[sel])go(items[sel].it);else if(items[0])go(items[0].it);}
+  });
+  document.addEventListener("click",function(e){if(!e.target.closest||!e.target.closest(".srch"))box.classList.remove("open")});
+  document.addEventListener("keydown",function(e){
+    if((e.metaKey||e.ctrlKey)&&e.key==="k"){e.preventDefault();q.focus();q.select();}
+  });
 });
 
 /* scrollspy */
