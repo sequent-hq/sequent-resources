@@ -737,13 +737,11 @@ safe(function(){
 /* ===== v2: intro ===== */
 safe(function(){
   var iv=document.getElementById("intro");if(!iv)return;
-  var seen=false;try{seen=sessionStorage.getItem("sqIntro")==="1"}catch(e){}
   var rm=false;try{rm=matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
-  if(seen||rm){iv.parentNode.removeChild(iv);return}
-  iv.classList.add("on");document.body.style.overflow="hidden";try{sessionStorage.setItem("sqIntro","1")}catch(e){}
+  if(rm){iv.parentNode.removeChild(iv);return}
+  iv.classList.add("on");document.body.style.overflow="hidden";
   var over=false;
   function end(){if(over)return;over=true;iv.classList.add("done");document.body.style.overflow="";
-    try{sessionStorage.setItem("sqIntro","1")}catch(e){}
     setTimeout(function(){if(iv.parentNode)iv.parentNode.removeChild(iv)},520);}
   iv.addEventListener("click",end);
   setTimeout(end,1600);
