@@ -9,6 +9,7 @@ DATA=json.loads((ROOT/'source/content.json').read_text(encoding='utf-8'))
 BLOCKED=['ade1559657f00829','cdc29c298c968996','b33fb907e847b2ed','7f746c7dded54655']
 COUNTS=Counter(x['brand'] for x in DATA['backgrounds'])
 ICONS={
+ 'share':'<path d="M12 16V3m-5 5 5-5 5 5M5 13v7h14v-7"/>',
  'grid':'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
  'film':'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/>',
  'image':'<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 6-6 4 4 3-3 5 5"/>',
@@ -47,20 +48,46 @@ def nav(page):
     return f'''<aside class="sidebar" id="sidebar"><a class="brand-home" href="index.html" aria-label="Sequent resource library">{logo('sequent')}</a><div class="workspace-label">RESOURCE LIBRARY</div><nav aria-label="Resource sections">{items}</nav><div class="sidebar-bottom"><a class="nav-link" href="{prefix}#help">{icon('help')}<span>Help & downloads</span></a><div class="sidebar-note"><span class="small-label">THE SEQUENT FAMILY</span><p>One place for every brand.</p></div><a class="team-link" href="https://brand.kreate.com/media/" target="_blank" rel="noopener">Team portal {icon('arrow')}<small>Team sign-in required</small></a></div></aside>'''
 def section_heading(number,title,desc,extra=''):
     return f'<div class="section-heading"><div><div class="eyebrow">{number} / THE LIBRARY</div><h2>{title}</h2><p>{desc}</p></div>{extra}</div>'
+def file_size(size):
+    return f'{size/1048576:.1f} MB' if size>=1048576 else f'{max(1,round(size/1024))} KB'
+
+def logo_downloads(brand):
+    assets=brand.get('logos',[])
+    if not assets: return ''
+    formats=sorted(set(a['format'] for a in assets), key=lambda f:({'PNG':0,'SVG':1,'PDF':2,'JPG':3,'AI':4,'EPS':5}.get(f,9),f))
+    filters='<button class="logo-filter active" type="button" data-logo-format="all" aria-pressed="true">All files</button>'
+    filters+=''.join(f'<button class="logo-filter" type="button" data-logo-format="{esc(f)}" aria-pressed="false">{esc(f)}</button>' for f in formats)
+    cards=''
+    for a in assets:
+        name=f"{brand['name']} — {a['label']}"
+        file=esc(a['file'])
+        picture=a.get('preview') or (a['file'] if a['format'] in ['PNG','SVG','JPG','JPEG','WEBP','GIF'] else '')
+        art=f'<img src="{esc(picture)}" alt="{esc(name)}" loading="lazy">' if picture else f'<span class="logo-format-art">{icon("folder")}<b>{esc(a["format"])}</b></span>'
+        dimensions=f' · {a["width"]} × {a["height"]}' if a.get('width') and a.get('height') and a['format']!='SVG' else ''
+        source=external(a['source'],'Source','logo-source') if a.get('source','').startswith('http') else ''
+        download_name=esc(a.get('download_name',Path(a['file']).name))
+        cards+=f'''<article class="logo-file" data-format="{esc(a['format'])}"><a class="logo-preview {esc(a.get('tone','light'))}" href="{file}" download="{download_name}" aria-label="Download {esc(name)} ({esc(a['format'])})">{art}<span class="logo-format-badge">{esc(a['format'])}</span></a><div class="logo-file-body"><h3 class="logo-name">{esc(a['label'])}</h3><p class="logo-meta">{esc(a['format'])}{dimensions} · {file_size(a.get('bytes',0))}</p><div class="logo-file-actions"><a class="button logo-save" href="{file}" download="{download_name}" aria-label="Download {esc(name)} {esc(a['format'])}">{icon('download')}Download</a><button class="icon-button jsonly share-asset" type="button" data-file="{file}" data-title="{esc(name)}" data-filename="{download_name}" data-bytes="{a.get('bytes',0)}" aria-label="Share {esc(name)} {esc(a['format'])}" title="Share file or link">{icon('share')}</button><button class="icon-button jsonly copy-asset" type="button" data-file="{file}" aria-label="Copy direct link to {esc(name)} {esc(a['format'])}" title="Copy direct file link">{icon('copy')}</button></div>{source}</div></article>'''
+    pack=f'<a class="button logo-pack" href="{esc(brand["logo_pack"])}" download>{icon("download")}Download all <span>ZIP</span></a>' if brand.get('logo_pack') else ''
+    default='PNG' if 'PNG' in formats else 'JPG' if 'JPG' in formats else 'SVG' if 'SVG' in formats else 'all'
+    return f'''<div class="logo-downloads" data-default-format="{default}"><div class="logo-downloads-heading"><div><h3>Ready-to-use logos</h3><p><span class="logo-visible-count">{len(assets)} files</span> · Save a logo or share it directly.</p><a class="resource-jump" href="#resources-{brand['slug']}">Guidelines &amp; resources ↓</a></div>{pack}</div><div class="logo-filters jsonly" aria-label="Logo file formats">{filters}</div><div class="logo-grid">{cards}</div></div>'''
+
 def brand_library(focused=False):
     tiles=''
     for b in DATA['brands']:
-        tiles+=f'''<a class="brand-card" href="#bp-{b['slug']}" data-brand="{b['slug']}" data-category="{b['category']}" data-name="{esc(b['name'])}" aria-label="Open {esc(b['name'])} brand kit"><div class="brand-card-top"><span>{'RETAIL PARTNER' if b['category']=='retail' else 'SEQUENT FAMILY'}</span>{icon('arrow')}</div>{logo(b['slug'])}<div class="brand-card-bottom"><span class="brand-card-title">{esc(b['name'])}</span><span class="brand-card-tags">{' · '.join(b['tags'])}</span></div></a>'''
+        quick=f'<div class="brand-quick-actions"><a class="quick-download" href="{esc(b["logo_pack"])}" download aria-label="Download all {esc(b["name"])} logos">{icon("download")}<span>Download logos</span></a><button class="icon-button jsonly share-kit" data-brand="{b["slug"]}" data-title="{esc(b["name"])} brand kit" aria-label="Share {esc(b["name"])} brand kit" title="Share brand kit">{icon("share")}</button></div>' if b.get('logo_pack') else ''
+        tiles+=f'''<article class="brand-card" data-brand="{b['slug']}" data-category="{b['category']}" data-name="{esc(b['name'])}"><a class="brand-open" href="#bp-{b['slug']}" data-brand="{b['slug']}" aria-label="Open {esc(b['name'])} brand kit"><div class="brand-card-top"><span>{'RETAIL PARTNER' if b['category']=='retail' else 'SEQUENT FAMILY'}</span>{icon('arrow')}</div>{logo(b['slug'])}<div class="brand-card-bottom"><span class="brand-card-title">{esc(b['name'])}</span><span class="brand-card-tags">{' · '.join(b['tags'])}</span></div></a>{quick}</article>'''
     panels=''
     for b in DATA['brands']:
-        content=b['content']
+        content=b.get('resource_content',b['content'])
         if b['slug'] in COUNTS:
             content=re.sub(r'GALLERY\s*[·•]\s*\d+',f"GALLERY · {COUNTS[b['slug']]}",content)
         for key in BLOCKED:
             content=re.sub(r'<a\b([^>]*href="[^"]*'+key+r'[^"]*"[^>]*)>(.*?)</a>',r'<span class="rl unavailable" aria-disabled="true">\2<span class="availability">Unavailable</span></span>',content,flags=re.S)
-        panels+=f'''<section class="brand-panel" id="bp-{b['slug']}" data-name="{esc(b['name'])}"><div class="panel-art">{logo(b['slug'])}</div><div class="panel-heading"><div><div class="eyebrow">{'RETAIL PARTNER' if b['category']=='retail' else 'SEQUENT FAMILY'}</div><h2>{esc(b['name'])}</h2><p>{esc(b['description'])}</p></div>{external(b['collection'],'All files','button small') if b['collection'] else ''}</div>{content}</section>'''
+        panels+=f'''<section class="brand-panel" id="bp-{b['slug']}" data-name="{esc(b['name'])}"><div class="panel-art">{logo(b['slug'])}</div><div class="panel-heading"><div><div class="eyebrow">{'RETAIL PARTNER' if b['category']=='retail' else 'SEQUENT FAMILY'}</div><h2>{esc(b['name'])}</h2><p>{esc(b['description'])}</p></div>{external(b['collection'],'Source collection','button small') if b['collection'] else ''}</div>{logo_downloads(b)}{content}</section>'''
     view_link='' if focused else '<a class="text-link" href="brands.html">Brand-only view '+icon('arrow')+'</a>'
-    return f'''<section id="brands" class="library-section">{section_heading('01','Find your brand.','Logos, guidelines, templates, and the details that make us recognizable.', view_link)}<div class="library-toolbar"><div class="filters jsonly" aria-label="Filter brands"><button type="button" class="filter active" data-filter="all" aria-pressed="true">All brands <span>16</span></button><button type="button" class="filter" data-filter="family" aria-pressed="false">Sequent family <span>13</span></button><button type="button" class="filter" data-filter="retail" aria-pressed="false">Retail partners <span>3</span></button></div><span class="results-count" id="brandCount" aria-live="polite">16 collections</span></div><div class="brand-grid">{tiles}</div><div id="panelStore">{panels}</div><div class="library-footnote">{icon('folder')} Looking for presentation masters or fonts? Open a brand kit to explore its files.</div></section>'''
+    return f'''<section id="brands" class="library-section">{section_heading('01','Find your brand.','Download a logo kit in one click. Open a brand for individual files and guidelines.', view_link)}<div class="library-toolbar"><div class="filters jsonly" aria-label="Filter brands"><button type="button" class="filter active" data-filter="all" aria-pressed="true">All brands <span>16</span></button><button type="button" class="filter" data-filter="family" aria-pressed="false">Sequent family <span>13</span></button><button type="button" class="filter" data-filter="retail" aria-pressed="false">Retail partners <span>3</span></button></div><span class="results-count" id="brandCount" aria-live="polite">16 collections</span></div><div class="brand-grid">{tiles}</div><div id="panelStore">{panels}</div><div class="library-footnote">{icon('download')} Logo downloads stay here. Original source collections are available inside each kit.</div></section>'''
+
+
 def collection_cards(items,ico):
     cards=''
     for c in items:

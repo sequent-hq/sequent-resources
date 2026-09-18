@@ -10,6 +10,9 @@ Open `index.html` to review locally, or serve this folder with any static web se
 
 ## What changed
 
+- One-click logo ZIPs for all 16 brand kits and 214 individually downloadable files, hosted on this site.
+- PNG/SVG/JPG and design-file filters, lightweight previews, direct file links, and quick access to guidelines.
+- Native sharing where supported, with file sharing when supported and prepared; other browsers copy a shareable link. Source collections remain available as secondary links.
 - Calmer dark and light themes, with the original white and full-color brand marks.
 - Persistent section navigation, resource search, family/retailer filters, and responsive layouts.
 - Accessible brand drawers with shareable links, native expandable file groups, and keyboard controls.
@@ -41,3 +44,9 @@ Social metrics retain the original August 19, 2026 snapshot date; they are not p
 The existing GitHub Pages routes are preserved: https://sequent-hq.github.io/sequent-resources/ is the full board, https://sequent-hq.github.io/sequent-resources/brands.html is the focused brand standards and logos page, and backgrounds.html is the background gallery. Brand kits keep their established assets and local download paths.
 
 Checked: local resource paths, fragment targets, duplicate IDs, brand-page parity, search, filters, representative drawer groups, themes, keyboard shortcut, mobile overflow at 390px and 320px, and a script-free fallback.
+
+## Logo files — September 17, 2026
+
+The catalog contains 209 existing/source original files and five clearly labeled source-provided web renditions. Four blank white JPGs from the OGO source collection are excluded; their usable PNG/EPS variants remain. Filenames, formats, dimensions, and file sizes are shown in each kit. Per-brand ZIPs contain the same selectable files. Small or low-resolution source logos are retained at their real resolution; no logos were redrawn or upscaled. Downloads and previews are local. Source links still point to the original brand collections.
+
+Add or update logo records under each brand's `logos` array and keep `logo_pack` ZIP contents in sync, then rebuild. The share button uses the device share menu when supported; the copy button always copies the direct local file URL. The library never sends files to a recipient automatically.
