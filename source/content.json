@@ -2148,10 +2148,10 @@
       "logos": [
         {
           "file": "files/logos/krevera/krevera-logo-lfitcyxu.svg",
-          "label": "Logo lfITcyXu",
+          "label": "Black",
           "format": "SVG",
           "bytes": 3050,
-          "tone": "dark",
+          "tone": "light",
           "source": "https://brand.kreate.com/web/845a4767c8593ce6/krevera-logo/?mediaId=A5BA7448-7464-434E-A6D06731EB447BA3",
           "download_name": "krevera-logo-lfITcyXu.svg",
           "kind": "original",
@@ -2159,7 +2159,7 @@
         },
         {
           "file": "files/logos/krevera/krevera-logo-lfitcyxu-white.svg",
-          "label": "Logo lfITcyXu white",
+          "label": "White",
           "format": "SVG",
           "bytes": 2770,
           "tone": "dark",
@@ -2170,10 +2170,10 @@
         },
         {
           "file": "files/logos/krevera/krevera-logo-lfitcyxu-web-preview.jpg",
-          "label": "Logo lfITcyXu · JPG preview",
+          "label": "Black · JPG preview",
           "format": "JPG",
           "bytes": 19168,
-          "tone": "dark",
+          "tone": "light",
           "source": "https://brand.kreate.com/web/845a4767c8593ce6/krevera-logo/?mediaId=A5BA7448-7464-434E-A6D06731EB447BA3",
           "download_name": "krevera-logo-lfITcyXu — Bynder web preview.jpg",
           "kind": "rendition",

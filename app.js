@@ -26,6 +26,7 @@
   }));
   let toastTimer;
   const notify = message => {
+    (document.querySelector('dialog[open]') || document.body).append($('#toast'));
     $('#toast').textContent = message;
     $('#toast').classList.add('show');
     clearTimeout(toastTimer);
@@ -58,14 +59,14 @@
     const panel = document.getElementById(`bp-${slug}`);
     if (!panel || !store) return;
     restorePanel();
-    currentPanel = panel; lastTrigger = trigger || $(`.brand-card[data-brand="${slug}"]`);
+    currentPanel = panel; lastTrigger = trigger || $(`.brand-open[data-brand="${slug}"]`);
     $('#dialogLabel').textContent = `${panel.dataset.name} / Brand resources`;
     dialogContent.append(panel);
     if (!dialog.open) dialog.showModal();
     dialog.scrollTop = 0;
     if (updateHash) history.replaceState(null, '', `#bp-${slug}`);
   }
-  $$('.brand-card').forEach(a => a.addEventListener('click', e => {
+  $$('.brand-open').forEach(a => a.addEventListener('click', e => {
     if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
     e.preventDefault(); openBrand(a.dataset.brand, a);
   }));
@@ -76,6 +77,59 @@
     if (!currentPanel) return;
     const url = new URL('brands.html', location.href);
     url.hash = currentPanel.id; copy(url.href);
+  });
+  const sharedFiles = new Map();
+  const mimeTypes = { png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', svg: 'image/svg+xml', pdf: 'application/pdf' };
+  const prepareFile = async button => {
+    const path = button.dataset.file;
+    if (!navigator.canShare || sharedFiles.has(path) || Number(button.dataset.bytes) > 5 * 1024 * 1024) return;
+    sharedFiles.set(path, null);
+    try {
+      const response = await fetch(path);
+      if (!response.ok) throw new Error('File unavailable');
+      const blob = await response.blob();
+      const extension = path.split('.').pop().toLowerCase();
+      sharedFiles.set(path, new File([blob], button.dataset.filename, { type: mimeTypes[extension] || blob.type }));
+    } catch (_) { sharedFiles.delete(path); }
+  };
+  async function shareResource(title, path, file) {
+    const url = new URL(path, location.href).href;
+    if (!navigator.share) { await copy(url); return; }
+    try {
+      const data = file && navigator.canShare?.({ files: [file] }) ? { title, files: [file] } : { title, url };
+      await navigator.share(data);
+    } catch (error) {
+      if (error.name !== 'AbortError') await copy(url);
+    }
+  }
+  $$('.share-kit').forEach(button => button.addEventListener('click', () => shareResource(button.dataset.title, `brands.html#bp-${button.dataset.brand}`)));
+  $$('.share-asset').forEach(button => button.addEventListener('click', () => shareResource(button.dataset.title, button.dataset.file, sharedFiles.get(button.dataset.file))));
+  $$('.copy-asset').forEach(button => button.addEventListener('click', () => copy(new URL(button.dataset.file, location.href).href)));
+  $$('.resource-jump').forEach(link => link.addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById(link.getAttribute('href').slice(1))?.scrollIntoView({ block: 'start' });
+  }));
+  if ('IntersectionObserver' in window && navigator.canShare) {
+    const ready = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) { prepareFile(entry.target); ready.unobserve(entry.target); }
+    }), { rootMargin: '100px' });
+    $$('.share-asset').forEach(button => ready.observe(button));
+  }
+  $$('.logo-downloads').forEach(section => {
+    const applyFormat = format => {
+      $$('.logo-filter', section).forEach(button => {
+        button.classList.toggle('active', button.dataset.logoFormat === format);
+        button.setAttribute('aria-pressed', String(button.dataset.logoFormat === format));
+      });
+      let count = 0;
+      $$('.logo-file', section).forEach(card => {
+        card.hidden = format !== 'all' && card.dataset.format !== format;
+        if (!card.hidden) count++;
+      });
+      $('.logo-visible-count', section).textContent = `${count} file${count === 1 ? '' : 's'}`;
+    };
+    $$('.logo-filter', section).forEach(button => button.addEventListener('click', () => applyFormat(button.dataset.logoFormat)));
+    applyFormat(section.dataset.defaultFormat);
   });
   const fromHash = () => {
     if (location.hash.startsWith('#bp-')) openBrand(location.hash.slice(4), null, false);
@@ -127,10 +181,15 @@
   $$('.brand-panel').forEach(panel => {
     const slug = panel.id.slice(3), name = panel.dataset.name;
     index.push({ title: name, context: 'Brand kit', slug, text: name.toLowerCase() });
+    $$('.logo-file', panel).forEach(card => {
+      const a = $('.logo-save', card), title = `${$('.logo-name', card).textContent.trim()} · ${card.dataset.format}`;
+      index.push({ title, context: `${name} · Download logo`, href: a.getAttribute('href'), download: a.getAttribute('download'), text: `${name} logo logos ${title}`.toLowerCase() });
+    });
     $$('a[href]', panel).forEach(a => {
+      if (a.closest('.logo-file')) return;
       const title = $('.nm', a)?.textContent.trim() || $('.cl', a)?.textContent.trim() || a.textContent.trim();
       if (!title) return;
-      index.push({ title, context: name, href: a.getAttribute('href'), text: `${name} ${title} ${$('.mt', a)?.textContent || ''}`.toLowerCase() });
+      index.push({ title, context: name, href: a.getAttribute('href'), download: a.getAttribute('download'), text: `${name} ${title} ${$('.mt', a)?.textContent || ''}`.toLowerCase() });
     });
   });
   $$('.video-card, a.collection-card, .social-card, .background-card').forEach(card => {
@@ -151,6 +210,7 @@
     $('#searchCount').textContent = `${unique.length} result${unique.length === 1 ? '' : 's'}${unique.length > 40 ? ' · showing the first 40' : ''}`;
     unique.slice(0, 40).forEach(row => {
       const a = document.createElement('a'); a.className = 'search-result'; a.href = row.slug ? `#bp-${row.slug}` : row.href;
+      if (row.download !== undefined && row.download !== null) a.setAttribute('download', row.download);
       const span = document.createElement('span'), name = document.createElement('b'), meta = document.createElement('small');
       name.textContent = row.title; meta.textContent = row.context; span.append(name, meta); a.append(span);
       if (row.slug) a.addEventListener('click', e => { e.preventDefault(); clearSearch(); openBrand(row.slug, search); });
