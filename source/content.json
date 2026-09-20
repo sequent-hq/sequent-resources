@@ -2887,6 +2887,19 @@
       "featured": true
     },
     {
+      "title": "Kreate Resin Facility",
+      "description": "Inside Kreate Resin · 2:51",
+      "src": "https://brand.kreate.com/asset/bd310a51-acbe-4e44-8184-d71441a06728/mp4/Kreate-Video-v02.mp4",
+      "download": "https://brand.kreate.com/web/724e73705e444ff7/kreate-resin-facility/?mediaId=BD310A51-ACBE-4E44-8184D71441A06728",
+      "collection": "https://brand.kreate.com/web/724e73705e444ff7/kreate-resin-facility/",
+      "image": "https://brand.kreate.com/asset/bd310a51-acbe-4e44-8184-d71441a06728/thumbnail/webimage-Kreate-Video-v02",
+      "resolution": "1080p original",
+      "brand": "kreate",
+      "original_width": 1920,
+      "original_height": 1080,
+      "original_bytes": 220614607
+    },
+    {
       "title": "Kreate Capabilities Reel",
       "description": "Capabilities · full res 143 MB",
       "src": "https://brand.kreate.com/asset/9c768d34-0ca9-47fe-9ec4-c3b5f51a445a/mp4/Kreate-Capabilities-Reel.mp4",
@@ -3015,7 +3028,8 @@
       "title": "Kreate Resin Facility",
       "description": "1 file · resin plant video",
       "url": "https://brand.kreate.com/web/724e73705e444ff7/kreate-resin-facility/",
-      "brand": "kreate"
+      "brand": "kreate",
+      "show_as_video": true
     },
     {
       "title": "Ranch Road Brand Anthem",

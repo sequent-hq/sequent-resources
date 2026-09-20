@@ -53,6 +53,13 @@ Add or update logo records under each brand's `logos` array and keep `logo_pack`
 
 ## Videos and social — September 19, 2026
 
-The film library now starts with the featured Sequent Platform Video (5:45, 720p preview, 4K original), followed by 10 Kreate films and two Reinhart Foundation films. Related Kreate and foundation collections appear with their brand. All other product and brand collections remain available below.
+The film library now starts with the featured Sequent Platform Video (5:45, 720p preview, 4K original), followed by 11 Kreate films and two Reinhart Foundation films. Related Kreate and foundation collections appear with their brand. All other product and brand collections remain available below.
 
 Kreate Instagram (@kreate) and TikTok (@kreateusa) have direct links in the main navigation and social section. These profiles were verified through Kreate's own profile/Linktree. The social section features Dad Social's paid HDX Tote Stacker collaboration (July 29, 2026), then eight recent reels published August 28–September 9. The previous eight collaborations remain in an expandable group. Dates and collaboration identities were verified on the original Instagram posts; the featured Dad Social post is not labeled the newest post. Covers are local copies of the observed post thumbnails, and reel links open the originals on Instagram.
+
+
+## Resin film and original playback
+
+Kreate Resin Facility is the first Kreate film, with its official thumbnail and the same in-board player as the other films. Its collection remains available from the card and player. The film is 2:51, with a 1920 x 1080 original. The Resin collection record is retained but its duplicate collection tile is hidden.
+
+Original playback is pending Bynder access: all 14 permanent original URLs currently return `404 Asset not public`. Public collections allow original downloads through signed links that expire after 15 minutes. The board continues using the durable 720p preview URLs; no expired links or false full-resolution playback claims were introduced. Once the originals have working public streaming URLs, update each video src, verify playback dimensions, and rebuild.

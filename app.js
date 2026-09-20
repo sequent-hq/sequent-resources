@@ -154,12 +154,12 @@
     if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
     e.preventDefault(); $('#videoTitle').textContent = a.dataset.title;
     $('#videoDownload').href = a.dataset.download;
-    $('#videoError').hidden = true; player.src = a.dataset.video;
+    $('#videoError').hidden = true; player.poster = a.dataset.poster || ''; player.src = a.dataset.video;
     videoDialog.showModal(); player.play().catch(() => {});
   }));
   player?.addEventListener('error', () => { $('#videoError').hidden = false; });
   $('#closeVideo')?.addEventListener('click', () => videoDialog.close());
-  videoDialog?.addEventListener('close', () => { player.pause(); player.removeAttribute('src'); player.load(); });
+  videoDialog?.addEventListener('close', () => { player.pause(); player.removeAttribute('src'); player.removeAttribute('poster'); player.load(); });
   videoDialog?.addEventListener('click', e => {
     const r = videoDialog.getBoundingClientRect();
     if (e.target === videoDialog && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)) videoDialog.close();
