@@ -6,7 +6,7 @@ A redesigned, static resource library with three entry points:
 - `brands.html` — brand kits and retail partner standards.
 - `backgrounds.html` — 20 downloadable call backgrounds.
 
-Open `index.html` to review locally, or serve this folder with any static web server. Keep the folders together so local downloads and images work. External collections, previews, and social links require an internet connection.
+Open `index.html` to review locally, or serve this folder with any static web server. Keep the folders together so local downloads and images work. External collections, video playback, and social links require an internet connection.
 
 ## What changed
 
@@ -16,7 +16,7 @@ Open `index.html` to review locally, or serve this folder with any static web se
 - Calmer dark and light themes, with the original white and full-color brand marks.
 - Persistent section navigation, resource search, family/retailer filters, and responsive layouts.
 - Accessible brand drawers with shareable links, native expandable file groups, and keyboard controls.
-- Video previews, downloadable local assets, and a filterable background gallery.
+- Full-resolution video playback, downloadable local assets, and a filterable background gallery.
 - One shared content source for both brand pages; gallery counts are derived automatically.
 - Content remains accessible without JavaScript.
 
@@ -53,13 +53,15 @@ Add or update logo records under each brand's `logos` array and keep `logo_pack`
 
 ## Videos and social — September 19, 2026
 
-The film library now starts with the featured Sequent Platform Video (5:45, 720p preview, 4K original), followed by 11 Kreate films and two Reinhart Foundation films. Related Kreate and foundation collections appear with their brand. All other product and brand collections remain available below.
+The film library now starts with the featured Sequent Platform Video (5:45, 4K), followed by 11 Kreate films and two Reinhart Foundation films. Related Kreate and foundation collections appear with their brand. All other product and brand collections remain available below.
 
 Kreate Instagram (@kreate) and TikTok (@kreateusa) have direct links in the main navigation and social section. These profiles were verified through Kreate's own profile/Linktree. The social section features Dad Social's paid HDX Tote Stacker collaboration (July 29, 2026), then eight recent reels published August 28–September 9. The previous eight collaborations remain in an expandable group. Dates and collaboration identities were verified on the original Instagram posts; the featured Dad Social post is not labeled the newest post. Covers are local copies of the observed post thumbnails, and reel links open the originals on Instagram.
 
 
-## Resin film and original playback
+## Full-resolution film playback
 
-Kreate Resin Facility is the first Kreate film, with its official thumbnail and the same in-board player as the other films. Its collection remains available from the card and player. The film is 2:51, with a 1920 x 1080 original. The Resin collection record is retained but its duplicate collection tile is hidden.
+The 14 film cards use stable GitHub release asset URLs for in-board playback at each source file's native dimensions: 1080p or 4K. Kreate Resin Facility is first in Kreate and uses its official source thumbnail, which also appears while its player loads. Play, Watch film, and video search results use the same player. Each film has a shareable board link; shared links open that film with native playback controls. Download video saves the hosted MP4, and Open collection retains the source destination.
 
-Original playback is pending Bynder access: all 14 permanent original URLs currently return `404 Asset not public`. Public collections allow original downloads through signed links that expire after 15 minutes. The board continues using the durable 720p preview URLs; no expired links or false full-resolution playback claims were introduced. Once the originals have working public streaming URLs, update each video src, verify playback dimensions, and rebuild.
+Compatible H.264/AAC originals are retained without re-encoding where possible. Browser-incompatible originals and the oversized Eco Actions master receive high-quality H.264/AAC MP4 playback copies at the original dimensions and frame rate, with metadata at the start of the file for quick playback. The original master files remain available in Bynder. There is no lower-resolution automatic fallback and no expiring signed URL in the published content.
+
+Large video files live in the `video-library-2026-09` GitHub release, separate from the static Pages repository. Their original source metadata and hosted-file checksums are recorded in the content source. To replace a film, publish and verify its new playback asset before changing the corresponding src and rebuilding. Keep original width/height and actual playback dimensions equal. Do not use Bynder's /mp4/ preview derivative as a full-resolution source.

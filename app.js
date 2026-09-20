@@ -132,10 +132,10 @@
     applyFormat(section.dataset.defaultFormat);
   });
   const fromHash = () => {
+    if (!location.hash.startsWith('#film-') && videoDialog?.open) closeVideoForNavigation();
     if (location.hash.startsWith('#bp-')) openBrand(location.hash.slice(4), null, false);
     else if (dialog?.open) dialog.close();
   };
-  fromHash(); window.addEventListener('hashchange', fromHash);
   $$('.filter[data-filter]').forEach(button => button.addEventListener('click', () => {
     $$('.filter[data-filter]').forEach(b => { b.classList.toggle('active', b === button); b.setAttribute('aria-pressed', String(b === button)); });
     let count = 0;
@@ -150,21 +150,53 @@
   bgFilters.forEach(b => b.addEventListener('click', () => { filterBackgrounds(b.dataset.bg); history.replaceState(null, '', b.dataset.bg === 'all' ? location.pathname : `#${b.dataset.bg}`); }));
   if (bgFilters.some(b => b.dataset.bg === location.hash.slice(1))) filterBackgrounds(location.hash.slice(1));
   const videoDialog = $('#videoDialog'), player = $('video', videoDialog);
+  let currentVideoLink = '', currentVideoBrand = '';
+  let videoReturnFocus = null, videoClosedForNavigation = false;
+  function openVideo(a, autoplay = true, returnFocus = a) {
+    if (dialog?.open) dialog.close();
+    videoReturnFocus = returnFocus;
+    videoClosedForNavigation = false;
+    $('#videoTitle').textContent = a.dataset.title;
+    $('#videoDownload').href = a.dataset.video;
+    $('#videoCollection').href = a.dataset.download;
+    currentVideoLink = new URL(`./#${a.dataset.videoId}`, location.href).href;
+    currentVideoBrand = a.dataset.videoBrand;
+    $('#videoError').hidden = true; player.poster = a.dataset.poster || ''; player.src = a.dataset.video;
+    if (!videoDialog.open) videoDialog.showModal();
+    if (autoplay) player.play().catch(() => {});
+  }
+  function closeVideoForNavigation() {
+    videoClosedForNavigation = true;
+    player.pause();
+    videoDialog.close();
+  }
   $$('[data-video]').forEach(a => a.addEventListener('click', e => {
     if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
-    e.preventDefault(); $('#videoTitle').textContent = a.dataset.title;
-    $('#videoDownload').href = a.dataset.download;
-    $('#videoError').hidden = true; player.poster = a.dataset.poster || ''; player.src = a.dataset.video;
-    videoDialog.showModal(); player.play().catch(() => {});
+    e.preventDefault(); openVideo(a);
   }));
   player?.addEventListener('error', () => { $('#videoError').hidden = false; });
   $('#closeVideo')?.addEventListener('click', () => videoDialog.close());
-  videoDialog?.addEventListener('close', () => { player.pause(); player.removeAttribute('src'); player.removeAttribute('poster'); player.load(); });
+  videoDialog?.addEventListener('close', () => {
+    player.pause(); player.removeAttribute('src'); player.removeAttribute('poster'); player.load();
+    if (!videoClosedForNavigation) {
+      if (location.hash.startsWith('#film-')) history.replaceState(null, '', `#videos-${currentVideoBrand}`);
+      if (videoReturnFocus?.isConnected) videoReturnFocus.focus({ preventScroll: true });
+    }
+    videoClosedForNavigation = false;
+  });
   videoDialog?.addEventListener('click', e => {
     const r = videoDialog.getBoundingClientRect();
     if (e.target === videoDialog && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)) videoDialog.close();
   });
-  $('#copyVideo')?.addEventListener('click', () => copy($('#videoDownload').href));
+  $('#copyVideo')?.addEventListener('click', () => copy(currentVideoLink));
+  function videoFromHash() {
+    if (!location.hash.startsWith('#film-')) return;
+    const trigger = document.getElementById(location.hash.slice(1))?.querySelector('[data-video]');
+    if (trigger) openVideo(trigger, false);
+    else if (videoDialog?.open) closeVideoForNavigation();
+  }
+  fromHash(); videoFromHash();
+  window.addEventListener('hashchange', () => { fromHash(); videoFromHash(); });
   $$('.copy-link').forEach(b => b.addEventListener('click', () => copy(b.dataset.copy)));
   $$('img').forEach(img => {
     const fallback = () => {
@@ -197,7 +229,7 @@
     const title = $('h3, h4', card)?.textContent.trim();
     if (!title || !link) return;
     const context = card.classList.contains('video-card') ? `${card.dataset.brandLabel || ''} · Video` : card.classList.contains('social-card') ? 'Social content' : card.classList.contains('background-card') ? 'Call background' : 'Collection';
-    index.push({ title, context, href: link.getAttribute('href'), text: `${title} ${context} ${card.textContent}`.toLowerCase() });
+    index.push({ title, context, href: link.getAttribute('href'), video: link.dataset.video ? link : null, text: `${title} ${context} ${card.textContent}`.toLowerCase() });
   });
   function clearSearch() { search.value = ''; results.hidden = true; items.replaceChildren(); }
   $('#closeSearch')?.addEventListener('click', () => { clearSearch(); search.focus(); });
@@ -214,6 +246,10 @@
       const span = document.createElement('span'), name = document.createElement('b'), meta = document.createElement('small');
       name.textContent = row.title; meta.textContent = row.context; span.append(name, meta); a.append(span);
       if (row.slug) a.addEventListener('click', e => { e.preventDefault(); clearSearch(); openBrand(row.slug, search); });
+      else if (row.video) a.addEventListener('click', e => {
+        if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+        e.preventDefault(); clearSearch(); openVideo(row.video, true, search);
+      });
       else if (/^https?:/.test(row.href)) { a.target = '_blank'; a.rel = 'noopener'; }
       items.append(a);
     });
@@ -228,7 +264,7 @@
   document.addEventListener('click', e => { if (!e.target.closest('.search-area')) results.hidden = true; });
   search?.addEventListener('focus', () => { if (search.value.trim()) results.hidden = false; });
   document.addEventListener('keydown', e => {
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); if (dialog?.open) { focusSearchOnClose = true; dialog.close(); } if (videoDialog?.open) videoDialog.close(); search.focus(); }
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); if (dialog?.open) { focusSearchOnClose = true; dialog.close(); } if (videoDialog?.open) { videoReturnFocus = search; videoDialog.close(); } search.focus(); }
     if (e.key === 'Escape') { dismissIntro(); clearSearch(); document.body.classList.remove('nav-open'); menu?.setAttribute('aria-expanded','false'); }
   });
   const sections = $$('.library-section');
