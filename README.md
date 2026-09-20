@@ -24,7 +24,7 @@ Open `index.html` to review locally, or serve this folder with any static web se
 
 Update `source/content.json`, then run `python build.py`. This uses Python's standard library only. The generated HTML works without Python, a framework, a build server, or installed packages. Styling is in `styles.css`; interactions are in `app.js`.
 
-All 16 original brand kits, 12 corporate videos, 9 video collections, 9 photography entries, 8 social cards, and 20 background files are retained. Four inaccessible collections remain visible as unavailable entries, with their source destinations preserved in the content file.
+All 16 original brand kits, 12 existing corporate videos, 9 video collections, 9 photography entries, 8 earlier social cards, and 20 background files are retained. The September 19 update adds the Sequent Platform Video and nine social reels. Four inaccessible collections remain visible as unavailable entries, with their source destinations preserved in the content file.
 
 ## Access notes — checked September 17, 2026
 
@@ -37,7 +37,7 @@ These collections redirected anonymous visitors to Bynder's no-access page, so t
 
 The general brand portal requires team sign-in and is labeled accordingly. Representative Sequent, Energize, and USE guideline previews were accessible anonymously. A Sequent PDF download timed out; not every third-party file download has been verified. External sharing settings remain controlled by their owners. Instagram may require sign-in.
 
-Social metrics retain the original August 19, 2026 snapshot date; they are not presented as live. Existing refresh automations were not modified. Any future automation should update `source/content.json` and rebuild the pages.
+Earlier social metrics remain in the source data for reference but are no longer displayed as current statistics. Existing refresh automations were not modified. Any future automation should update `source/content.json` and rebuild the pages.
 
 ## Site routes
 
@@ -50,3 +50,9 @@ Checked: local resource paths, fragment targets, duplicate IDs, brand-page parit
 The catalog contains 209 existing/source original files and five clearly labeled source-provided web renditions. Four blank white JPGs from the OGO source collection are excluded; their usable PNG/EPS variants remain. Filenames, formats, dimensions, and file sizes are shown in each kit. Per-brand ZIPs contain the same selectable files. Small or low-resolution source logos are retained at their real resolution; no logos were redrawn or upscaled. Downloads and previews are local. Source links still point to the original brand collections.
 
 Add or update logo records under each brand's `logos` array and keep `logo_pack` ZIP contents in sync, then rebuild. The share button uses the device share menu when supported; the copy button always copies the direct local file URL. The library never sends files to a recipient automatically.
+
+## Videos and social — September 19, 2026
+
+The film library now starts with the featured Sequent Platform Video (5:45, 720p preview, 4K original), followed by 10 Kreate films and two Reinhart Foundation films. Related Kreate and foundation collections appear with their brand. All other product and brand collections remain available below.
+
+Kreate Instagram (@kreate) and TikTok (@kreateusa) have direct links in the main navigation and social section. These profiles were verified through Kreate's own profile/Linktree. The social section features Dad Social's paid HDX Tote Stacker collaboration (July 29, 2026), then eight recent reels published August 28–September 9. The previous eight collaborations remain in an expandable group. Dates and collaboration identities were verified on the original Instagram posts; the featured Dad Social post is not labeled the newest post. Covers are local copies of the observed post thumbnails, and reel links open the originals on Instagram.

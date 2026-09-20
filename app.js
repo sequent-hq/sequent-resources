@@ -194,9 +194,9 @@
   });
   $$('.video-card, a.collection-card, .social-card, .background-card').forEach(card => {
     const link = card.matches('a') ? card : $('a', card);
-    const title = $('h3', card)?.textContent.trim();
+    const title = $('h3, h4', card)?.textContent.trim();
     if (!title || !link) return;
-    const context = card.classList.contains('video-card') ? 'Video' : card.classList.contains('social-card') ? 'Social content' : card.classList.contains('background-card') ? 'Call background' : 'Collection';
+    const context = card.classList.contains('video-card') ? `${card.dataset.brandLabel || ''} · Video` : card.classList.contains('social-card') ? 'Social content' : card.classList.contains('background-card') ? 'Call background' : 'Collection';
     index.push({ title, context, href: link.getAttribute('href'), text: `${title} ${context} ${card.textContent}`.toLowerCase() });
   });
   function clearSearch() { search.value = ''; results.hidden = true; items.replaceChildren(); }

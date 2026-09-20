@@ -2877,12 +2877,23 @@
   ],
   "videos": [
     {
+      "title": "Sequent Platform Video",
+      "description": "Platform film · 5:45 · 4K original 1.16 GB",
+      "src": "https://brand.kreate.com/asset/33ba14a8-491e-411f-960c-cbdce7444658/mp4/Sequent-Platform-V5.mp4",
+      "download": "https://brand.kreate.com/web/6b91f5e283940501/sequent-platform-video/?mediaId=33BA14A8-491E-411F-960CCBDCE7444658",
+      "image": "https://brand.kreate.com/asset/33ba14a8-491e-411f-960c-cbdce7444658/thumbnail/webimage-Sequent-Platform-V5",
+      "resolution": "5:45 · 4K master",
+      "brand": "sequent",
+      "featured": true
+    },
+    {
       "title": "Kreate Capabilities Reel",
       "description": "Capabilities · full res 143 MB",
       "src": "https://brand.kreate.com/asset/9c768d34-0ca9-47fe-9ec4-c3b5f51a445a/mp4/Kreate-Capabilities-Reel.mp4",
       "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=9C768D34-0CA9-47FE-9EC4C3B5F51A445A",
       "image": "https://brand.kreate.com/asset/9c768d34-0ca9-47fe-9ec4-c3b5f51a445a/thumbnail/webimage-Kreate-Capabilities-Reel",
-      "resolution": "HD"
+      "resolution": "HD",
+      "brand": "kreate"
     },
     {
       "title": "Vegas Plant Sizzle",
@@ -2890,7 +2901,8 @@
       "src": "https://brand.kreate.com/asset/bb3c0045-c787-4a91-8ca1-cdd39bf034a5/mp4/Vegas-Sizzle.mp4",
       "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=BB3C0045-C787-4A91-8CA1CDD39BF034A5",
       "image": "https://brand.kreate.com/asset/bb3c0045-c787-4a91-8ca1-cdd39bf034a5/thumbnail/webimage-Vegas-Sizzle",
-      "resolution": "4K"
+      "resolution": "4K",
+      "brand": "kreate"
     },
     {
       "title": "Texas Facility Tour",
@@ -2898,7 +2910,8 @@
       "src": "https://brand.kreate.com/asset/85d1d81c-9246-4329-a53c-b720b9dbcbb0/mp4/Texas-Facility-Tour.mp4",
       "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=85D1D81C-9246-4329-A53CB720B9DBCBB0",
       "image": "https://brand.kreate.com/asset/85d1d81c-9246-4329-a53c-b720b9dbcbb0/thumbnail/webimage-Texas-Facility-Tour",
-      "resolution": "4K"
+      "resolution": "4K",
+      "brand": "kreate"
     },
     {
       "title": "Kreate — Howie with QR",
@@ -2906,7 +2919,8 @@
       "src": "https://brand.kreate.com/asset/b4583ce8-b83a-4843-b6c9-68fea3be24e0/mp4/Kreate-Howie-with-QR.mp4",
       "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=B4583CE8-B83A-4843-B6C968FEA3BE24E0",
       "image": "https://brand.kreate.com/asset/b4583ce8-b83a-4843-b6c9-68fea3be24e0/thumbnail/webimage-Kreate-Howie-with-QR",
-      "resolution": "HD"
+      "resolution": "HD",
+      "brand": "kreate"
     },
     {
       "title": "Partner Video — Final",
@@ -2914,7 +2928,8 @@
       "src": "https://brand.kreate.com/asset/df9cd7c9-f3f8-41f6-ac0c-c66741a2c04e/mp4/Partner-Video-Final.mp4",
       "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=DF9CD7C9-F3F8-41F6-AC0CC66741A2C04E",
       "image": "https://brand.kreate.com/asset/df9cd7c9-f3f8-41f6-ac0c-c66741a2c04e/thumbnail/webimage-Partner-Video-Final",
-      "resolution": "HD"
+      "resolution": "HD",
+      "brand": "kreate"
     },
     {
       "title": "2025 Partner Meeting — Content & Social",
@@ -2922,7 +2937,8 @@
       "src": "https://brand.kreate.com/asset/763aa6d3-f439-43a3-8b27-645b03ebcf6c/mp4/2025-Partner-Meeting-Content-and-Social.mp4",
       "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=763AA6D3-F439-43A3-8B27645B03EBCF6C",
       "image": "https://brand.kreate.com/asset/763aa6d3-f439-43a3-8b27-645b03ebcf6c/thumbnail/webimage-2025-Partner-Meeting-Content-and-Social",
-      "resolution": "HD"
+      "resolution": "HD",
+      "brand": "kreate"
     },
     {
       "title": "2025 Partner Meeting — Facilities",
@@ -2930,7 +2946,8 @@
       "src": "https://brand.kreate.com/asset/5b3f1790-df09-425c-acf7-c40e71248a62/mp4/2025-Partner-Meeting-Facilities.mp4",
       "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=5B3F1790-DF09-425C-ACF7C40E71248A62",
       "image": "https://brand.kreate.com/asset/5b3f1790-df09-425c-acf7-c40e71248a62/thumbnail/webimage-2025-Partner-Meeting-Facilities",
-      "resolution": "HD"
+      "resolution": "HD",
+      "brand": "kreate"
     },
     {
       "title": "Eco Actions — Full version",
@@ -2938,7 +2955,8 @@
       "src": "https://brand.kreate.com/asset/0ae27ad0-a744-441f-a927-b4b811a4e179/mp4/Kreate-Eco-Actions-Partner-Video-Full-Version.mp4",
       "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=0AE27AD0-A744-441F-A927B4B811A4E179",
       "image": "https://brand.kreate.com/asset/0ae27ad0-a744-441f-a927-b4b811a4e179/thumbnail/webimage-Kreate-Eco-Actions-Partner-Video-Full-Version",
-      "resolution": "HD"
+      "resolution": "HD",
+      "brand": "kreate"
     },
     {
       "title": "Eco Actions — :60 cut",
@@ -2946,7 +2964,8 @@
       "src": "https://brand.kreate.com/asset/be9b8a6a-2844-4f2d-b0e5-3f093ff34c8e/mp4/Kreate-Eco-Actions-Partner-Video-60.mp4",
       "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=BE9B8A6A-2844-4F2D-B0E53F093FF34C8E",
       "image": "https://brand.kreate.com/asset/be9b8a6a-2844-4f2d-b0e5-3f093ff34c8e/thumbnail/webimage-Kreate-Eco-Actions-Partner-Video-60",
-      "resolution": "HD"
+      "resolution": "HD",
+      "brand": "kreate"
     },
     {
       "title": "Eco Actions — :30 cut",
@@ -2954,7 +2973,8 @@
       "src": "https://brand.kreate.com/asset/3a2b75f0-9d58-4009-89a8-396ea432b8b6/mp4/Kreate-Eco-Actions-Partner-Video-30.mp4",
       "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=3A2B75F0-9D58-4009-89A8396EA432B8B6",
       "image": "https://brand.kreate.com/asset/3a2b75f0-9d58-4009-89a8-396ea432b8b6/thumbnail/webimage-Kreate-Eco-Actions-Partner-Video-30",
-      "resolution": "HD"
+      "resolution": "HD",
+      "brand": "kreate"
     },
     {
       "title": "Reinhart Foundation — with intro",
@@ -2962,7 +2982,8 @@
       "src": "https://brand.kreate.com/asset/fd4ec2ac-d2c1-4c31-9b64-1f2e9de14da0/mp4/25-05-06-Reinhart-Foundation-4k-w-intro.mp4",
       "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=FD4EC2AC-D2C1-4C31-9B641F2E9DE14DA0",
       "image": "https://brand.kreate.com/asset/fd4ec2ac-d2c1-4c31-9b64-1f2e9de14da0/thumbnail/webimage-25-05-06-Reinhart-Foundation-4k-w-intro",
-      "resolution": "4K"
+      "resolution": "4K",
+      "brand": "reinhart"
     },
     {
       "title": "Reinhart Foundation",
@@ -2970,7 +2991,8 @@
       "src": "https://brand.kreate.com/asset/47ff72ef-60a7-4c9b-abab-eb036e8bd602/mp4/25-05-06-Reinhart-Foundation-4k.mp4",
       "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=47FF72EF-60A7-4C9B-ABABEB036E8BD602",
       "image": "https://brand.kreate.com/asset/47ff72ef-60a7-4c9b-abab-eb036e8bd602/thumbnail/webimage-25-05-06-Reinhart-Foundation-4k",
-      "resolution": "4K"
+      "resolution": "4K",
+      "brand": "reinhart"
     }
   ],
   "videoCollections": [
@@ -2992,7 +3014,8 @@
     {
       "title": "Kreate Resin Facility",
       "description": "1 file · resin plant video",
-      "url": "https://brand.kreate.com/web/724e73705e444ff7/kreate-resin-facility/"
+      "url": "https://brand.kreate.com/web/724e73705e444ff7/kreate-resin-facility/",
+      "brand": "kreate"
     },
     {
       "title": "Ranch Road Brand Anthem",
@@ -3002,12 +3025,14 @@
     {
       "title": "Reinhart Interviews",
       "description": "3 files · foundation interviews",
-      "url": "https://brand.kreate.com/web/9d75fe050dc0ff3d/kreate---reinhart-foundation-interview-videos/"
+      "url": "https://brand.kreate.com/web/9d75fe050dc0ff3d/kreate---reinhart-foundation-interview-videos/",
+      "brand": "reinhart"
     },
     {
       "title": "Foundation Videos",
       "description": "2 files",
-      "url": "https://brand.kreate.com/web/d69f49c2ccdff1c5/foundation-videos/"
+      "url": "https://brand.kreate.com/web/d69f49c2ccdff1c5/foundation-videos/",
+      "brand": "reinhart"
     },
     {
       "title": "Husky 170 Brand Video",
@@ -3069,6 +3094,116 @@
   ],
   "social": [
     {
+      "title": "Dad Social × Kreate: the HDX Tote Stacker",
+      "creator": "@dadsocial",
+      "product": "TOTE STACKER",
+      "url": "https://www.instagram.com/dadsocial/reel/DbZSMowvIbl/",
+      "image": "social/DbZSMowvIbl.jpg",
+      "published_at": "2026-07-29T23:36:42.000Z",
+      "date_label": "July 29, 2026",
+      "verified_on": "2026-09-19",
+      "image_width": 1182,
+      "image_height": 2098,
+      "featured": true,
+      "description": "Dad Social teams up with Kreate to organize the garage with the HDX Tote Stacker. Watch the collaboration, then share the original reel."
+    },
+    {
+      "title": "A utility sink that keeps a remodel moving",
+      "creator": "@ashandember_woodshop",
+      "product": "UTILITY SINK",
+      "url": "https://www.instagram.com/ashandember_woodshop/reel/DdEcdKHpEV_/",
+      "image": "social/DdEcdKHpEV_.jpg",
+      "published_at": "2026-09-09T14:21:58.000Z",
+      "date_label": "September 9, 2026",
+      "verified_on": "2026-09-19",
+      "image_width": 720,
+      "image_height": 1280
+    },
+    {
+      "title": "Tiny totes, serious organization",
+      "creator": "@theshelfdude",
+      "product": "NANO TOTES",
+      "url": "https://www.instagram.com/theshelfdude/reel/Dc1aFYiCjS7/",
+      "image": "social/Dc1aFYiCjS7.jpg",
+      "published_at": "2026-09-03T18:01:51.000Z",
+      "date_label": "September 3, 2026",
+      "verified_on": "2026-09-19",
+      "image_width": 640,
+      "image_height": 1136
+    },
+    {
+      "title": "An HDX trash can becomes a bulk chicken feeder",
+      "creator": "@ghee.and.grove",
+      "product": "HOMESTEAD DIY",
+      "url": "https://www.instagram.com/ghee.and.grove/reel/DczsaVfBr1c/",
+      "image": "social/DczsaVfBr1c.jpg",
+      "published_at": "2026-09-03T02:15:07.000Z",
+      "date_label": "September 2, 2026",
+      "verified_on": "2026-09-19",
+      "image_width": 640,
+      "image_height": 1136
+    },
+    {
+      "title": "Small essentials, organized with Nano Totes",
+      "creator": "@amandahendrixhome",
+      "product": "NANO TOTES",
+      "url": "https://www.instagram.com/amandahendrixhome/reel/DcyXy1Tvd2M/",
+      "image": "social/DcyXy1Tvd2M.jpg",
+      "published_at": "2026-09-02T13:45:12.000Z",
+      "date_label": "September 2, 2026",
+      "verified_on": "2026-09-19",
+      "image_width": 1217,
+      "image_height": 2160
+    },
+    {
+      "title": "One connected HDX storage system",
+      "creator": "@theshelfdude",
+      "product": "HDX ECOSYSTEM",
+      "url": "https://www.instagram.com/theshelfdude/reel/DcwysGilDHN/",
+      "image": "social/DcwysGilDHN.jpg",
+      "published_at": "2026-09-01T23:01:12.000Z",
+      "date_label": "September 1, 2026",
+      "verified_on": "2026-09-19",
+      "image_width": 640,
+      "image_height": 1136
+    },
+    {
+      "title": "Life piles up. Stack it with HDX.",
+      "creator": "@kreate",
+      "product": "TOTE STACKER",
+      "url": "https://www.instagram.com/kreate/reel/DcmIFYNjvb5/",
+      "image": "social/DcmIFYNjvb5.jpg",
+      "published_at": "2026-08-28T19:36:08.000Z",
+      "date_label": "August 28, 2026",
+      "verified_on": "2026-09-19",
+      "image_width": 1080,
+      "image_height": 1920
+    },
+    {
+      "title": "Reach any tote without unstacking the rest",
+      "creator": "@simplyalignedhome",
+      "product": "TOTE STACKER",
+      "url": "https://www.instagram.com/simplyalignedhome/reel/DcmDUS2RNdb/",
+      "image": "social/DcmDUS2RNdb.jpg",
+      "published_at": "2026-08-28T18:57:45.000Z",
+      "date_label": "August 28, 2026",
+      "verified_on": "2026-09-19",
+      "image_width": 1215,
+      "image_height": 2160
+    },
+    {
+      "title": "Race City: Nano Tote toy storage",
+      "creator": "@stamperhome",
+      "product": "NANO TOTES",
+      "url": "https://www.instagram.com/stamperhome/reel/DclioPgBxDZ/",
+      "image": "social/DclioPgBxDZ.jpg",
+      "published_at": "2026-08-28T14:21:39.000Z",
+      "date_label": "August 28, 2026",
+      "verified_on": "2026-09-19",
+      "image_width": 640,
+      "image_height": 1136
+    },
+    {
       "title": "Garage cleanup with the new HDX Tote Stacker",
       "creator": "@lelaburris",
       "product": "TOTE STACKER",
@@ -3076,7 +3211,8 @@
       "stats": "♥ 8,036  ·  💬 4,331  ·  JUL 31",
       "url": "https://www.instagram.com/reel/DbeC8toOdFI/",
       "embed": "https://www.instagram.com/reel/DbeC8toOdFI/embed/",
-      "image": "social/DbeC8toOdFI.jpg"
+      "image": "social/DbeC8toOdFI.jpg",
+      "archived": true
     },
     {
       "title": "Mobile hardware cart built from 2.5-qt HDX totes",
@@ -3086,7 +3222,8 @@
       "stats": "♥ 13K  ·  💬 105  ·  AUG 4",
       "url": "https://www.instagram.com/reel/Dbnu2raudGy/",
       "embed": "https://www.instagram.com/reel/Dbnu2raudGy/embed/",
-      "image": "social/Dbnu2raudGy.jpg"
+      "image": "social/Dbnu2raudGy.jpg",
+      "archived": true
     },
     {
       "title": "Flood-proofing garage inventory storage",
@@ -3096,7 +3233,8 @@
       "stats": "♥ 104  ·  💬 35  ·  AUG 4",
       "url": "https://www.instagram.com/reel/DbozkNotfzg/",
       "embed": "https://www.instagram.com/reel/DbozkNotfzg/embed/",
-      "image": "social/DbozkNotfzg.jpg"
+      "image": "social/DbozkNotfzg.jpg",
+      "archived": true
     },
     {
       "title": "Garage storage makeover with the HDX Defender",
@@ -3106,7 +3244,8 @@
       "stats": "AUG 5",
       "url": "https://www.instagram.com/reel/DbqVTKlNFZ9/",
       "embed": "https://www.instagram.com/reel/DbqVTKlNFZ9/embed/",
-      "image": "social/DbqVTKlNFZ9.jpg"
+      "image": "social/DbqVTKlNFZ9.jpg",
+      "archived": true
     },
     {
       "title": "Storage on wheels",
@@ -3116,7 +3255,8 @@
       "stats": "♥ 51  ·  💬 6  ·  AUG 15",
       "url": "https://www.instagram.com/reel/DcEBZLcptB6/",
       "embed": "https://www.instagram.com/reel/DcEBZLcptB6/embed/",
-      "image": "social/DcEBZLcptB6.jpg"
+      "image": "social/DcEBZLcptB6.jpg",
+      "archived": true
     },
     {
       "title": "Every bin in its place",
@@ -3126,7 +3266,8 @@
       "stats": "♥ 506  ·  💬 213  ·  AUG 18",
       "url": "https://www.instagram.com/reel/DcMvlkgAcQr/",
       "embed": "https://www.instagram.com/reel/DcMvlkgAcQr/embed/",
-      "image": "social/DcMvlkgAcQr.jpg"
+      "image": "social/DcMvlkgAcQr.jpg",
+      "archived": true
     },
     {
       "title": "Stay-organized shop build",
@@ -3136,7 +3277,8 @@
       "stats": "♥ 74  ·  💬 15  ·  AUG 3",
       "url": "https://www.instagram.com/reel/DblQJSgpoPh/",
       "embed": "https://www.instagram.com/reel/DblQJSgpoPh/embed/",
-      "image": "social/DblQJSgpoPh.jpg"
+      "image": "social/DblQJSgpoPh.jpg",
+      "archived": true
     },
     {
       "title": "Organizing teeny tiny things",
@@ -3146,7 +3288,8 @@
       "stats": "♥ 253  ·  💬 39  ·  AUG 17",
       "url": "https://www.instagram.com/reel/DcJ3V59p7kL/",
       "embed": "https://www.instagram.com/reel/DcJ3V59p7kL/embed/",
-      "image": "social/DcJ3V59p7kL.jpg"
+      "image": "social/DcJ3V59p7kL.jpg",
+      "archived": true
     }
   ],
   "backgrounds": [
@@ -3267,10 +3410,35 @@
     {
       "title": "WSE Shorts",
       "url": "https://brand.kreate.com/web/5d2cf24bb31bdec7/wse-social-shorts/"
+    }
+  ],
+  "videoGroups": [
+    {
+      "slug": "sequent",
+      "name": "Sequent"
     },
     {
-      "title": "instagram.com/kreate ↗",
-      "url": "https://www.instagram.com/kreate/"
+      "slug": "kreate",
+      "name": "Kreate"
+    },
+    {
+      "slug": "reinhart",
+      "name": "Reinhart Foundation"
     }
-  ]
+  ],
+  "socialProfiles": [
+    {
+      "name": "Instagram",
+      "handle": "@kreate",
+      "url": "https://www.instagram.com/kreate/",
+      "icon": "social"
+    },
+    {
+      "name": "TikTok",
+      "handle": "@kreateusa",
+      "url": "https://www.tiktok.com/@kreateusa",
+      "icon": "music"
+    }
+  ],
+  "socialUpdated": "2026-09-19"
 }
