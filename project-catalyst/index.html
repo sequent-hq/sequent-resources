@@ -114,7 +114,7 @@ dialog{background:var(--bg);color:var(--ink);border:1px solid var(--line);paddin
 .factory-scene .f-plan-ai-link{stroke:var(--f-accent);stroke-width:1.5;stroke-dasharray:3 8;animation:f-flow 12s linear infinite}
 .factory-scene .f-plan-ai-point{fill:var(--f-accent)}
 .factory-scene .f-plan-corridor{fill:color-mix(in srgb,var(--f-panel) 90%,var(--f-accent));stroke:var(--f-accent);stroke-width:1.8}
-.factory-scene .f-plan-agv-dot{fill:var(--f-accent);stroke:var(--f-panel);stroke-width:1.2;animation:f-plan-travel 5.5s linear infinite;animation-delay:var(--delay,0s)}
+.factory-scene .f-plan-agv-dot{fill:var(--f-accent);stroke:var(--f-panel);stroke-width:1.2;animation:f-plan-travel 5.5s ease-in-out infinite alternate}
 .factory-scene .f-plan-arrow{fill:var(--f-accent);stroke:var(--f-accent);stroke-width:1}
 .factory-scene .f-plan-rack{fill:color-mix(in srgb,var(--f-ink) 62%,var(--f-panel));stroke:none}
 .factory-scene .f-plan-dock{fill:color-mix(in srgb,var(--f-accent) 27%,var(--f-panel));stroke:var(--f-accent);stroke-width:1.3}
@@ -202,7 +202,7 @@ dialog{background:var(--bg);color:var(--ink);border:1px solid var(--line);paddin
 .factory-scene .f-cobot-elbow{transform-origin:2037px 457px;transform-box:view-box;animation:f-elbow 9s ease-in-out infinite}
 .factory-scene .f-cobot-wrist{transform-origin:2240px 519px;transform-box:view-box;animation:f-wrist 9s ease-in-out infinite}
 .factory-scene .f-forklift-travel{animation:f-forklift 12s ease-in-out infinite}
-@keyframes f-plan-travel{0%{transform:translateX(0);opacity:.6}50%{opacity:1}100%{transform:translateX(78px);opacity:.6}}
+@keyframes f-plan-travel{from{transform:translateX(0)}to{transform:translateX(78px)}}
 @keyframes f-flow{to{stroke-dashoffset:-100}}
 @keyframes f-mold-cycle{0%,10%,90%,100%{transform:translateX(0)}30%,57%{transform:translateX(-35px)}}
 @keyframes f-takeout-cycle{0%,18%,90%,100%{transform:translateX(0)}45%,70%{transform:translateX(95px)}}
@@ -718,11 +718,11 @@ html[data-theme=light] .closing .ambient-film.has-frame{opacity:.08}
 <g data-stage="dispatch" class="factory-stage f-plan-zone">
 <rect x="78" y="459" width="1066" height="52" rx="0" class="f-plan-corridor"/>
 <text x="100" y="492" text-anchor="start" class="f-plan-node">AGV CORRIDOR</text>
-<circle cx="428" cy="485" r="11" class="f-plan-agv-dot" data-symbol="agv-flow" style="--delay:0.0s"/>
-<circle cx="556" cy="485" r="11" class="f-plan-agv-dot" data-symbol="agv-flow" style="--delay:-1.1s"/>
-<circle cx="684" cy="485" r="11" class="f-plan-agv-dot" data-symbol="agv-flow" style="--delay:-2.2s"/>
-<circle cx="812" cy="485" r="11" class="f-plan-agv-dot" data-symbol="agv-flow" style="--delay:-3.3000000000000003s"/>
-<circle cx="940" cy="485" r="11" class="f-plan-agv-dot" data-symbol="agv-flow" style="--delay:-4.4s"/>
+<circle cx="428" cy="485" r="11" class="f-plan-agv-dot" data-symbol="agv-flow"/>
+<circle cx="556" cy="485" r="11" class="f-plan-agv-dot" data-symbol="agv-flow"/>
+<circle cx="684" cy="485" r="11" class="f-plan-agv-dot" data-symbol="agv-flow"/>
+<circle cx="812" cy="485" r="11" class="f-plan-agv-dot" data-symbol="agv-flow"/>
+<circle cx="940" cy="485" r="11" class="f-plan-agv-dot" data-symbol="agv-flow"/>
 <path d="M1126 470H1144V461L1166 485L1144 509V500H1126Z" class="f-plan-arrow" data-flow="corridor-to-auto-pack"/>
 </g>
 <g data-stage="robotics" class="factory-stage f-plan-zone">
