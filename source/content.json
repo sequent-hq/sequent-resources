@@ -2878,32 +2878,32 @@
   "videos": [
     {
       "title": "Sequent Platform Video",
-      "description": "Platform film · 5:49",
-      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/sequent-platform-v6-2026-09-21.mp4",
-      "download": "https://next.frame.io/share/099219af-3f97-46d8-9145-eb3f2f001e6d/view/1149e44e-adaa-45e3-a3a2-2bcf845316a8",
-      "image": "assets/video/sequent-platform-v6-2026-09-21.jpg",
+      "description": "Platform film · 3:39",
+      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/sequent-platform-review07-2026-10-02.mp4",
+      "download": "https://fmtinc.sharepoint.com/sites/JoeBryce/Shared%20Documents/General/SPM/2026/Video%20Working%20Files%20-%202026-09-27/24%20Sequent%20Ending%20Refinement%20-%202026-10-02/Sequent%20-%20Ending%20Refinement%20-%20Review%2007.mp4",
+      "image": "assets/video/sequent-platform-review07-2026-10-02.jpg",
       "resolution": "1080p",
       "brand": "sequent",
       "featured": true,
       "slug": "sequent-platform",
       "original_width": 1920,
       "original_height": 1080,
-      "original_bytes": 646650688,
+      "original_bytes": 91249602,
       "playback": {
-        "bytes": 646754005,
-        "sha256": "55030106235926b13a619ef40566a295a577f7ac8afcc412f1a0f40bf984ea61",
+        "bytes": 91249602,
+        "sha256": "e8a4543f5c0c6c01edad12c8b73ee6e918ec46acf74ba92b270752aaa6669ee1",
         "width": 1920,
         "height": 1080,
-        "fps": 29.97,
-        "duration_seconds": 349.38,
+        "fps": 30.0,
+        "duration_seconds": 219.33,
         "video_codec": "h264",
         "audio_codec": "aac",
-        "derivation": "lossless MP4 remux for faststart; unchanged audio/video streams",
+        "derivation": "unchanged original MP4",
         "faststart": true,
-        "verified_at": "2026-09-25T15:43:12.274862+00:00"
+        "verified_at": "2026-10-02T23:43:27.696748+00:00"
       },
-      "original_filename": "Sequent New Version_v6_09-21-2026.mp4",
-      "source_version": "v6 · September 21, 2026"
+      "original_filename": "Sequent - Ending Refinement - Review 07.mp4",
+      "source_version": "Review 07 · October 2, 2026"
     },
     {
       "title": "Kreate Resin Facility",

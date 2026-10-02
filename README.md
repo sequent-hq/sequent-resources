@@ -53,7 +53,7 @@ Add or update logo records under each brand's `logos` array and keep `logo_pack`
 
 ## Videos and social — September 19, 2026
 
-The film library now starts with the featured Sequent Platform Video (5:49, 1080p), followed by 11 Kreate films, the Home Depot SPM film, and two Reinhart Foundation films. Related Kreate and foundation collections appear with their brand. All other product and brand collections remain available below.
+The film library now starts with the featured Sequent Platform Video (3:39, 1080p), followed by 11 Kreate films, the Home Depot SPM film, and two Reinhart Foundation films. Related Kreate and foundation collections appear with their brand. All other product and brand collections remain available below.
 
 Kreate Instagram (@kreate) and TikTok (@kreateusa) have direct links in the main navigation and social section. These profiles were verified through Kreate's own profile/Linktree. The social section features Dad Social's paid HDX Tote Stacker collaboration (July 29, 2026), then eight recent reels published August 28–September 9. The previous eight collaborations remain in an expandable group. Dates and collaboration identities were verified on the original Instagram posts; the featured Dad Social post is not labeled the newest post. Covers are local copies of the observed post thumbnails, and reel links open the originals on Instagram.
 
@@ -68,8 +68,12 @@ Large video files live in the `video-library-2026-09` GitHub release, separate f
 
 ## Sequent video replacement — September 25, 2026
 
-The featured Sequent film now uses the September 21 version 6 supplied through Frame.io, at its native 1920×1080 resolution. The hosted playback file preserves the original audio and video streams, with fast-start metadata for immediate playback. Its poster is a frame from this version, and Open collection links to the supplied Frame.io share. The existing `#film-sequent-platform` sharing link is preserved.
+The September 25 update used the September 21 version 6 supplied through Frame.io, at its native 1920×1080 resolution. The hosted playback file preserves the original audio and video streams, with fast-start metadata for immediate playback. Its poster is a frame from this version, and Open collection links to the supplied Frame.io share. The existing `#film-sequent-platform` sharing link is preserved.
 
 ## Home Depot video — October 2, 2026
 
 The Home Depot group appears after Kreate and before Reinhart Foundation. Its first film is Home Depot SPM — Comp Highlights, the supplied v15 SPM intro (1:31). Playback and download use the unchanged 1920×1080 H.264/AAC original, including its existing fast-start metadata. The poster comes from the film at five seconds. Open collection retains the supplied SharePoint folder. The direct sharing link is `#film-home-depot-spm-comp-highlights-2026-10-02`.
+
+## Sequent video replacement — October 2, 2026
+
+The featured Sequent Platform Video now uses the supplied Sequent — Ending Refinement — Review 07 (3:39), at its native 1920×1080 resolution and 30 frames per second. Playback and download use the unchanged H.264/AAC original, including its existing fast-start metadata, hosted publicly as a GitHub release asset so no sign-in is required. The poster comes from this new film. Open collection retains the supplied SharePoint file, which may require source-library access. The existing `#film-sequent-platform` sharing link, featured position, and all other films remain unchanged.
