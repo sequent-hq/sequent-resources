@@ -3204,6 +3204,35 @@
       }
     },
     {
+      "title": "Home Depot SPM — Comp Highlights",
+      "description": "SPM intro · 1:31 · October 2, 2026",
+      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/home-depot-spm-comp-highlights-2026-10-02.mp4",
+      "download": "https://fmtinc.sharepoint.com/sites/JoeBryce/Shared%20Documents/General/SPM/2026/Video%20Working%20Files%20-%202026-09-27/16%20Comp%20Highlights%20-%202026-10-02",
+      "image": "assets/video/home-depot-spm-comp-highlights-2026-10-02.jpg",
+      "resolution": "1080p",
+      "brand": "home-depot",
+      "featured": false,
+      "slug": "home-depot-spm-comp-highlights-2026-10-02",
+      "original_width": 1920,
+      "original_height": 1080,
+      "original_bytes": 63336012,
+      "playback": {
+        "bytes": 63336012,
+        "sha256": "5e8ded33872ce7a155d9e5fa88037be2b844e017eb8812dcd11ce31633004876",
+        "width": 1920,
+        "height": 1080,
+        "fps": 30,
+        "duration_seconds": 91.33,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "derivation": "unchanged original MP4",
+        "faststart": true,
+        "verified_at": "2026-10-02T17:15:21.014270+00:00"
+      },
+      "original_filename": "SPM Intro - v15 - Comp Highlights.mp4",
+      "source_version": "v15 · October 2, 2026"
+    },
+    {
       "title": "Reinhart Foundation — with intro",
       "description": "Foundation",
       "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/reinhart-foundation-with-intro.mp4",
@@ -3684,6 +3713,10 @@
     {
       "slug": "kreate",
       "name": "Kreate"
+    },
+    {
+      "slug": "home-depot",
+      "name": "Home Depot"
     },
     {
       "slug": "reinhart",

@@ -53,14 +53,14 @@ Add or update logo records under each brand's `logos` array and keep `logo_pack`
 
 ## Videos and social — September 19, 2026
 
-The film library now starts with the featured Sequent Platform Video (5:49, 1080p), followed by 11 Kreate films and two Reinhart Foundation films. Related Kreate and foundation collections appear with their brand. All other product and brand collections remain available below.
+The film library now starts with the featured Sequent Platform Video (5:49, 1080p), followed by 11 Kreate films, the Home Depot SPM film, and two Reinhart Foundation films. Related Kreate and foundation collections appear with their brand. All other product and brand collections remain available below.
 
 Kreate Instagram (@kreate) and TikTok (@kreateusa) have direct links in the main navigation and social section. These profiles were verified through Kreate's own profile/Linktree. The social section features Dad Social's paid HDX Tote Stacker collaboration (July 29, 2026), then eight recent reels published August 28–September 9. The previous eight collaborations remain in an expandable group. Dates and collaboration identities were verified on the original Instagram posts; the featured Dad Social post is not labeled the newest post. Covers are local copies of the observed post thumbnails, and reel links open the originals on Instagram.
 
 
 ## Full-resolution film playback
 
-The 14 film cards use stable GitHub release asset URLs for in-board playback at each source file's native dimensions: 1080p or 4K. Kreate Resin Facility is first in Kreate and uses its official source thumbnail, which also appears while its player loads. Play, Watch film, and video search results use the same player. Each film has a shareable board link; shared links open that film with native playback controls. Download video saves the hosted MP4, and Open collection retains the source destination.
+The 15 film cards use stable GitHub release asset URLs for in-board playback at each source file's native dimensions: 1080p or 4K. Kreate Resin Facility is first in Kreate and uses its official source thumbnail, which also appears while its player loads. Play, Watch film, and video search results use the same player. Each film has a shareable board link; shared links open that film with native playback controls. Download video saves the hosted MP4, and Open collection retains the source destination.
 
 Compatible H.264/AAC originals are retained without re-encoding where possible. Browser-incompatible originals and the oversized Eco Actions master receive high-quality H.264/AAC MP4 playback copies at the original dimensions and frame rate, with metadata at the start of the file for quick playback. The original master files remain available in Bynder. There is no lower-resolution automatic fallback and no expiring signed URL in the published content.
 
@@ -69,3 +69,7 @@ Large video files live in the `video-library-2026-09` GitHub release, separate f
 ## Sequent video replacement — September 25, 2026
 
 The featured Sequent film now uses the September 21 version 6 supplied through Frame.io, at its native 1920×1080 resolution. The hosted playback file preserves the original audio and video streams, with fast-start metadata for immediate playback. Its poster is a frame from this version, and Open collection links to the supplied Frame.io share. The existing `#film-sequent-platform` sharing link is preserved.
+
+## Home Depot video — October 2, 2026
+
+The Home Depot group appears after Kreate and before Reinhart Foundation. Its first film is Home Depot SPM — Comp Highlights, the supplied v15 SPM intro (1:31). Playback and download use the unchanged 1920×1080 H.264/AAC original, including its existing fast-start metadata. The poster comes from the film at five seconds. Open collection retains the supplied SharePoint folder. The direct sharing link is `#film-home-depot-spm-comp-highlights-2026-10-02`.
