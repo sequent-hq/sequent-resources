@@ -105,16 +105,56 @@ def collection_cards(items,ico):
         inside=f'<span class="collection-icon">{icon(ico)}</span><h3>{esc(c["title"])}</h3><p>{esc(c["description"])}</p><span class="collection-bottom">{label}{icon("arrow") if not unavailable else ""}</span>'
         cards+=f'<div class="collection-card unavailable" aria-disabled="true">{inside}</div>' if unavailable else f'<a class="collection-card" href="{esc(c["url"])}" target="_blank" rel="noopener">{inside}</a>'
     return '<div class="collection-grid">'+cards+'</div>'
+def video_playback(v, label=None):
+    label_attr=f' data-video-label="{esc(label)}"' if label else ''
+    return f'data-video="{esc(v["src"])}" data-download="{esc(v["download"])}" data-title="{esc(v["title"])}" data-video-description="{esc(v["description"])}" data-video-resolution="{esc(v["resolution"])}" data-poster="{esc(v["image"])}" data-video-id="film-{esc(v["slug"])}" data-video-brand="{esc(v["brand"])}"{label_attr}'
+
 def video_card(v, brand):
     featured=v.get('featured',False)
     film_id='film-'+v['slug']
     share_url='https://sequent-hq.github.io/sequent-resources/#'+film_id
-    playback=f'data-video="{esc(v["src"])}" data-download="{esc(v["download"])}" data-title="{esc(v["title"])}" data-poster="{esc(v["image"])}" data-video-id="{film_id}" data-video-brand="{esc(v["brand"])}"'
+    playback=video_playback(v)
     watch=f'<a class="button featured-watch" href="{esc(v["src"])}" {playback}>{icon("play")}Watch film</a>' if featured else ''
     return f'''<article id="{film_id}" class="video-card{' featured-video' if featured else ''}" data-brand-label="{esc(brand)}"><a class="video-cover" href="{esc(v['src'])}" {playback} aria-label="Play {esc(v['title'])}"><span class="image-fallback">{icon('film')}<span>{esc(v['title'])}</span></span><img src="{esc(v['image'])}" alt="{esc(v['title'])}" loading="lazy"><span class="play-circle">{icon('play')}</span><span class="resolution">{esc(v['resolution'])}</span></a><div class="video-body"><span class="video-brand-label">{esc(brand)}{' · Featured film' if featured else ''}</span><h4>{esc(v['title'])}</h4><p>{esc(v['description'])}</p>{watch}<div class="video-actions">{external(v['download'],'Open collection','text-link')}<button class="icon-button jsonly copy-link" data-copy="{share_url}" aria-label="Copy link to {esc(v['title'])}">{icon('copy')}</button></div></div></article>'''
 
+def video_set_card(group, brand, films_by_slug):
+    primary=films_by_slug[group['primary']]
+    members=[primary]+[films_by_slug[slug] for slug in group['videos'] if slug!=primary['slug']]
+    rows=''
+    for v in members:
+        is_primary=v['slug']==primary['slug']
+        film_id='film-'+v['slug']
+        row_id='' if is_primary else f' id="{film_id}"'
+        label=group.get('labels',{}).get(v['slug'],v['title'].removeprefix(group['title']+' — '))
+        meta=('Main film · ' if is_primary else '')+v['resolution']
+        share_url='https://sequent-hq.github.io/sequent-resources/#'+film_id
+        rows+=f'''<div class="video-set-row{' is-primary' if is_primary else ''}"{row_id}><a class="video-set-play" href="{esc(v['src'])}" {video_playback(v,label)} aria-label="Play {esc(v['title'])}">{icon('play')}<span><strong>{esc(label)}</strong><small>{esc(meta)}</small></span></a><button class="icon-button jsonly copy-link" data-copy="{share_url}" aria-label="Copy link to {esc(v['title'])}">{icon('copy')}</button></div>'''
+    layout=' video-set-cuts' if group.get('layout')=='cuts' else ''
+    description=f'<p>{esc(group["description"])}</p>' if group.get('description') else ''
+    primary_label=group.get('labels',{}).get(primary['slug'])
+    return f'''<article id="film-{esc(primary['slug'])}" class="video-card video-set{layout}" data-brand-label="{esc(brand)}" data-video-set-title="{esc(group['title'])}"><a class="video-cover" href="{esc(primary['src'])}" {video_playback(primary,primary_label)} aria-label="Play {esc(primary['title'])}"><span class="image-fallback">{icon('film')}<span>{esc(group['title'])}</span></span><img src="{esc(primary['image'])}" alt="{esc(primary['title'])}" loading="lazy"><span class="play-circle">{icon('play')}</span><span class="resolution">{esc(primary['resolution'])}</span></a><div class="video-body"><span class="video-brand-label">{esc(brand)} · {len(members)} films</span><h4>{esc(group['title'])}</h4>{description}<div class="video-set-list" role="group" aria-label="{esc(group['title'])}">{rows}</div></div></article>'''
+
+def video_set_membership():
+    films={v['slug']:v for v in DATA['videos']}
+    sets=DATA.get('videoSets',[])
+    if len({s['slug'] for s in sets})!=len(sets):
+        raise ValueError('Video set slugs must be unique')
+    memberships={}
+    for group in sets:
+        members=group['videos']
+        if group['primary'] not in members or len(set(members))!=len(members):
+            raise ValueError(f'Video set {group["slug"]} needs one primary and unique film members')
+        for slug in members:
+            if slug not in films or films[slug]['brand']!=group['brand']:
+                raise ValueError(f'Video set {group["slug"]} has a missing film or a film from another brand: {slug}')
+            if slug in memberships:
+                raise ValueError(f'Film belongs to more than one video set: {slug}')
+            memberships[slug]=group
+    return films,memberships
+
 def videos():
     groups=DATA.get('videoGroups',[])
+    films_by_slug,memberships=video_set_membership()
     sections=''
     jumps=''
     for group in groups:
@@ -123,8 +163,12 @@ def videos():
         collections=[v for v in DATA['videoCollections'] if v.get('brand')==slug and not v.get('show_as_video')]
         if not films and not collections: continue
         jumps+=f'<a href="#videos-{slug}">{esc(name)}{icon("right")}</a>'
-        featured=''.join(video_card(v,name) for v in films if v.get('featured'))
-        regular=''.join(video_card(v,name) for v in films if not v.get('featured'))
+        def render(v):
+            group=memberships.get(v['slug'])
+            if not group: return video_card(v,name)
+            return video_set_card(group,name,films_by_slug) if group['primary']==v['slug'] else ''
+        featured=''.join(render(v) for v in films if v.get('featured'))
+        regular=''.join(render(v) for v in films if not v.get('featured'))
         grid=f'<div class="video-grid">{regular}</div>' if regular else ''
         related=f'<div class="video-related"><h4>More from {esc(name)}</h4>{collection_cards(collections,"film")}</div>' if collections else ''
         count=f'{len(films)} film'+('s' if len(films)!=1 else '')
@@ -170,7 +214,7 @@ def page(kind):
     metadata='Brand standards, logos, and brand kits for the Sequent family and retail partners.' if brand_only else 'Brand standards, logos, templates, videos, and photography for the Sequent family.'
     hero_link='' if brand_only else f'<a class="hero-link" href="{"brands.html" if bg else "backgrounds.html"}">{icon("grid" if bg else "monitor")}<span>{"Explore brand kits" if bg else "Call backgrounds"}<small>{"16 brand collections" if bg else str(len(DATA["backgrounds"]))+" ready-to-use backgrounds"}</small></span>{icon("right")}</a>'
     content=gallery() if bg else brand_library(focused=brand_only)+(videos()+photos()+social()+help_section() if kind=='index' else '')
-    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sequent — {title}</title><meta name="description" content="{metadata}"><meta name="theme-color" content="#0c1015"><meta property="og:title" content="Sequent — {title}"><meta property="og:image" content="https://sequent-hq.github.io/sequent-resources/assets/og-card.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css?v=20261003-playback"><script>document.documentElement.classList.add('js');try{{if(localStorage.getItem('sequent-theme')==='light')document.documentElement.classList.add('light')}}catch(e){{}}</script><script src="app.js?v=20261003-playback" defer></script></head><body data-page="{kind}"><a class="skip-link" href="#main">Skip to content</a><div class="intro" aria-hidden="true">{logo('sequent')}<span>RESOURCE LIBRARY</span><i></i></div>{nav(kind)}<div class="page-shell"><header class="topbar"><button class="icon-button menu-button jsonly" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">{icon('menu')}</button><div class="breadcrumb">Sequent <span>/</span> <strong>{title}</strong></div><div class="topbar-actions"><a class="text-link full-library" href="index.html">{'Full board' if brand_only else 'Full library'}</a><button class="icon-button jsonly" id="themeToggle" aria-label="Switch to light theme">{icon('sun')}</button></div></header><main id="main"><div class="hero"><div><div class="eyebrow">SHARED ASSETS. CONNECTED BRANDS.</div><h1>{headline}</h1><p>{desc}</p></div>{hero_link}</div><div class="search-area jsonly"><div class="search-field">{icon('search')}<input id="search" type="search" placeholder="{'Search backgrounds…' if bg else 'Search brands, guidelines, templates…'}" aria-label="{'Search backgrounds' if bg else 'Search brand standards and logos' if brand_only else 'Search all resources'}" aria-controls="searchResults" autocomplete="off"><kbd>Ctrl K</kbd></div><div id="searchResults" hidden><div class="search-results-header"><span id="searchCount" role="status"></span><button class="icon-button" id="closeSearch" aria-label="Clear search">{icon('close')}</button></div><div id="searchItems"></div></div></div>{content}<footer><a href="index.html" aria-label="Sequent home">{logo('sequent')}</a><span>Brand resources, all together.</span><span>© 2026 Sequent</span></footer></main></div><dialog id="brandDialog" aria-labelledby="dialogLabel"><div class="dialog-toolbar"><span id="dialogLabel">Brand resources</span><div><button class="icon-button" id="copyBrand" aria-label="Copy brand link">{icon('copy')}</button><button class="icon-button" id="closeBrand" aria-label="Close brand kit">{icon('close')}</button></div></div><div id="brandDialogContent"></div></dialog><dialog id="videoDialog" aria-labelledby="videoTitle"><div class="dialog-toolbar"><h2 id="videoTitle">Watch film</h2><button class="icon-button" id="closeVideo" aria-label="Close video">{icon('close')}</button></div><video controls playsinline preload="metadata"><source type="video/mp4"></video><div class="video-feedback" id="videoFeedback" hidden><p id="videoStatus" role="status" aria-live="polite"></p><button class="button" id="videoAction" type="button" hidden>Play video</button></div><div class="video-dialog-footer"><a class="button" id="videoDownload" download>{icon('download')}Download video</a><a class="text-link" id="videoCollection" target="_blank" rel="noopener">Open collection {icon('arrow')}</a><button class="button" id="copyVideo">{icon('copy')}Copy link</button></div></dialog><div class="toast" id="toast" role="status"></div></body></html>'''
+    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sequent — {title}</title><meta name="description" content="{metadata}"><meta name="theme-color" content="#0c1015"><meta property="og:title" content="Sequent — {title}"><meta property="og:image" content="https://sequent-hq.github.io/sequent-resources/assets/og-card.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css?v=20261003-kreate"><script>document.documentElement.classList.add('js');try{{if(localStorage.getItem('sequent-theme')==='light')document.documentElement.classList.add('light')}}catch(e){{}}</script><script src="app.js?v=20261003-kreate" defer></script></head><body data-page="{kind}"><a class="skip-link" href="#main">Skip to content</a><div class="intro" aria-hidden="true">{logo('sequent')}<span>RESOURCE LIBRARY</span><i></i></div>{nav(kind)}<div class="page-shell"><header class="topbar"><button class="icon-button menu-button jsonly" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">{icon('menu')}</button><div class="breadcrumb">Sequent <span>/</span> <strong>{title}</strong></div><div class="topbar-actions"><a class="text-link full-library" href="index.html">{'Full board' if brand_only else 'Full library'}</a><button class="icon-button jsonly" id="themeToggle" aria-label="Switch to light theme">{icon('sun')}</button></div></header><main id="main"><div class="hero"><div><div class="eyebrow">SHARED ASSETS. CONNECTED BRANDS.</div><h1>{headline}</h1><p>{desc}</p></div>{hero_link}</div><div class="search-area jsonly"><div class="search-field">{icon('search')}<input id="search" type="search" placeholder="{'Search backgrounds…' if bg else 'Search brands, guidelines, templates…'}" aria-label="{'Search backgrounds' if bg else 'Search brand standards and logos' if brand_only else 'Search all resources'}" aria-controls="searchResults" autocomplete="off"><kbd>Ctrl K</kbd></div><div id="searchResults" hidden><div class="search-results-header"><span id="searchCount" role="status"></span><button class="icon-button" id="closeSearch" aria-label="Clear search">{icon('close')}</button></div><div id="searchItems"></div></div></div>{content}<footer><a href="index.html" aria-label="Sequent home">{logo('sequent')}</a><span>Brand resources, all together.</span><span>© 2026 Sequent</span></footer></main></div><dialog id="brandDialog" aria-labelledby="dialogLabel"><div class="dialog-toolbar"><span id="dialogLabel">Brand resources</span><div><button class="icon-button" id="copyBrand" aria-label="Copy brand link">{icon('copy')}</button><button class="icon-button" id="closeBrand" aria-label="Close brand kit">{icon('close')}</button></div></div><div id="brandDialogContent"></div></dialog><dialog id="videoDialog" aria-labelledby="videoTitle"><div class="dialog-toolbar"><h2 id="videoTitle">Watch film</h2><button class="icon-button" id="closeVideo" aria-label="Close video">{icon('close')}</button></div><video controls playsinline preload="metadata"><source type="video/mp4"></video><div class="video-feedback" id="videoFeedback" hidden><p id="videoStatus" role="status" aria-live="polite"></p><button class="button" id="videoAction" type="button" hidden>Play video</button></div><div class="video-dialog-footer"><a class="button" id="videoDownload" download>{icon('download')}Download video</a><a class="text-link" id="videoCollection" target="_blank" rel="noopener">Open collection {icon('arrow')}</a><button class="button" id="copyVideo">{icon('copy')}Copy link</button></div></dialog><div class="toast" id="toast" role="status"></div></body></html>'''
 for kind in ['index','brands','backgrounds']:
     (ROOT/f'{kind}.html').write_text(page(kind),encoding='utf-8')
 (ROOT/'assets/favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#0c1015"/><path d="M9 10h14v4H13v4h10v4H9v-4h10v-4H9z" fill="#62ddf5"/></svg>',encoding='utf-8')

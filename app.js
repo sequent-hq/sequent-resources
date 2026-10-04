@@ -342,11 +342,20 @@
       index.push({ title, context: name, href: a.getAttribute('href'), download: a.getAttribute('download'), text: `${name} ${title} ${$('.mt', a)?.textContent || ''}`.toLowerCase() });
     });
   });
-  $$('.video-card, a.collection-card, .social-card, .background-card').forEach(card => {
+  const indexedVideos = new Set();
+  $$('[data-video-id]').forEach(link => {
+    if (indexedVideos.has(link.dataset.videoId)) return;
+    indexedVideos.add(link.dataset.videoId);
+    const card = link.closest('.video-card');
+    const title = link.dataset.title;
+    const context = [card?.dataset.brandLabel, card?.dataset.videoSetTitle, 'Video'].filter(Boolean).join(' · ');
+    index.push({ title, context, href: link.getAttribute('href'), video: link, text: `${title} ${context} ${link.dataset.videoDescription || ''} ${link.dataset.videoLabel || ''} ${link.dataset.videoResolution || ''}`.toLowerCase() });
+  });
+  $$('a.collection-card, .social-card, .background-card').forEach(card => {
     const link = card.matches('a') ? card : $('a', card);
     const title = $('h3, h4', card)?.textContent.trim();
     if (!title || !link) return;
-    const context = card.classList.contains('video-card') ? `${card.dataset.brandLabel || ''} · Video` : card.classList.contains('social-card') ? 'Social content' : card.classList.contains('background-card') ? 'Call background' : 'Collection';
+    const context = card.classList.contains('social-card') ? 'Social content' : card.classList.contains('background-card') ? 'Call background' : 'Collection';
     index.push({ title, context, href: link.getAttribute('href'), video: link.dataset.video ? link : null, text: `${title} ${context} ${card.textContent}`.toLowerCase() });
   });
   function clearSearch() { search.value = ''; results.hidden = true; items.replaceChildren(); }

@@ -84,3 +84,10 @@ The featured Sequent Platform Video now uses the supplied Sequent — Ending Ref
 The featured Sequent film uses the updated **Sequent Overview.mp4** from Google Drive, preserving its original 1920×1080 video and audio. The file is hosted publicly for playback and download without signing in. Existing shared links still open `#film-sequent-platform`.
 
 The common player now surfaces loading, blocked playback, and retry actions instead of hiding playback failures, with bounded recovery for initial network stalls. Other film files retain their original resolution.
+
+
+## Kreate video organization — October 3, 2026
+
+Kreate Resin remains first, followed by the new SPM Intro — Las Vegas Flyover v17 and SPM Marketing Video Review 03. Both play and download as unchanged original 1920×1080 H.264/AAC files, hosted publicly. Their source links remain available in the player. The former Home Depot Comp Highlights card and empty Home Depot group have been removed from the board.
+
+SPM 2025 Videos collects the partner intro, Content & Social, and Facilities films into one card. Eco Actions provides the full film plus one-click 60-second and 30-second cuts in one card. Each film retains its individual sharing link and remains searchable. The older Kreate Capabilities Reel is last in Kreate.

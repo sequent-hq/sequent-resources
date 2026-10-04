@@ -2934,30 +2934,61 @@
       }
     },
     {
-      "title": "Kreate Capabilities Reel",
-      "description": "Capabilities",
-      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/kreate-capabilities.mp4",
-      "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=9C768D34-0CA9-47FE-9EC4C3B5F51A445A",
-      "image": "https://brand.kreate.com/asset/9c768d34-0ca9-47fe-9ec4-c3b5f51a445a/thumbnail/webimage-Kreate-Capabilities-Reel",
+      "title": "Kreate SPM Intro — Las Vegas Flyover",
+      "description": "SPM intro · 1:31 · October 3, 2026",
+      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/kreate-spm-intro-vegas-v17-2026-10-03.mp4",
+      "download": "https://fmtinc.sharepoint.com/sites/JoeBryce/Shared%20Documents/General/SPM/2026/Video%20Working%20Files%20-%202026-09-27/33%20Home%20Depot%20Intro%20Vegas%20Flyover%20-%202026-10-03/SPM%20Intro%20-%20v17%20-%20Las%20Vegas%20Flyover.mp4",
+      "collection": "https://fmtinc.sharepoint.com/sites/JoeBryce/Shared%20Documents/General/SPM/2026/Video%20Working%20Files%20-%202026-09-27/33%20Home%20Depot%20Intro%20Vegas%20Flyover%20-%202026-10-03/SPM%20Intro%20-%20v17%20-%20Las%20Vegas%20Flyover.mp4",
+      "image": "assets/video/kreate-spm-intro-vegas-v17-2026-10-03.jpg",
       "resolution": "1080p",
       "brand": "kreate",
-      "slug": "kreate-capabilities",
-      "preview_src": "https://brand.kreate.com/asset/9c768d34-0ca9-47fe-9ec4-c3b5f51a445a/mp4/Kreate-Capabilities-Reel.mp4",
+      "slug": "kreate-spm-intro-vegas-v17-2026-10-03",
       "original_width": 1920,
       "original_height": 1080,
-      "original_bytes": 143437388,
+      "original_bytes": 65701571,
+      "original_filename": "SPM Intro - v17 - Las Vegas Flyover.mp4",
+      "source_version": "October 3, 2026",
       "playback": {
-        "bytes": 143483077,
-        "sha256": "f052464856f1baf5aa929abbb160ec878499b04ad70bcdea24c881ff820de663",
+        "bytes": 65701571,
+        "sha256": "8003a8133dbc55f39953d2c54e2974efaca4b6044f65fad50e544440a5608080",
         "width": 1920,
         "height": 1080,
-        "fps": 30.0,
-        "duration_seconds": 87.74,
+        "fps": 30,
+        "duration_seconds": 91.333333,
         "video_codec": "h264",
         "audio_codec": "aac",
-        "derivation": "lossless MP4 remux for faststart; unchanged audio/video streams",
+        "derivation": "unchanged original MP4",
         "faststart": true,
-        "verified_at": "2026-09-20T01:49:30.242733+00:00"
+        "verified_at": "2026-10-03"
+      }
+    },
+    {
+      "title": "Kreate SPM Marketing Video",
+      "description": "Marketing & social · 1:07 · October 3, 2026",
+      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/kreate-spm-marketing-review03-2026-10-03.mp4",
+      "download": "https://fmtinc.sharepoint.com/sites/JoeBryce/Shared%20Documents/General/SPM/2026/Video%20Working%20Files%20-%202026-09-27/31%20THD%20Marketing%20Social%20Background%20-%202026-10-03/THD%20Marketing%20-%20Social%20Background%20-%20Review%2003.mp4",
+      "collection": "https://fmtinc.sharepoint.com/sites/JoeBryce/Shared%20Documents/General/SPM/2026/Video%20Working%20Files%20-%202026-09-27/31%20THD%20Marketing%20Social%20Background%20-%202026-10-03/THD%20Marketing%20-%20Social%20Background%20-%20Review%2003.mp4",
+      "image": "assets/video/kreate-spm-marketing-review03-2026-10-03.jpg",
+      "resolution": "1080p",
+      "brand": "kreate",
+      "slug": "kreate-spm-marketing-review03-2026-10-03",
+      "original_width": 1920,
+      "original_height": 1080,
+      "original_bytes": 66425215,
+      "original_filename": "THD Marketing - Social Background - Review 03.mp4",
+      "source_version": "October 3, 2026",
+      "playback": {
+        "bytes": 66425215,
+        "sha256": "62710e0bcc6c4b040f12309f7bae09c7d315bca0f568dc0869e48241addb6ef4",
+        "width": 1920,
+        "height": 1080,
+        "fps": 25,
+        "duration_seconds": 66.6,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "derivation": "unchanged original MP4",
+        "faststart": true,
+        "verified_at": "2026-10-03"
       }
     },
     {
@@ -3042,87 +3073,6 @@
       }
     },
     {
-      "title": "Partner Video — Final",
-      "description": "Partner meeting intro",
-      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/partner-video-final.mp4",
-      "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=DF9CD7C9-F3F8-41F6-AC0CC66741A2C04E",
-      "image": "https://brand.kreate.com/asset/df9cd7c9-f3f8-41f6-ac0c-c66741a2c04e/thumbnail/webimage-Partner-Video-Final",
-      "resolution": "1080p",
-      "brand": "kreate",
-      "slug": "partner-video-final",
-      "preview_src": "https://brand.kreate.com/asset/df9cd7c9-f3f8-41f6-ac0c-c66741a2c04e/mp4/Partner-Video-Final.mp4",
-      "original_width": 1920,
-      "original_height": 1080,
-      "original_bytes": 105210761,
-      "playback": {
-        "bytes": 105225393,
-        "sha256": "d31d94b32fc3d804eb995e6b8a95e8324a398d41a7bf5fd328dc7f78ab6c2974",
-        "width": 1920,
-        "height": 1080,
-        "fps": 24.0,
-        "duration_seconds": 78.14,
-        "video_codec": "h264",
-        "audio_codec": "aac",
-        "derivation": "lossless MP4 remux for faststart; unchanged audio/video streams",
-        "faststart": true,
-        "verified_at": "2026-09-20T01:50:27.115977+00:00"
-      }
-    },
-    {
-      "title": "2025 Partner Meeting — Content & Social",
-      "description": "Marketing recap",
-      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/partner-meeting-content-social.mp4",
-      "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=763AA6D3-F439-43A3-8B27645B03EBCF6C",
-      "image": "https://brand.kreate.com/asset/763aa6d3-f439-43a3-8b27-645b03ebcf6c/thumbnail/webimage-2025-Partner-Meeting-Content-and-Social",
-      "resolution": "1080p",
-      "brand": "kreate",
-      "slug": "partner-meeting-content-social",
-      "preview_src": "https://brand.kreate.com/asset/763aa6d3-f439-43a3-8b27-645b03ebcf6c/mp4/2025-Partner-Meeting-Content-and-Social.mp4",
-      "original_width": 1920,
-      "original_height": 1080,
-      "original_bytes": 122600217,
-      "playback": {
-        "bytes": 122614209,
-        "sha256": "1d4f5afb13cd7abd422afc83e869dc7324716247b0fe14dbad413c22a687fb41",
-        "width": 1920,
-        "height": 1080,
-        "fps": 24.0,
-        "duration_seconds": 74.92,
-        "video_codec": "h264",
-        "audio_codec": "aac",
-        "derivation": "lossless MP4 remux for faststart; unchanged audio/video streams",
-        "faststart": true,
-        "verified_at": "2026-09-20T01:50:27.514710+00:00"
-      }
-    },
-    {
-      "title": "2025 Partner Meeting — Facilities",
-      "description": "Facility flythrough",
-      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/partner-meeting-facilities.mp4",
-      "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=5B3F1790-DF09-425C-ACF7C40E71248A62",
-      "image": "https://brand.kreate.com/asset/5b3f1790-df09-425c-acf7-c40e71248a62/thumbnail/webimage-2025-Partner-Meeting-Facilities",
-      "resolution": "1080p",
-      "brand": "kreate",
-      "slug": "partner-meeting-facilities",
-      "preview_src": "https://brand.kreate.com/asset/5b3f1790-df09-425c-acf7-c40e71248a62/mp4/2025-Partner-Meeting-Facilities.mp4",
-      "original_width": 1920,
-      "original_height": 1080,
-      "original_bytes": 137522909,
-      "playback": {
-        "bytes": 137541689,
-        "sha256": "ffaf0290ebd7d4995cc6100c6d93ee951d762ba023d397800bab3b610519e6db",
-        "width": 1920,
-        "height": 1080,
-        "fps": 24.0,
-        "duration_seconds": 99.97,
-        "video_codec": "h264",
-        "audio_codec": "aac",
-        "derivation": "lossless MP4 remux for faststart; unchanged audio/video streams",
-        "faststart": true,
-        "verified_at": "2026-09-20T01:50:27.966352+00:00"
-      }
-    },
-    {
       "title": "Eco Actions — Full version",
       "description": "Eco / CSR",
       "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/eco-actions-full.mp4",
@@ -3204,33 +3154,112 @@
       }
     },
     {
-      "title": "Home Depot SPM — Comp Highlights",
-      "description": "SPM intro · 1:31 · October 2, 2026",
-      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/home-depot-spm-comp-highlights-2026-10-02.mp4",
-      "download": "https://fmtinc.sharepoint.com/sites/JoeBryce/Shared%20Documents/General/SPM/2026/Video%20Working%20Files%20-%202026-09-27/16%20Comp%20Highlights%20-%202026-10-02",
-      "image": "assets/video/home-depot-spm-comp-highlights-2026-10-02.jpg",
+      "title": "Partner Video — Final",
+      "description": "Partner meeting intro",
+      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/partner-video-final.mp4",
+      "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=DF9CD7C9-F3F8-41F6-AC0CC66741A2C04E",
+      "image": "https://brand.kreate.com/asset/df9cd7c9-f3f8-41f6-ac0c-c66741a2c04e/thumbnail/webimage-Partner-Video-Final",
       "resolution": "1080p",
-      "brand": "home-depot",
-      "featured": false,
-      "slug": "home-depot-spm-comp-highlights-2026-10-02",
+      "brand": "kreate",
+      "slug": "partner-video-final",
+      "preview_src": "https://brand.kreate.com/asset/df9cd7c9-f3f8-41f6-ac0c-c66741a2c04e/mp4/Partner-Video-Final.mp4",
       "original_width": 1920,
       "original_height": 1080,
-      "original_bytes": 63336012,
+      "original_bytes": 105210761,
       "playback": {
-        "bytes": 63336012,
-        "sha256": "5e8ded33872ce7a155d9e5fa88037be2b844e017eb8812dcd11ce31633004876",
+        "bytes": 105225393,
+        "sha256": "d31d94b32fc3d804eb995e6b8a95e8324a398d41a7bf5fd328dc7f78ab6c2974",
         "width": 1920,
         "height": 1080,
-        "fps": 30,
-        "duration_seconds": 91.33,
+        "fps": 24.0,
+        "duration_seconds": 78.14,
         "video_codec": "h264",
         "audio_codec": "aac",
-        "derivation": "unchanged original MP4",
+        "derivation": "lossless MP4 remux for faststart; unchanged audio/video streams",
         "faststart": true,
-        "verified_at": "2026-10-02T17:15:21.014270+00:00"
-      },
-      "original_filename": "SPM Intro - v15 - Comp Highlights.mp4",
-      "source_version": "v15 · October 2, 2026"
+        "verified_at": "2026-09-20T01:50:27.115977+00:00"
+      }
+    },
+    {
+      "title": "2025 Partner Meeting — Content & Social",
+      "description": "Marketing recap",
+      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/partner-meeting-content-social.mp4",
+      "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=763AA6D3-F439-43A3-8B27645B03EBCF6C",
+      "image": "https://brand.kreate.com/asset/763aa6d3-f439-43a3-8b27-645b03ebcf6c/thumbnail/webimage-2025-Partner-Meeting-Content-and-Social",
+      "resolution": "1080p",
+      "brand": "kreate",
+      "slug": "partner-meeting-content-social",
+      "preview_src": "https://brand.kreate.com/asset/763aa6d3-f439-43a3-8b27-645b03ebcf6c/mp4/2025-Partner-Meeting-Content-and-Social.mp4",
+      "original_width": 1920,
+      "original_height": 1080,
+      "original_bytes": 122600217,
+      "playback": {
+        "bytes": 122614209,
+        "sha256": "1d4f5afb13cd7abd422afc83e869dc7324716247b0fe14dbad413c22a687fb41",
+        "width": 1920,
+        "height": 1080,
+        "fps": 24.0,
+        "duration_seconds": 74.92,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "derivation": "lossless MP4 remux for faststart; unchanged audio/video streams",
+        "faststart": true,
+        "verified_at": "2026-09-20T01:50:27.514710+00:00"
+      }
+    },
+    {
+      "title": "2025 Partner Meeting — Facilities",
+      "description": "Facility flythrough",
+      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/partner-meeting-facilities.mp4",
+      "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=5B3F1790-DF09-425C-ACF7C40E71248A62",
+      "image": "https://brand.kreate.com/asset/5b3f1790-df09-425c-acf7-c40e71248a62/thumbnail/webimage-2025-Partner-Meeting-Facilities",
+      "resolution": "1080p",
+      "brand": "kreate",
+      "slug": "partner-meeting-facilities",
+      "preview_src": "https://brand.kreate.com/asset/5b3f1790-df09-425c-acf7-c40e71248a62/mp4/2025-Partner-Meeting-Facilities.mp4",
+      "original_width": 1920,
+      "original_height": 1080,
+      "original_bytes": 137522909,
+      "playback": {
+        "bytes": 137541689,
+        "sha256": "ffaf0290ebd7d4995cc6100c6d93ee951d762ba023d397800bab3b610519e6db",
+        "width": 1920,
+        "height": 1080,
+        "fps": 24.0,
+        "duration_seconds": 99.97,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "derivation": "lossless MP4 remux for faststart; unchanged audio/video streams",
+        "faststart": true,
+        "verified_at": "2026-09-20T01:50:27.966352+00:00"
+      }
+    },
+    {
+      "title": "Kreate Capabilities Reel",
+      "description": "Capabilities",
+      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/kreate-capabilities.mp4",
+      "download": "https://brand.kreate.com/web/4a4b20d9515b7bef/kreate-corporate-videos/?mediaId=9C768D34-0CA9-47FE-9EC4C3B5F51A445A",
+      "image": "https://brand.kreate.com/asset/9c768d34-0ca9-47fe-9ec4-c3b5f51a445a/thumbnail/webimage-Kreate-Capabilities-Reel",
+      "resolution": "1080p",
+      "brand": "kreate",
+      "slug": "kreate-capabilities",
+      "preview_src": "https://brand.kreate.com/asset/9c768d34-0ca9-47fe-9ec4-c3b5f51a445a/mp4/Kreate-Capabilities-Reel.mp4",
+      "original_width": 1920,
+      "original_height": 1080,
+      "original_bytes": 143437388,
+      "playback": {
+        "bytes": 143483077,
+        "sha256": "f052464856f1baf5aa929abbb160ec878499b04ad70bcdea24c881ff820de663",
+        "width": 1920,
+        "height": 1080,
+        "fps": 30.0,
+        "duration_seconds": 87.74,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "derivation": "lossless MP4 remux for faststart; unchanged audio/video streams",
+        "faststart": true,
+        "verified_at": "2026-09-20T01:49:30.242733+00:00"
+      }
     },
     {
       "title": "Reinhart Foundation — with intro",
@@ -3715,10 +3744,6 @@
       "name": "Kreate"
     },
     {
-      "slug": "home-depot",
-      "name": "Home Depot"
-    },
-    {
       "slug": "reinhart",
       "name": "Reinhart Foundation"
     }
@@ -3737,5 +3762,42 @@
       "icon": "music"
     }
   ],
-  "socialUpdated": "2026-09-19"
+  "socialUpdated": "2026-09-19",
+  "videoSets": [
+    {
+      "slug": "spm-2025",
+      "title": "SPM 2025 Videos",
+      "brand": "kreate",
+      "description": "Partner meeting films, together.",
+      "primary": "partner-video-final",
+      "videos": [
+        "partner-video-final",
+        "partner-meeting-content-social",
+        "partner-meeting-facilities"
+      ],
+      "labels": {
+        "partner-video-final": "Partner intro",
+        "partner-meeting-content-social": "Content & social",
+        "partner-meeting-facilities": "Facilities"
+      }
+    },
+    {
+      "slug": "eco-actions",
+      "title": "Eco Actions",
+      "brand": "kreate",
+      "description": "Full film and shorter cuts.",
+      "layout": "cuts",
+      "primary": "eco-actions-full",
+      "videos": [
+        "eco-actions-full",
+        "eco-actions-60",
+        "eco-actions-30"
+      ],
+      "labels": {
+        "eco-actions-full": "Full version",
+        "eco-actions-60": "60-second cut",
+        "eco-actions-30": "30-second cut"
+      }
+    }
+  ]
 }
