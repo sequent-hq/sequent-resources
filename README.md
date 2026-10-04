@@ -77,3 +77,10 @@ The Home Depot group appears after Kreate and before Reinhart Foundation. Its fi
 ## Sequent video replacement — October 2, 2026
 
 The featured Sequent Platform Video now uses the supplied Sequent — Ending Refinement — Review 07 (3:39), at its native 1920×1080 resolution and 30 frames per second. Playback and download use the unchanged H.264/AAC original, including its existing fast-start metadata, hosted publicly as a GitHub release asset so no sign-in is required. The poster comes from this new film. Open collection retains the supplied SharePoint file, which may require source-library access. The existing `#film-sequent-platform` sharing link, featured position, and all other films remain unchanged.
+
+
+## October 3, 2026 video update
+
+The featured Sequent film uses the updated **Sequent Overview.mp4** from Google Drive, preserving its original 1920×1080 video and audio. The file is hosted publicly for playback and download without signing in. Existing shared links still open `#film-sequent-platform`.
+
+The common player now surfaces loading, blocked playback, and retry actions instead of hiding playback failures, with bounded recovery for initial network stalls. Other film files retain their original resolution.

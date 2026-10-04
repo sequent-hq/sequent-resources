@@ -150,8 +150,84 @@
   bgFilters.forEach(b => b.addEventListener('click', () => { filterBackgrounds(b.dataset.bg); history.replaceState(null, '', b.dataset.bg === 'all' ? location.pathname : `#${b.dataset.bg}`); }));
   if (bgFilters.some(b => b.dataset.bg === location.hash.slice(1))) filterBackgrounds(location.hash.slice(1));
   const videoDialog = $('#videoDialog'), player = $('video', videoDialog);
+  const videoFeedback = $('#videoFeedback'), videoStatus = $('#videoStatus'), videoAction = $('#videoAction');
   let currentVideoLink = '', currentVideoBrand = '';
   let videoReturnFocus = null, videoClosedForNavigation = false;
+  let activeVideo = null, videoAttempt = 0, initialVideoTimer = null;
+  let videoHasPlayed = false, videoWantsPlayback = false, videoAutoRetried = false;
+  const stopVideoTimer = () => { clearTimeout(initialVideoTimer); initialVideoTimer = null; };
+  function videoFeedbackState(message = '', action = '') {
+    if (!videoFeedback) return;
+    videoFeedback.hidden = !message;
+    videoStatus.textContent = message;
+    videoAction.hidden = !action;
+    videoAction.dataset.action = action;
+    videoAction.textContent = action === 'play' ? 'Play video' : 'Retry video';
+  }
+  function freshVideoUrl(value) {
+    const url = new URL(value, location.href);
+    if (url.hostname === 'github.com' && url.pathname.includes('/releases/download/')) {
+      url.searchParams.set('_playback', `${Date.now()}-${videoAttempt}`);
+    }
+    return url.href;
+  }
+  function retryInitialVideo(attempt) {
+    if (attempt !== videoAttempt || !videoDialog.open || !activeVideo) return;
+    stopVideoTimer();
+    if (!videoHasPlayed && !videoAutoRetried && videoWantsPlayback) {
+      videoAutoRetried = true;
+      loadVideo(true);
+    } else {
+      videoFeedbackState(videoHasPlayed ? 'Playback was interrupted. Retry or download the video below.' : 'The video could not start. Retry or download it below.', 'retry');
+    }
+  }
+  function watchInitialVideo(attempt) {
+    stopVideoTimer();
+    if (videoHasPlayed || !videoWantsPlayback) return;
+    initialVideoTimer = setTimeout(() => {
+      if (attempt !== videoAttempt || !videoDialog.open) return;
+      if (player.paused) {
+        videoWantsPlayback = false;
+        videoFeedbackState('Press play to start the video.', 'play');
+      } else retryInitialVideo(attempt);
+    }, 45000);
+  }
+  function requestVideoPlay() {
+    const attempt = videoAttempt;
+    videoWantsPlayback = true;
+    videoFeedbackState('Loading video…');
+    watchInitialVideo(attempt);
+    const rejected = error => {
+      if (attempt !== videoAttempt || !videoDialog.open || !activeVideo) return;
+      if (error.name === 'NotAllowedError') {
+        videoWantsPlayback = false;
+        stopVideoTimer();
+        videoFeedbackState('Press play to start the video.', 'play');
+      } else if (error.name !== 'AbortError') {
+        retryInitialVideo(attempt);
+      }
+    };
+    try { player.play()?.catch(rejected); } catch (error) { rejected(error); }
+  }
+  function loadVideo(fresh = false, resumeAt = 0) {
+    const attempt = ++videoAttempt;
+    stopVideoTimer();
+    player.pause();
+    player.removeAttribute('src');
+    const source = document.createElement('source');
+    source.type = 'video/mp4';
+    source.src = fresh ? freshVideoUrl(activeVideo.dataset.video) : activeVideo.dataset.video;
+    source.addEventListener('error', () => retryInitialVideo(attempt));
+    player.replaceChildren(source);
+    if (resumeAt > 0) player.addEventListener('loadedmetadata', () => {
+      if (attempt !== videoAttempt || !videoDialog.open) return;
+      const end = Number.isFinite(player.duration) ? Math.max(0, player.duration - 0.1) : resumeAt;
+      player.currentTime = Math.min(resumeAt, end);
+    }, { once: true });
+    player.load();
+    if (videoWantsPlayback) requestVideoPlay();
+    else videoFeedbackState('Press play to start the video.', 'play');
+  }
   function openVideo(a, autoplay = true, returnFocus = a) {
     if (dialog?.open) dialog.close();
     videoReturnFocus = returnFocus;
@@ -161,9 +237,11 @@
     $('#videoCollection').href = a.dataset.download;
     currentVideoLink = new URL(`./#${a.dataset.videoId}`, location.href).href;
     currentVideoBrand = a.dataset.videoBrand;
-    $('#videoError').hidden = true; player.poster = a.dataset.poster || ''; player.src = a.dataset.video;
+    activeVideo = a;
+    videoHasPlayed = false; videoAutoRetried = false; videoWantsPlayback = autoplay;
+    player.poster = a.dataset.poster || '';
     if (!videoDialog.open) videoDialog.showModal();
-    if (autoplay) player.play().catch(() => {});
+    loadVideo();
   }
   function closeVideoForNavigation() {
     videoClosedForNavigation = true;
@@ -174,10 +252,50 @@
     if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
     e.preventDefault(); openVideo(a);
   }));
-  player?.addEventListener('error', () => { $('#videoError').hidden = false; });
+  player?.addEventListener('error', () => {
+    if (activeVideo && videoDialog.open) retryInitialVideo(videoAttempt);
+  });
+  player?.addEventListener('play', () => {
+    if (!activeVideo || !videoDialog.open) return;
+    videoWantsPlayback = true;
+    videoFeedbackState('Loading video…');
+    watchInitialVideo(videoAttempt);
+  });
+  player?.addEventListener('playing', () => {
+    if (!activeVideo || !videoDialog.open) return;
+    videoHasPlayed = true; videoWantsPlayback = true;
+    stopVideoTimer(); videoFeedbackState();
+  });
+  player?.addEventListener('waiting', () => {
+    if (activeVideo && videoDialog.open && videoWantsPlayback) {
+      videoFeedbackState(videoHasPlayed ? 'Buffering video…' : 'Loading video…', videoHasPlayed ? 'retry' : '');
+    }
+  });
+  player?.addEventListener('pause', () => {
+    if (!activeVideo || !videoDialog.open || !player.paused || !player.readyState) return;
+    videoWantsPlayback = false;
+    stopVideoTimer();
+    videoFeedbackState(videoHasPlayed ? '' : 'Press play to start the video.', videoHasPlayed ? '' : 'play');
+  });
+  videoAction?.addEventListener('click', () => {
+    if (!activeVideo || !videoDialog.open) return;
+    if (videoAction.dataset.action === 'play') requestVideoPlay();
+    else {
+      const resumeAt = videoHasPlayed ? player.currentTime : 0;
+      videoWantsPlayback = true; videoAutoRetried = true;
+      loadVideo(true, resumeAt);
+    }
+  });
+  $('#videoDownload')?.addEventListener('click', () => {
+    if (activeVideo) $('#videoDownload').href = freshVideoUrl(activeVideo.dataset.video);
+  });
   $('#closeVideo')?.addEventListener('click', () => videoDialog.close());
   videoDialog?.addEventListener('close', () => {
-    player.pause(); player.removeAttribute('src'); player.removeAttribute('poster'); player.load();
+    // A queued close event must not clear a film opened before that event runs.
+    if (videoDialog.open) return;
+    ++videoAttempt; activeVideo = null; videoWantsPlayback = false;
+    stopVideoTimer(); videoFeedbackState();
+    player.pause(); player.removeAttribute('src'); player.removeAttribute('poster'); player.replaceChildren(); player.load();
     if (!videoClosedForNavigation) {
       if (location.hash.startsWith('#film-')) history.replaceState(null, '', `#videos-${currentVideoBrand}`);
       if (videoReturnFocus?.isConnected) videoReturnFocus.focus({ preventScroll: true });
