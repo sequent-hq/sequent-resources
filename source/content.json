@@ -2935,22 +2935,22 @@
     },
     {
       "title": "Kreate SPM Intro",
-      "description": "SPM intro · 1:31 · October 4, 2026",
-      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/kreate-spm-intro-v18-2026-10-04.mp4",
-      "download": "https://fmtinc.sharepoint.com/sites/JoeBryce/Shared%20Documents/General/SPM/2026/Video%20Working%20Files%20-%202026-09-27/42%20Home%20Depot%20SPM%20Orange%20Logo%20-%202026-10-04/SPM%20Intro%20-%20v18%20-%20Standard%20Orange%20Home%20Depot%20Logo.mp4",
-      "collection": "https://fmtinc.sharepoint.com/sites/JoeBryce/Shared%20Documents/General/SPM/2026/Video%20Working%20Files%20-%202026-09-27/42%20Home%20Depot%20SPM%20Orange%20Logo%20-%202026-10-04/SPM%20Intro%20-%20v18%20-%20Standard%20Orange%20Home%20Depot%20Logo.mp4",
-      "image": "assets/video/kreate-spm-intro-v18-2026-10-04.jpg",
+      "description": "SPM intro · 1:31 · October 5, 2026",
+      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/kreate-spm-intro-v20-2026-10-05.mp4",
+      "download": "https://fmtinc.sharepoint.com/sites/JoeBryce/Shared%20Documents/General/SPM/2026/Video%20Working%20Files%20-%202026-09-27/47%20Home%20Depot%20Intro%20Tiffin%20Zoom%20-%202026-10-05/SPM%20Intro%20-%20v20%20-%20Locations%20and%20Tiffin%20Zoom.mp4",
+      "collection": "https://fmtinc.sharepoint.com/sites/JoeBryce/Shared%20Documents/General/SPM/2026/Video%20Working%20Files%20-%202026-09-27/47%20Home%20Depot%20Intro%20Tiffin%20Zoom%20-%202026-10-05/SPM%20Intro%20-%20v20%20-%20Locations%20and%20Tiffin%20Zoom.mp4",
+      "image": "assets/video/kreate-spm-intro-v20-2026-10-05.jpg",
       "resolution": "1080p",
       "brand": "kreate",
       "slug": "kreate-spm-intro-vegas-v17-2026-10-03",
       "original_width": 1920,
       "original_height": 1080,
-      "original_bytes": 65716943,
-      "original_filename": "SPM Intro - v18 - Standard Orange Home Depot Logo.mp4",
-      "source_version": "October 4, 2026",
+      "original_bytes": 65771630,
+      "original_filename": "SPM Intro - v20 - Locations and Tiffin Zoom.mp4",
+      "source_version": "October 5, 2026",
       "playback": {
-        "bytes": 65716943,
-        "sha256": "fb72589fd8badbf860b4a9793541b673de355d55b79d5907a49663721c78b74d",
+        "bytes": 65771630,
+        "sha256": "9c0a4f6e09c2a839f318722f2b51d76fdca8a0737771cfbac0e13f1a08e3d121",
         "width": 1920,
         "height": 1080,
         "fps": 30,
@@ -2959,7 +2959,7 @@
         "audio_codec": "aac",
         "derivation": "unchanged original MP4",
         "faststart": true,
-        "verified_at": "2026-10-04"
+        "verified_at": "2026-10-05"
       }
     },
     {
