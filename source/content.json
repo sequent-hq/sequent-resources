@@ -2906,34 +2906,6 @@
       "source_version": "Updated October 3, 2026"
     },
     {
-      "title": "Kreate Resin Facility",
-      "description": "Inside Kreate Resin · 2:51",
-      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/kreate-resin-facility.mp4",
-      "download": "https://brand.kreate.com/web/724e73705e444ff7/kreate-resin-facility/?mediaId=BD310A51-ACBE-4E44-8184D71441A06728",
-      "collection": "https://brand.kreate.com/web/724e73705e444ff7/kreate-resin-facility/",
-      "image": "https://brand.kreate.com/asset/bd310a51-acbe-4e44-8184-d71441a06728/thumbnail/webimage-Kreate-Video-v02",
-      "resolution": "1080p",
-      "brand": "kreate",
-      "original_width": 1920,
-      "original_height": 1080,
-      "original_bytes": 220614607,
-      "slug": "kreate-resin-facility",
-      "preview_src": "https://brand.kreate.com/asset/bd310a51-acbe-4e44-8184-d71441a06728/mp4/Kreate-Video-v02.mp4",
-      "playback": {
-        "bytes": 220614607,
-        "sha256": "30d09eeba073e72a55cd5c30f45e0b10ec37e0b69c652e28046cd47312b98043",
-        "width": 1920,
-        "height": 1080,
-        "fps": 30.0,
-        "duration_seconds": 171.0,
-        "video_codec": "h264",
-        "audio_codec": "aac",
-        "derivation": "original prepared by root; native dimensions and metadata verified",
-        "faststart": true,
-        "verified_at": "2026-09-20T01:46:28.408954+00:00"
-      }
-    },
-    {
       "title": "Kreate SPM Intro",
       "description": "SPM intro · 1:31 · October 5, 2026",
       "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/kreate-spm-intro-v20-2026-10-05.mp4",
@@ -2989,6 +2961,35 @@
         "derivation": "unchanged original MP4",
         "faststart": true,
         "verified_at": "2026-10-04"
+      }
+    },
+    {
+      "title": "Kreate Sustainability",
+      "description": "Full circle · 1:30 · October 5, 2026",
+      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/kreate-sustainability-review14-2026-10-05.mp4",
+      "download": "https://fmtinc.sharepoint.com/sites/JoeBryce/Shared%20Documents/General/SPM/2026/Video%20Working%20Files%20-%202026-09-27/50%20Kreate%20Resin%20Original%20Animations%20-%202026-10-05/Kreate%20Resin%20-%20Full%20Circle%20-%20Review%2014.mp4",
+      "collection": "https://fmtinc.sharepoint.com/sites/JoeBryce/Shared%20Documents/General/SPM/2026/Video%20Working%20Files%20-%202026-09-27/50%20Kreate%20Resin%20Original%20Animations%20-%202026-10-05/Kreate%20Resin%20-%20Full%20Circle%20-%20Review%2014.mp4",
+      "image": "assets/video/kreate-sustainability-review14-2026-10-05.jpg",
+      "resolution": "1080p",
+      "brand": "kreate",
+      "slug": "kreate-sustainability",
+      "original_width": 1920,
+      "original_height": 1080,
+      "original_bytes": 52146258,
+      "original_filename": "Kreate Resin - Full Circle - Review 14.mp4",
+      "source_version": "October 5, 2026",
+      "playback": {
+        "bytes": 52146258,
+        "sha256": "40c836ba58ceb2674c81989c3161188c12cd8a65c755487c919163043cfe0ed7",
+        "width": 1920,
+        "height": 1080,
+        "fps": 30,
+        "duration_seconds": 90,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "derivation": "unchanged original MP4",
+        "faststart": true,
+        "verified_at": "2026-10-05"
       }
     },
     {
@@ -3232,6 +3233,34 @@
         "derivation": "lossless MP4 remux for faststart; unchanged audio/video streams",
         "faststart": true,
         "verified_at": "2026-09-20T01:50:27.966352+00:00"
+      }
+    },
+    {
+      "title": "Kreate Resin Facility",
+      "description": "Inside Kreate Resin · 2:51",
+      "src": "https://github.com/sequent-hq/sequent-resources/releases/download/video-library-2026-09/kreate-resin-facility.mp4",
+      "download": "https://brand.kreate.com/web/724e73705e444ff7/kreate-resin-facility/?mediaId=BD310A51-ACBE-4E44-8184D71441A06728",
+      "collection": "https://brand.kreate.com/web/724e73705e444ff7/kreate-resin-facility/",
+      "image": "https://brand.kreate.com/asset/bd310a51-acbe-4e44-8184-d71441a06728/thumbnail/webimage-Kreate-Video-v02",
+      "resolution": "1080p",
+      "brand": "kreate",
+      "original_width": 1920,
+      "original_height": 1080,
+      "original_bytes": 220614607,
+      "slug": "kreate-resin-facility",
+      "preview_src": "https://brand.kreate.com/asset/bd310a51-acbe-4e44-8184-d71441a06728/mp4/Kreate-Video-v02.mp4",
+      "playback": {
+        "bytes": 220614607,
+        "sha256": "30d09eeba073e72a55cd5c30f45e0b10ec37e0b69c652e28046cd47312b98043",
+        "width": 1920,
+        "height": 1080,
+        "fps": 30.0,
+        "duration_seconds": 171.0,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "derivation": "original prepared by root; native dimensions and metadata verified",
+        "faststart": true,
+        "verified_at": "2026-09-20T01:46:28.408954+00:00"
       }
     },
     {
