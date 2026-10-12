@@ -91,3 +91,10 @@ The common player now surfaces loading, blocked playback, and retry actions inst
 Kreate Resin remains first, followed by the new SPM Intro — Las Vegas Flyover v17 and SPM Marketing Video Review 03. Both play and download as unchanged original 1920×1080 H.264/AAC files, hosted publicly. Their source links remain available in the player. The former Home Depot Comp Highlights card and empty Home Depot group have been removed from the board.
 
 SPM 2025 Videos collects the partner intro, Content & Social, and Facilities films into one card. Eco Actions provides the full film plus one-click 60-second and 30-second cuts in one card. Each film retains its individual sharing link and remains searchable. The older Kreate Capabilities Reel is last in Kreate.
+
+
+## Sequent AutoFactory video update — October 12, 2026
+
+The featured Sequent Platform Video now uses the supplied `Sequent_Overview_AutoFactory_Updated_2026-10-11.mp4`, including the AutoFactory logo update. The original is unchanged: 1920×1080, 30 fps, H.264/AAC, 172,059,517 bytes, SHA-256 `df8041a3ceb31055fb85b18728f957af6fbdcb805fcd013d0f602dca70b24147`. Its poster is an extracted frame at five seconds.
+
+This film uses the public Google Drive embedded player, which provides adaptive preview playback. Download video opens Google Drive’s original-file download confirmation; Open collection and the script-free film link open the supplied public viewer. Anonymous playback and download access were verified. The existing `#film-sequent-platform` link is preserved. Other films retain their native player, GitHub release URLs, and download behavior.

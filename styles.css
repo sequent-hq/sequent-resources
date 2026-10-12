@@ -33,3 +33,6 @@ html.light{color-scheme:light;--bg:#F2F0ED;--rail:#F2F0ED;--surface:#fff;--surfa
 
 /* Preview fallback text follows each logo tile's fixed background. */
 .cbx .image-missing{color:#383838}.cbx.on-dark .image-missing{color:#ADADAD}.cbx.on-mid .image-missing{color:var(--muted)}
+
+#videoDialog .drive-video-frame{display:block;width:100%;height:auto;aspect-ratio:16/9;max-height:65dvh;border:0;background:#000}.video-service-note{margin:0;padding:14px 20px 0;font-size:13px;line-height:1.5;color:var(--muted)}
+@media(max-width:700px){.video-service-note{padding:14px 15px 0}}

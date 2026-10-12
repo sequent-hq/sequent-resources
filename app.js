@@ -151,11 +151,26 @@
   if (bgFilters.some(b => b.dataset.bg === location.hash.slice(1))) filterBackgrounds(location.hash.slice(1));
   const videoDialog = $('#videoDialog'), player = $('video', videoDialog);
   const videoFeedback = $('#videoFeedback'), videoStatus = $('#videoStatus'), videoAction = $('#videoAction');
+  const videoServiceNote = $('#videoServiceNote');
   let currentVideoLink = '', currentVideoBrand = '';
   let videoReturnFocus = null, videoClosedForNavigation = false;
-  let activeVideo = null, videoAttempt = 0, initialVideoTimer = null;
+  let activeVideo = null, videoAttempt = 0, initialVideoTimer = null, driveFrame = null;
   let videoHasPlayed = false, videoWantsPlayback = false, videoAutoRetried = false;
+  const isDriveVideo = () => activeVideo?.dataset.videoPlayer === 'drive';
+  const hasNativeVideo = () => Boolean(activeVideo) && !isDriveVideo();
   const stopVideoTimer = () => { clearTimeout(initialVideoTimer); initialVideoTimer = null; };
+  function clearVideoMedia() {
+    // Invalidate native play promises and source events before clearing media.
+    ++videoAttempt; activeVideo = null; videoWantsPlayback = false;
+    stopVideoTimer(); videoFeedbackState();
+    if (driveFrame) {
+      driveFrame.src = 'about:blank';
+      driveFrame.remove(); driveFrame = null;
+    }
+    player.pause(); player.removeAttribute('src'); player.removeAttribute('poster'); player.replaceChildren(); player.load();
+    player.hidden = false;
+    if (videoServiceNote) videoServiceNote.hidden = true;
+  }
   function videoFeedbackState(message = '', action = '') {
     if (!videoFeedback) return;
     videoFeedback.hidden = !message;
@@ -172,7 +187,7 @@
     return url.href;
   }
   function retryInitialVideo(attempt) {
-    if (attempt !== videoAttempt || !videoDialog.open || !activeVideo) return;
+    if (attempt !== videoAttempt || !videoDialog.open || !hasNativeVideo()) return;
     stopVideoTimer();
     if (!videoHasPlayed && !videoAutoRetried && videoWantsPlayback) {
       videoAutoRetried = true;
@@ -183,9 +198,9 @@
   }
   function watchInitialVideo(attempt) {
     stopVideoTimer();
-    if (videoHasPlayed || !videoWantsPlayback) return;
+    if (!hasNativeVideo() || videoHasPlayed || !videoWantsPlayback) return;
     initialVideoTimer = setTimeout(() => {
-      if (attempt !== videoAttempt || !videoDialog.open) return;
+      if (attempt !== videoAttempt || !videoDialog.open || !hasNativeVideo()) return;
       if (player.paused) {
         videoWantsPlayback = false;
         videoFeedbackState('Press play to start the video.', 'play');
@@ -193,12 +208,13 @@
     }, 45000);
   }
   function requestVideoPlay() {
+    if (!hasNativeVideo()) return;
     const attempt = videoAttempt;
     videoWantsPlayback = true;
     videoFeedbackState('Loading video…');
     watchInitialVideo(attempt);
     const rejected = error => {
-      if (attempt !== videoAttempt || !videoDialog.open || !activeVideo) return;
+      if (attempt !== videoAttempt || !videoDialog.open || !hasNativeVideo()) return;
       if (error.name === 'NotAllowedError') {
         videoWantsPlayback = false;
         stopVideoTimer();
@@ -210,6 +226,7 @@
     try { player.play()?.catch(rejected); } catch (error) { rejected(error); }
   }
   function loadVideo(fresh = false, resumeAt = 0) {
+    if (!hasNativeVideo()) return;
     const attempt = ++videoAttempt;
     stopVideoTimer();
     player.pause();
@@ -220,7 +237,7 @@
     source.addEventListener('error', () => retryInitialVideo(attempt));
     player.replaceChildren(source);
     if (resumeAt > 0) player.addEventListener('loadedmetadata', () => {
-      if (attempt !== videoAttempt || !videoDialog.open) return;
+      if (attempt !== videoAttempt || !videoDialog.open || !hasNativeVideo()) return;
       const end = Number.isFinite(player.duration) ? Math.max(0, player.duration - 0.1) : resumeAt;
       player.currentTime = Math.min(resumeAt, end);
     }, { once: true });
@@ -230,55 +247,76 @@
   }
   function openVideo(a, autoplay = true, returnFocus = a) {
     if (dialog?.open) dialog.close();
+    clearVideoMedia();
     videoReturnFocus = returnFocus;
     videoClosedForNavigation = false;
     $('#videoTitle').textContent = a.dataset.title;
-    $('#videoDownload').href = a.dataset.video;
+    const download = $('#videoDownload');
+    download.href = a.dataset.videoPlayer === 'drive' ? a.dataset.fileDownload || a.dataset.download : a.dataset.video;
+    if (a.dataset.videoPlayer === 'drive') {
+      download.removeAttribute('download'); download.target = '_blank'; download.rel = 'noopener';
+    } else {
+      download.setAttribute('download', ''); download.removeAttribute('target'); download.removeAttribute('rel');
+    }
     $('#videoCollection').href = a.dataset.download;
     currentVideoLink = new URL(`./#${a.dataset.videoId}`, location.href).href;
     currentVideoBrand = a.dataset.videoBrand;
     activeVideo = a;
-    videoHasPlayed = false; videoAutoRetried = false; videoWantsPlayback = autoplay;
-    player.poster = a.dataset.poster || '';
+    videoHasPlayed = false; videoAutoRetried = false; videoWantsPlayback = !isDriveVideo() && autoplay;
+    player.hidden = isDriveVideo();
+    if (videoServiceNote) videoServiceNote.hidden = !isDriveVideo();
     if (!videoDialog.open) videoDialog.showModal();
+    if (isDriveVideo()) {
+      driveFrame = document.createElement('iframe');
+      driveFrame.className = 'drive-video-frame';
+      driveFrame.title = `${a.dataset.title} — Google Drive player`;
+      driveFrame.allow = 'autoplay; fullscreen'; driveFrame.allowFullscreen = true;
+      driveFrame.src = a.dataset.videoEmbed;
+      player.after(driveFrame);
+      return;
+    }
+    player.poster = a.dataset.poster || '';
     loadVideo();
+  }
+  function closeVideo() {
+    clearVideoMedia();
+    videoDialog.close();
   }
   function closeVideoForNavigation() {
     videoClosedForNavigation = true;
-    player.pause();
-    videoDialog.close();
+    closeVideo();
   }
   $$('[data-video]').forEach(a => a.addEventListener('click', e => {
     if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
     e.preventDefault(); openVideo(a);
   }));
   player?.addEventListener('error', () => {
-    if (activeVideo && videoDialog.open) retryInitialVideo(videoAttempt);
+    if (hasNativeVideo() && videoDialog.open && player.error) retryInitialVideo(videoAttempt);
   });
   player?.addEventListener('play', () => {
-    if (!activeVideo || !videoDialog.open) return;
+    if (!hasNativeVideo() || !videoDialog.open || player.paused) return;
     videoWantsPlayback = true;
     videoFeedbackState('Loading video…');
     watchInitialVideo(videoAttempt);
   });
   player?.addEventListener('playing', () => {
-    if (!activeVideo || !videoDialog.open) return;
+    if (!hasNativeVideo() || !videoDialog.open || player.paused) return;
     videoHasPlayed = true; videoWantsPlayback = true;
     stopVideoTimer(); videoFeedbackState();
   });
   player?.addEventListener('waiting', () => {
-    if (activeVideo && videoDialog.open && videoWantsPlayback) {
+    if (hasNativeVideo() && videoDialog.open && videoWantsPlayback && !player.paused) {
       videoFeedbackState(videoHasPlayed ? 'Buffering video…' : 'Loading video…', videoHasPlayed ? 'retry' : '');
     }
   });
   player?.addEventListener('pause', () => {
-    if (!activeVideo || !videoDialog.open || !player.paused || !player.readyState) return;
+    if (!hasNativeVideo() || !videoDialog.open || !player.paused || !player.readyState) return;
     videoWantsPlayback = false;
     stopVideoTimer();
     videoFeedbackState(videoHasPlayed ? '' : 'Press play to start the video.', videoHasPlayed ? '' : 'play');
   });
   videoAction?.addEventListener('click', () => {
-    if (!activeVideo || !videoDialog.open) return;
+    if (!hasNativeVideo() || !videoDialog.open) return;
     if (videoAction.dataset.action === 'play') requestVideoPlay();
     else {
       const resumeAt = videoHasPlayed ? player.currentTime : 0;
@@ -287,15 +325,14 @@
     }
   });
   $('#videoDownload')?.addEventListener('click', () => {
-    if (activeVideo) $('#videoDownload').href = freshVideoUrl(activeVideo.dataset.video);
+    if (activeVideo) $('#videoDownload').href = isDriveVideo() ? activeVideo.dataset.fileDownload || activeVideo.dataset.download : freshVideoUrl(activeVideo.dataset.video);
   });
-  $('#closeVideo')?.addEventListener('click', () => videoDialog.close());
+  $('#closeVideo')?.addEventListener('click', closeVideo);
+  videoDialog?.addEventListener('cancel', e => { e.preventDefault(); closeVideo(); });
   videoDialog?.addEventListener('close', () => {
     // A queued close event must not clear a film opened before that event runs.
     if (videoDialog.open) return;
-    ++videoAttempt; activeVideo = null; videoWantsPlayback = false;
-    stopVideoTimer(); videoFeedbackState();
-    player.pause(); player.removeAttribute('src'); player.removeAttribute('poster'); player.replaceChildren(); player.load();
+    clearVideoMedia();
     if (!videoClosedForNavigation) {
       if (location.hash.startsWith('#film-')) history.replaceState(null, '', `#videos-${currentVideoBrand}`);
       if (videoReturnFocus?.isConnected) videoReturnFocus.focus({ preventScroll: true });
@@ -304,7 +341,7 @@
   });
   videoDialog?.addEventListener('click', e => {
     const r = videoDialog.getBoundingClientRect();
-    if (e.target === videoDialog && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)) videoDialog.close();
+    if (e.target === videoDialog && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)) closeVideo();
   });
   $('#copyVideo')?.addEventListener('click', () => copy(currentVideoLink));
   function videoFromHash() {
@@ -391,7 +428,7 @@
   document.addEventListener('click', e => { if (!e.target.closest('.search-area')) results.hidden = true; });
   search?.addEventListener('focus', () => { if (search.value.trim()) results.hidden = false; });
   document.addEventListener('keydown', e => {
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); if (dialog?.open) { focusSearchOnClose = true; dialog.close(); } if (videoDialog?.open) { videoReturnFocus = search; videoDialog.close(); } search.focus(); }
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); if (dialog?.open) { focusSearchOnClose = true; dialog.close(); } if (videoDialog?.open) { videoReturnFocus = search; closeVideo(); } search.focus(); }
     if (e.key === 'Escape') { dismissIntro(); clearSearch(); document.body.classList.remove('nav-open'); menu?.setAttribute('aria-expanded','false'); }
   });
   const sections = $$('.library-section');
